@@ -21,6 +21,80 @@
                 <artifactId>common-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <!-- 接口模块 -->
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-doc</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 安全模块 -->
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-security</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-satoken</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 日志记录 -->
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-log</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 缓存服务 -->
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-redis</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 缓存服务 -->
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-redis</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 数据库服务 -->
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-jpa</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-loadbalancer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-seata</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 字典服务 -->
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-dict</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- seata -->
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-seata</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

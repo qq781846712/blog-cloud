@@ -1,0 +1,1 @@
+customDubboLoadBalancer=com.blank.common.loadbalance.core.CustomDubboLoadBalancer

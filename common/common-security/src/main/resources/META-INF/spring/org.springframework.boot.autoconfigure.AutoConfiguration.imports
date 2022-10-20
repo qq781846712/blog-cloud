@@ -1,0 +1,2 @@
+com.blank.common.security.handler.GlobalExceptionHandler
+com.blank.common.security.config.SecurityConfiguration

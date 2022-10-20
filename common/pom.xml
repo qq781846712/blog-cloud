@@ -12,6 +12,16 @@
         <module>common-alibaba-bom</module>
         <module>common-bom</module>
         <module>common-core</module>
+        <module>common-doc</module>
+        <module>common-dubbo</module>
+        <module>common-jpa</module>
+        <module>common-loadbalancer</module>
+        <module>common-redis</module>
+        <module>common-satoken</module>
+        <module>common-security</module>
+        <module>common-log</module>
+        <module>common-seata</module>
+        <module>common-dict</module>
     </modules>
 
     <artifactId>common</artifactId>

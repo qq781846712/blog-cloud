@@ -1,16 +1,16 @@
 package com.blank.common.core.jackson;
 
 import cn.hutool.core.util.ObjectUtil;
+import com.blank.common.core.annotation.Sensitive;
+import com.blank.common.core.enums.SensitiveStrategy;
+import com.blank.common.core.service.SensitiveService;
+import com.blank.common.core.utils.SpringUtils;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.BeanProperty;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.ContextualSerializer;
-import com.ruoyi.common.core.annotation.Sensitive;
-import com.ruoyi.common.core.enums.SensitiveStrategy;
-import com.ruoyi.common.core.service.SensitiveService;
-import com.ruoyi.common.core.utils.SpringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 
@@ -19,8 +19,6 @@ import java.util.Objects;
 
 /**
  * 数据脱敏json序列化工具
- *
- * @author Yjoioooo
  */
 @Slf4j
 public class SensitiveJsonSerializer extends JsonSerializer<String> implements ContextualSerializer {
