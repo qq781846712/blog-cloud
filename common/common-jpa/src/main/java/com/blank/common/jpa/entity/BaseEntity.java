@@ -16,25 +16,28 @@ import java.sql.Timestamp;
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
 
+    /**
+     * 使用雪花id
+     */
     @Id
-    @GenericGenerator(name = "idGenerator", strategy = "uuid")
-    @GeneratedValue(generator = "idGenerator")
-    private String id;
+    @GenericGenerator(name = "snowFlow", strategy = "com.blank.common.jpa.generator.SnowflowID")
+    @GeneratedValue(generator = "snowFlow")
+    private Long id;
 
     @Column(name = "is_deleted", columnDefinition = "CHAR COMMENT '是否删除'")
     private char isDeleted = 'N';
 
     @CreatedBy
-    @Column(name = "createby", length = 64, columnDefinition = "varchar(64) COMMENT '创建人'")
-    private String createby;
+    @Column(name = "createby", length = 64, columnDefinition = "long COMMENT '创建人'")
+    private Long createby;
 
     @CreatedDate
     @Column(name = "create_time", columnDefinition = "DATETIME COMMENT '创建时间'")
     private Timestamp createTime;
 
     @LastModifiedBy
-    @Column(name = "updateby", length = 64, columnDefinition = "varchar(64) COMMENT '修改人'")
-    private String updateby;
+    @Column(name = "updateby", length = 64, columnDefinition = "long COMMENT '修改人'")
+    private Long updateby;
 
     @LastModifiedDate
     @Column(name = "update_time", columnDefinition = "DATETIME COMMENT '修改时间'")
