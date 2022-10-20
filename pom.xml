@@ -20,8 +20,6 @@
         <spring-cloud.version>2021.0.4</spring-cloud.version>
 
         <springdoc.version>1.6.11</springdoc.version>
-
-        <spring-jpa.version>2021.2.5</spring-jpa.version>
         <druid.version>1.2.12</druid.version>
 
         <hutool.version>5.8.6</hutool.version>
@@ -109,13 +107,6 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-bom</artifactId>
-                <version>${spring-jpa.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
             </dependency>
 
             <!-- hutool 的依赖配置-->
