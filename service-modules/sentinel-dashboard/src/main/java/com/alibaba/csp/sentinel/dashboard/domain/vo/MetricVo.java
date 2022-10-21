@@ -22,7 +22,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @author leyou
+ *
  */
 public class MetricVo implements Comparable<MetricVo> {
     private Long id;

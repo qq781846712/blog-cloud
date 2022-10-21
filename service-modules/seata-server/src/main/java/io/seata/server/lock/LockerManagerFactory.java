@@ -27,7 +27,7 @@ import static io.seata.common.DefaultValues.SERVER_DEFAULT_STORE_MODE;
 /**
  * The type Lock manager factory.
  *
- * @author sharajava
+ *
  */
 public class LockerManagerFactory {
 

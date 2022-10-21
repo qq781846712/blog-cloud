@@ -40,7 +40,7 @@ import java.util.Objects;
 /**
  * The type Session helper.
  *
- * @author sharajava
+ *
  */
 public class SessionHelper {
     private static final Logger LOGGER = LoggerFactory.getLogger(SessionHelper.class);

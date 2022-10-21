@@ -75,7 +75,7 @@ import java.util.stream.Collectors;
 /**
  * Communicate with Sentinel client.
  *
- * @author leyou
+ *
  */
 @Component
 public class SentinelApiClient {

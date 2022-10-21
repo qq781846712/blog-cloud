@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * The interface Session manager.
  *
- * @author sharajava
+ *
  */
 public interface SessionManager extends SessionLifecycleListener, Disposable {
 

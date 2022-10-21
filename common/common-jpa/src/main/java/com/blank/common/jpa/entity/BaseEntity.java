@@ -1,28 +1,22 @@
 package com.blank.common.jpa.entity;
 
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
 import java.sql.Timestamp;
 
 @Data
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
-
-    /**
-     * 使用雪花id
-     */
-    @Id
-    @GenericGenerator(name = "snowFlow", strategy = "com.blank.common.jpa.generator.SnowflowID")
-    @GeneratedValue(generator = "snowFlow")
-    private Long id;
 
     @Column(name = "is_deleted", columnDefinition = "CHAR COMMENT '是否删除'")
     private char isDeleted = 'N';
@@ -45,5 +39,9 @@ public class BaseEntity {
 
     @Column(name = "remark", length = 2000, columnDefinition = "varchar(2000) COMMENT '备注'")
     private String remark;
+
+    @Version
+    @Column(name = "version", columnDefinition = "int(4) COMMENT '版本'")
+    private int version;
 
 }

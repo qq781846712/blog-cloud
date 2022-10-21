@@ -33,7 +33,7 @@ import static io.seata.metrics.IdConstants.*;
 /**
  * Event subscriber for metrics
  *
- * @author zhengyangyong
+ *
  */
 public class MetricsSubscriber {
 

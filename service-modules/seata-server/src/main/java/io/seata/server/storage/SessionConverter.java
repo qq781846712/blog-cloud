@@ -33,9 +33,6 @@ import java.util.*;
 
 /**
  * The session converter
- *
- * @author wangzhongxiang
- * @author doubleDimple
  */
 public class SessionConverter {
 

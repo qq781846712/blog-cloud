@@ -16,7 +16,7 @@
 package com.alibaba.csp.sentinel.dashboard.datasource.entity;
 
 /**
- * @author Eric Zhao
+ *
  * @since 0.2.1
  */
 public class SentinelVersion {

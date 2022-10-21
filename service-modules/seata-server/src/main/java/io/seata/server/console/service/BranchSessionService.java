@@ -21,7 +21,7 @@ import io.seata.server.console.vo.BranchSessionVO;
 /**
  * Branch session service
  *
- * @author wangzhongxiang
+ *
  */
 public interface BranchSessionService {
 

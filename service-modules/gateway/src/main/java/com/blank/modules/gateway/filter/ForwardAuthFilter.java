@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 /**
  * 转发认证过滤器(内部服务外网隔离)
  *
- * @author Lion Li
+ *
  */
 @Component
 public class ForwardAuthFilter implements GlobalFilter {

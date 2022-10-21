@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author Eric Zhao
+ *
  * @since 1.4.0
  */
 @Component("flowRuleDefaultPublisher")

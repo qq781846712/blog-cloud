@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author Carpenter Lee
+ *
  */
 @RestController
 @RequestMapping(value = "/resource")

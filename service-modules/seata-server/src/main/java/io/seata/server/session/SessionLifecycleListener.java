@@ -22,7 +22,7 @@ import io.seata.core.model.GlobalStatus;
 /**
  * The interface Session lifecycle listener.
  *
- * @author sharajava
+ *
  */
 public interface SessionLifecycleListener {
 

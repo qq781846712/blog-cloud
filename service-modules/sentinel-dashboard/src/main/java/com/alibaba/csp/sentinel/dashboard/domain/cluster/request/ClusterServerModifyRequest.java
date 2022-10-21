@@ -21,7 +21,7 @@ import com.alibaba.csp.sentinel.dashboard.domain.cluster.config.ServerTransportC
 import java.util.Set;
 
 /**
- * @author Eric Zhao
+ *
  * @since 1.4.0
  */
 public class ClusterServerModifyRequest implements ClusterModifyRequest {

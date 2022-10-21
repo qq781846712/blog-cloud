@@ -51,7 +51,7 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * Fetch metric of machines.
  *
- * @author leyou
+ *
  */
 @Component
 public class MetricFetcher {

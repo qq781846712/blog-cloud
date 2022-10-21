@@ -30,7 +30,7 @@ import javax.annotation.Resource;
 /**
  * Global Lock Controller
  *
- * @author: zhongxiang.wang
+ *
  */
 @RestController
 @RequestMapping("/api/v1/console/globalLock")

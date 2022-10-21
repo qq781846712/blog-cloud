@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * [Sa-Token 权限认证] 拦截器
  *
- * @author Lion Li
+ *
  */
 @Configuration
 public class AuthFilter {

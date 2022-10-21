@@ -43,7 +43,7 @@ import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 /**
- * @author Eric Zhao
+ *
  * @since 1.4.0
  */
 @RestController

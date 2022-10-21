@@ -21,7 +21,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.IOException;
 
 /**
- * @author spilledyear@outlook.com
+ *
  */
 @SpringBootApplication(scanBasePackages = {"io.seata"})
 public class SeataServerApplication {

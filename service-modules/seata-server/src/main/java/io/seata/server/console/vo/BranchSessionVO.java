@@ -25,7 +25,7 @@ import java.util.Objects;
 /**
  * BranchSessionVO
  *
- * @author: zhongxiang.wang
+ *
  */
 public class BranchSessionVO {
 

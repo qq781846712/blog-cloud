@@ -41,7 +41,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * The type saga core.
  *
- * @author ph3636
+ *
  */
 public class SagaCore extends AbstractCore {
 

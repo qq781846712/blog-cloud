@@ -16,7 +16,7 @@
 package com.alibaba.csp.sentinel.dashboard.domain.cluster.state;
 
 /**
- * @author Eric Zhao
+ *
  * @since 1.4.1
  */
 public class ClusterUniversalStatePairVO {

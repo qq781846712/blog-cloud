@@ -40,7 +40,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 /**
- * @author Eric Zhao
+ *
  * @since 0.2.1
  */
 @RestController

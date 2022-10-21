@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * The interface Reloadable store.
  *
- * @author zhangsen
+ *
  */
 public interface ReloadableStore {
 

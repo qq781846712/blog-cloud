@@ -32,7 +32,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author leyou
+ *
  */
 @Controller
 @RequestMapping(value = "/metric", produces = MediaType.APPLICATION_JSON_VALUE)

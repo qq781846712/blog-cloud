@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The type Abstract tc inbound handler.
  *
- * @author sharajava
+ *
  */
 public abstract class AbstractTCInboundHandler extends AbstractExceptionHandler implements TCInboundHandler {
 

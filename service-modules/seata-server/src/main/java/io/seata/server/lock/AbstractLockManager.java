@@ -33,7 +33,7 @@ import java.util.List;
 /**
  * The type Abstract lock manager.
  *
- * @author zhangsen
+ *
  */
 public abstract class AbstractLockManager implements LockManager {
 

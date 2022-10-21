@@ -24,7 +24,7 @@ import com.alibaba.csp.sentinel.util.StringUtil;
 import java.util.*;
 
 /**
- * @author Eric Zhao
+ *
  * @since 1.4.1
  */
 public final class ClusterEntityUtils {

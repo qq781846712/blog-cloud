@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author Eric Zhao
+ *
  */
 @Component("flowRuleDefaultProvider")
 public class FlowRuleApiProvider implements DynamicRuleProvider<List<FlowRuleEntity>> {

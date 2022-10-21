@@ -20,7 +20,7 @@ import com.alibaba.csp.sentinel.dashboard.domain.cluster.request.ClusterAppAssig
 import java.util.Set;
 
 /**
- * @author Eric Zhao
+ *
  * @since 1.4.1
  */
 public class ClusterAppSingleServerAssignRequest {

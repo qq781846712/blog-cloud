@@ -27,7 +27,7 @@ import redis.clients.jedis.Transaction;
 import redis.clients.jedis.params.SetParams;
 
 /**
- * @author zhongxiang.wang
+ *
  * @description Redis distributed lock
  */
 @LoadLevel(name = "redis", scope = Scope.SINGLETON)

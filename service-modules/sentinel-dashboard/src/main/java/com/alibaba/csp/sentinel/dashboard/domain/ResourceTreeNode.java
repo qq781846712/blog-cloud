@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author leyou
+ *
  */
 public class ResourceTreeNode {
     private String id;

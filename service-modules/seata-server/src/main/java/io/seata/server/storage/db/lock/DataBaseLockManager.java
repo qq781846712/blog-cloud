@@ -32,7 +32,7 @@ import javax.sql.DataSource;
 /**
  * The type db lock manager.
  *
- * @author zjinlei
+ *
  */
 @LoadLevel(name = "db")
 public class DataBaseLockManager extends AbstractLockManager implements Initialize {

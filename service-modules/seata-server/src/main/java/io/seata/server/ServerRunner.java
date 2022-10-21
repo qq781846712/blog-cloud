@@ -27,7 +27,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 
 /**
- * @author spilledyear@outlook.com
+ *
  */
 @Component
 public class ServerRunner implements CommandLineRunner, DisposableBean {

@@ -38,7 +38,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author leyou
+ *
  */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {

@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * @author wang.liang
+ *
  */
 public class PortHelper {
 

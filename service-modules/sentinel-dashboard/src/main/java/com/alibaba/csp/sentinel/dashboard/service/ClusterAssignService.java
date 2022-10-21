@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author Eric Zhao
+ *
  * @since 1.4.1
  */
 public interface ClusterAssignService {

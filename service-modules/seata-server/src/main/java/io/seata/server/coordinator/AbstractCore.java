@@ -46,7 +46,7 @@ import static io.seata.core.exception.TransactionExceptionCode.*;
 /**
  * The type abstract core.
  *
- * @author ph3636
+ *
  */
 public abstract class AbstractCore implements Core {
 

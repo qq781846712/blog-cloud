@@ -108,6 +108,13 @@
                 <artifactId>common-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <!-- dubbo -->
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-dubbo</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

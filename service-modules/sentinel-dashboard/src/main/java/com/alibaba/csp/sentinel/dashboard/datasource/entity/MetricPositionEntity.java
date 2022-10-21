@@ -18,7 +18,7 @@ package com.alibaba.csp.sentinel.dashboard.datasource.entity;
 import java.util.Date;
 
 /**
- * @author leyou
+ *
  */
 public class MetricPositionEntity {
     private long id;

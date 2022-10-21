@@ -41,7 +41,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 /**
- * @author Eric Zhao
+ *
  * @since 1.4.0
  */
 @Service

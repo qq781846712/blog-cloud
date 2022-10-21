@@ -28,9 +28,6 @@ import java.util.List;
 
 /**
  * GlobalLockVO
- *
- * @author miaoxueyu
- * @author: zhongxiang.wang
  */
 public class GlobalLockVO {
 

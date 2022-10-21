@@ -23,7 +23,7 @@ import java.util.Optional;
 /**
  * Util class for parsing version.
  *
- * @author Eric Zhao
+ *
  * @since 0.2.1
  */
 public final class VersionUtils {

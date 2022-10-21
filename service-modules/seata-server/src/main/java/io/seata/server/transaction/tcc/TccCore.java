@@ -22,7 +22,7 @@ import io.seata.server.coordinator.AbstractCore;
 /**
  * The type tcc core.
  *
- * @author ph3636
+ *
  */
 public class TccCore extends AbstractCore {
 

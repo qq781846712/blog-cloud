@@ -23,7 +23,7 @@ import io.seata.server.console.vo.GlobalLockVO;
 /**
  * Global lock service
  *
- * @author wangzhongxiang
+ *
  */
 public interface GlobalLockService {
 

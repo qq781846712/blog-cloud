@@ -20,7 +20,7 @@ import com.alibaba.csp.sentinel.dashboard.discovery.AppInfo;
 import java.util.Date;
 
 /**
- * @author leyou
+ *
  */
 public class ApplicationEntity {
 

@@ -1,0 +1,1 @@
+dubboRequestFilter=com.blank.common.dubbo.filter.DubboRequestFilter

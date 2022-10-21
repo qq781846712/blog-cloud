@@ -42,10 +42,10 @@
         </dependency>
 
         <!-- Api System -->
-        <!--<dependency>
+        <dependency>
             <groupId>com.blank</groupId>
-            <artifactId>ruoyi-api-system</artifactId>
-        </dependency>-->
+            <artifactId>api-system</artifactId>
+        </dependency>
 
         <!-- common Redis-->
         <dependency>

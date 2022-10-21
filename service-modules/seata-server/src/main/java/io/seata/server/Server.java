@@ -40,7 +40,7 @@ import static io.seata.spring.boot.autoconfigure.StarterConstants.REGISTRY_PREFE
 /**
  * The type Server.
  *
- * @author slievrly
+ *
  */
 public class Server {
     /**

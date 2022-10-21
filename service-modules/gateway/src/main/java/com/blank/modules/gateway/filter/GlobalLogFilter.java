@@ -30,7 +30,7 @@ import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.G
  * <p>
  * 用于打印请求执行参数与响应时间等等
  *
- * @author Lion Li
+ *
  */
 @Slf4j
 @Component

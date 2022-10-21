@@ -33,7 +33,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @author funkye
+ *
  */
 @LoadLevel(name = "redis", scope = Scope.PROTOTYPE)
 public class RedisSessionManager extends AbstractSessionManager

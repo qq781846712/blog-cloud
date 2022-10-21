@@ -29,7 +29,7 @@ import javax.annotation.Resource;
 /**
  * Global Session Controller
  *
- * @author: zhongxiang.wang
+ *
  */
 @RestController
 @RequestMapping("/api/v1/console/globalSession")

@@ -51,7 +51,7 @@ import static io.seata.core.context.RootContext.MDC_KEY_BRANCH_ID;
 /**
  * The type File transaction store manager.
  *
- * @author slievrly
+ *
  */
 public class FileTransactionStoreManager extends AbstractTransactionStoreManager
         implements TransactionStoreManager, ReloadableStore {

@@ -43,7 +43,7 @@ import static io.seata.core.constants.RedisKeyConstants.DEFAULT_LOG_QUERY_LIMIT;
 /**
  * The type Database transaction store manager.
  *
- * @author zhangsen
+ *
  */
 public class DataBaseTransactionStoreManager extends AbstractTransactionStoreManager
         implements TransactionStoreManager {

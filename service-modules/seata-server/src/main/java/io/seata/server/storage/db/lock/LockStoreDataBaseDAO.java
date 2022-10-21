@@ -50,7 +50,7 @@ import static io.seata.core.exception.TransactionExceptionCode.LockKeyConflictFa
 /**
  * The type Data base lock store.
  *
- * @author zhangsen
+ *
  */
 public class LockStoreDataBaseDAO implements LockStore {
 

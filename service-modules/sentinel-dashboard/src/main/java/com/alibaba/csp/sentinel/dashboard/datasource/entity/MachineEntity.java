@@ -20,7 +20,7 @@ import com.alibaba.csp.sentinel.dashboard.discovery.MachineInfo;
 import java.util.Date;
 
 /**
- * @author leyou
+ *
  */
 public class MachineEntity {
     private Long id;

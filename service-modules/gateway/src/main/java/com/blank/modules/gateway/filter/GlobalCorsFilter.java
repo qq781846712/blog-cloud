@@ -17,7 +17,7 @@ import reactor.core.publisher.Mono;
 /**
  * 跨域配置
  *
- * @author Lion Li
+ *
  */
 @Component
 public class GlobalCorsFilter implements WebFilter, Ordered {

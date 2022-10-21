@@ -21,8 +21,7 @@ import io.seata.common.util.StringUtils;
 import static io.seata.core.constants.ConfigurationKeys.ENV_SEATA_PORT_KEY;
 
 /**
- * @author xingfudeshi@gmail.com
- * @author wang.liang
+ *
  */
 public class ContainerHelper {
 

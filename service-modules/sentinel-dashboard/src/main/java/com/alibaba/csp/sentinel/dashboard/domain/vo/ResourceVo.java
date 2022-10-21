@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author leyou
+ *
  */
 public class ResourceVo {
     private String parentTtId;

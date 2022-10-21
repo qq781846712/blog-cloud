@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * @author Eric Zhao
+ *
  * @since 0.2.1
  */
 @Component

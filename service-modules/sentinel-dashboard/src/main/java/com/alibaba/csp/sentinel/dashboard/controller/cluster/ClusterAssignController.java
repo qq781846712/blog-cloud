@@ -30,7 +30,7 @@ import java.util.Collections;
 import java.util.Set;
 
 /**
- * @author Eric Zhao
+ *
  * @since 1.4.1
  */
 @RestController

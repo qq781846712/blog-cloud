@@ -46,7 +46,7 @@ import static io.seata.server.session.BranchSessionHandler.CONTINUE;
 /**
  * The type Default core.
  *
- * @author sharajava
+ *
  */
 public class DefaultCore implements Core {
 

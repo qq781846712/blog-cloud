@@ -18,7 +18,7 @@ package com.alibaba.csp.sentinel.dashboard.auth;
 import java.lang.annotation.*;
 
 /**
- * @author lkxiaolou
+ *
  * @since 1.7.1
  */
 @Retention(RetentionPolicy.RUNTIME)

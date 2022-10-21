@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * The interface Lock manager.
  *
- * @author sharajava
+ *
  */
 public interface LockManager {
 

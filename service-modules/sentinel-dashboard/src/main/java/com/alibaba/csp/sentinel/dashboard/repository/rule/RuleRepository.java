@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * Interface to store and find rules.
  *
- * @author leyou
+ *
  */
 public interface RuleRepository<T, ID> {
 

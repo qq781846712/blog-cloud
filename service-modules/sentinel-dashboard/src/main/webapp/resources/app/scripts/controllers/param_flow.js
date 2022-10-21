@@ -1,7 +1,7 @@
 /**
  * Parameter flow control controller.
  *
- * @author Eric Zhao
+ *
  */
 angular.module('sentinelDashboardApp').controller('ParamFlowController', ['$scope', '$stateParams', 'ParamFlowService', 'ngDialog',
     'MachineService',

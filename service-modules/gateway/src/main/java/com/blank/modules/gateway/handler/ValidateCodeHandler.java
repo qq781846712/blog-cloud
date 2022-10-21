@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * 验证码获取
  *
- * @author ruoyi
+ *
  */
 @Component
 @RequiredArgsConstructor

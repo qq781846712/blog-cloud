@@ -30,7 +30,7 @@ import java.util.concurrent.ConcurrentMap;
  * 2. Env
  * </p>
  *
- * @author jason
+ *
  * @since 1.5.0
  */
 public class DashboardConfig {

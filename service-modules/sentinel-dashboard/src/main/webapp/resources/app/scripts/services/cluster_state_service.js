@@ -1,7 +1,7 @@
 /**
  * Cluster state control service.
  *
- * @author Eric Zhao
+ *
  */
 angular.module('sentinelDashboardApp').service('ClusterStateService', ['$http', function ($http) {
 

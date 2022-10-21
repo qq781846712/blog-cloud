@@ -33,7 +33,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author Eric Zhao
+ *
  * @since 0.2.1
  */
 @RestController

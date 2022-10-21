@@ -36,9 +36,6 @@ import static java.util.Objects.isNull;
 
 /**
  * Global Session File ServiceImpl
- *
- * @author zhongxiang.wang
- * @author miaoxueyu
  */
 @Component
 @org.springframework.context.annotation.Configuration

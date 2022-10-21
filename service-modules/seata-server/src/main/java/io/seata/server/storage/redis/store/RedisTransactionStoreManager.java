@@ -50,10 +50,6 @@ import static io.seata.core.constants.RedisKeyConstants.*;
 
 /**
  * The redis transaction store manager
- *
- * @author funkye
- * @author wangzhongxiang
- * @author doubleDimple
  */
 public class RedisTransactionStoreManager extends AbstractTransactionStoreManager implements TransactionStoreManager {
 

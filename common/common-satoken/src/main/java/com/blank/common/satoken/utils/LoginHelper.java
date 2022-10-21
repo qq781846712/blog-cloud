@@ -1,5 +1,14 @@
 package com.blank.common.satoken.utils;
 
+import cn.dev33.satoken.context.SaHolder;
+import cn.dev33.satoken.stp.StpUtil;
+import cn.hutool.core.exceptions.UtilException;
+import cn.hutool.core.util.ObjectUtil;
+import com.blank.common.core.constant.UserConstants;
+import com.blank.common.core.enums.DeviceType;
+import com.blank.common.core.enums.UserType;
+import com.blank.common.core.utils.StringUtils;
+import com.blank.system.api.model.LoginUser;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -24,11 +33,11 @@ public class LoginHelper {
      *
      * @param loginUser 登录用户信息
      */
-    /*public static void login(LoginUser loginUser) {
+    public static void login(LoginUser loginUser) {
         SaHolder.getStorage().set(LOGIN_USER_KEY, loginUser);
         StpUtil.login(loginUser.getLoginId());
         setLoginUser(loginUser);
-    }*/
+    }
 
     /**
      * 登录系统 基于 设备类型
@@ -36,23 +45,23 @@ public class LoginHelper {
      *
      * @param loginUser 登录用户信息
      */
-    /*public static void loginByDevice(LoginUser loginUser, DeviceType deviceType) {
+    public static void loginByDevice(LoginUser loginUser, DeviceType deviceType) {
         SaHolder.getStorage().set(LOGIN_USER_KEY, loginUser);
         StpUtil.login(loginUser.getLoginId(), deviceType.getDevice());
         setLoginUser(loginUser);
-    }*/
+    }
 
     /**
      * 设置用户数据(多级缓存)
      */
-    /*public static void setLoginUser(LoginUser loginUser) {
+    public static void setLoginUser(LoginUser loginUser) {
         StpUtil.getTokenSession().set(LOGIN_USER_KEY, loginUser);
-    }*/
+    }
 
     /**
      * 获取用户(多级缓存)
      */
-    /*public static LoginUser getLoginUser() {
+    public static LoginUser getLoginUser() {
         LoginUser loginUser = (LoginUser) SaHolder.getStorage().get(LOGIN_USER_KEY);
         if (loginUser != null) {
             return loginUser;
@@ -60,12 +69,12 @@ public class LoginHelper {
         loginUser = (LoginUser) StpUtil.getTokenSession().get(LOGIN_USER_KEY);
         SaHolder.getStorage().set(LOGIN_USER_KEY, loginUser);
         return loginUser;
-    }*/
+    }
 
     /**
      * 获取用户id
      */
-    /*public static Long getUserId() {
+    public static Long getUserId() {
         LoginUser loginUser = getLoginUser();
         if (ObjectUtil.isNull(loginUser)) {
             String loginId = StpUtil.getLoginIdAsString();
@@ -83,29 +92,23 @@ public class LoginHelper {
             return Long.parseLong(userId);
         }
         return loginUser.getUserId();
-    }*/
+    }
 
-    /**
-     * 获取部门ID
-     */
-    /*public static Long getDeptId() {
-        return getLoginUser().getDeptId();
-    }*/
 
     /**
      * 获取用户账户
      */
-    /*public static String getUsername() {
+    public static String getUsername() {
         return getLoginUser().getUsername();
-    }*/
+    }
 
     /**
      * 获取用户类型
      */
-    /*public static UserType getUserType() {
+    public static UserType getUserType() {
         String loginId = StpUtil.getLoginIdAsString();
         return UserType.getUserType(loginId);
-    }*/
+    }
 
     /**
      * 是否为管理员
@@ -113,12 +116,12 @@ public class LoginHelper {
      * @param userId 用户ID
      * @return 结果
      */
-    /*public static boolean isAdmin(Long userId) {
+    public static boolean isAdmin(Long userId) {
         return UserConstants.ADMIN_ID.equals(userId);
     }
 
     public static boolean isAdmin() {
         return isAdmin(getUserId());
-    }*/
+    }
 
 }

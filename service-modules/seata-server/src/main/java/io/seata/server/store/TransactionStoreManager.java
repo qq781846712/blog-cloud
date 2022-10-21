@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * The interface Transaction store manager.
  *
- * @author slievrly
+ *
  */
 public interface TransactionStoreManager {
 

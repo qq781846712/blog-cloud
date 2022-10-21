@@ -44,7 +44,7 @@ import static com.alibaba.csp.sentinel.slots.block.RuleConstant.*;
 /**
  * Gateway flow rule Controller for manage gateway flow rules.
  *
- * @author cdfive
+ *
  * @since 1.7.0
  */
 @RestController

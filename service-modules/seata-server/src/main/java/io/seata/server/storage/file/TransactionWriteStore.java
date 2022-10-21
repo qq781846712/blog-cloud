@@ -26,7 +26,7 @@ import java.nio.ByteBuffer;
 /**
  * The type Transaction write store.
  *
- * @author slievrly
+ *
  */
 public class TransactionWriteStore implements SessionStorable {
     private SessionStorable sessionRequest;

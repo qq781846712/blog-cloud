@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * The type Data base locker.
  *
- * @author zhangsen
+ *
  */
 public class DataBaseLocker extends AbstractLocker {
 

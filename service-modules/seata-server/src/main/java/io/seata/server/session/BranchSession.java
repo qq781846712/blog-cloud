@@ -38,7 +38,7 @@ import static io.seata.core.model.LockStatus.Locked;
 /**
  * The type Branch session.
  *
- * @author sharajava
+ *
  */
 public class BranchSession implements Lockable, Comparable<BranchSession>, SessionStorable {
 

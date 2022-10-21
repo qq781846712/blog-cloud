@@ -43,9 +43,6 @@ import static io.seata.core.exception.TransactionExceptionCode.LockKeyConflictFa
 
 /**
  * The redis lock store operation
- *
- * @author funkye
- * @author wangzhongxiang
  */
 public class RedisLocker extends AbstractLocker {
 

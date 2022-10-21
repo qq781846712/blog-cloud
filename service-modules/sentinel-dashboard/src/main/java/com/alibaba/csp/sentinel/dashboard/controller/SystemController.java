@@ -34,7 +34,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author leyou(lihao)
+ *
  */
 @RestController
 @RequestMapping("/system")

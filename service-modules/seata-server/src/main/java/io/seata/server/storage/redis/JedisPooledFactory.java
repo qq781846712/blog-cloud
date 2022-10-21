@@ -30,7 +30,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author funkye
+ *
  */
 public class JedisPooledFactory {
     /**

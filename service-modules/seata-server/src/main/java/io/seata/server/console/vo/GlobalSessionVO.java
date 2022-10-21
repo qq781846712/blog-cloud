@@ -25,7 +25,7 @@ import java.util.Set;
 /**
  * GlobalSessionVO
  *
- * @author: zhongxiang.wang
+ *
  */
 public class GlobalSessionVO {
 

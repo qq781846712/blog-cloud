@@ -29,8 +29,6 @@ import java.lang.reflect.Method;
  * <p>
  * move from old {@link AuthorizationInterceptor}.
  *
- * @author lkxiaolou
- * @author wxq
  * @since 1.7.1
  */
 public class DefaultAuthorizationInterceptor implements AuthorizationInterceptor {

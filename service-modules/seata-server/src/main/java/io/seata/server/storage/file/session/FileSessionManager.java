@@ -41,7 +41,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * The type File based session manager.
  *
- * @author slievrly
+ *
  */
 @LoadLevel(name = "file", scope = Scope.PROTOTYPE)
 public class FileSessionManager extends AbstractSessionManager implements Reloadable {
