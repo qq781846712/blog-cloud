@@ -1,7 +1,7 @@
 package com.blank.common.core.config;
 
+import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.HibernateValidator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -14,10 +14,10 @@ import java.util.Properties;
  * 校验框架配置类
  */
 @AutoConfiguration
+@RequiredArgsConstructor
 public class ValidatorConfig {
 
-    @Autowired
-    private MessageSource messageSource;
+    private final MessageSource messageSource;
 
     /**
      * 配置校验框架 快速返回模式

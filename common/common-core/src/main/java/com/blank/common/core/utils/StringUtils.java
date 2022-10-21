@@ -16,7 +16,7 @@ import java.util.Set;
  * 字符串工具类
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class StringUtils extends StrUtil {
+public class StringUtils extends org.apache.commons.lang3.StringUtils {
 
     /**
      * 获取参数不为空值

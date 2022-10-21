@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.blank</groupId>
+        <artifactId>blog-cloud</artifactId>
+        <version>0.0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <modules>
+        <module>gateway</module>
+        <module>seata-server</module>
+        <module>sentinel-dashboard</module>
+        <module>monitor</module>
+    </modules>
+
+    <artifactId>service-modules</artifactId>
+    <packaging>pom</packaging>
+
+    <description>
+        service-modules 业务模块
+    </description>
+
+    <dependencies>
+        <!-- 自定义负载均衡(多团队开发使用) -->
+        <!--        <dependency>-->
+        <!--            <groupId>com.blank</groupId>-->
+        <!--            <artifactId>ruoyi-common-loadbalancer</artifactId>-->
+        <!--        </dependency>-->
+
+        <!-- ELK 日志收集 -->
+        <!--        <dependency>-->
+        <!--            <groupId>com.blank</groupId>-->
+        <!--            <artifactId>ruoyi-common-logstash</artifactId>-->
+        <!--        </dependency>-->
+    </dependencies>
+
+</project>

@@ -95,6 +95,19 @@
                 <artifactId>common-seata</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-sentinel</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- web -->
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

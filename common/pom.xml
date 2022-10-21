@@ -23,6 +23,8 @@
         <module>common-seata</module>
         <module>common-dict</module>
         <module>common-profile</module>
+        <module>common-sentinel</module>
+        <module>common-web</module>
     </modules>
 
     <artifactId>common</artifactId>

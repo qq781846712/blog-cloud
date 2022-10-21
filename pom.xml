@@ -18,6 +18,7 @@
         <java.version>1.8</java.version>
         <spring-boot.version>2.7.4</spring-boot.version>
         <spring-cloud.version>2021.0.4</spring-cloud.version>
+        <spring-boot-admin.version>2.7.5</spring-boot-admin.version>
 
         <springdoc.version>1.6.11</springdoc.version>
         <druid.version>1.2.12</druid.version>
@@ -26,8 +27,11 @@
         <redisson.version>3.17.6</redisson.version>
         <satoken.version>1.30.0</satoken.version>
         <lombok.version>1.18.24</lombok.version>
+        <logstash.version>7.1.1</logstash.version>
         <fastjson.version>1.2.83</fastjson.version>
         <lock4j.version>2.2.2</lock4j.version>
+        <!-- 统一 guava 版本 解决隐式漏洞问题 -->
+        <guava.version>31.1-jre</guava.version>
     </properties>
 
     <!-- 依赖声明 -->
@@ -142,10 +146,27 @@
                 <artifactId>sa-token-core</artifactId>
                 <version>${satoken.version}</version>
             </dependency>
+
+            <!-- 统一 guava 版本 解决隐式漏洞问题 -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <!-- logstash -->
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <modules></modules>
+    <modules>
+        <module>common</module>
+        <module>service-modules</module>
+    </modules>
 
     <packaging>pom</packaging>
     <build>
