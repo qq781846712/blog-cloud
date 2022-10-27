@@ -32,6 +32,7 @@ import java.util.List;
                 @Index(columnList = "user_name", name = "su_user_name_index"),
                 @Index(columnList = "nick_name", name = "su_nick_name_index"),
                 @Index(columnList = "status", name = "su_status_index"),
+                @Index(columnList = "is_deleted", name = "su_is_deleted_index"),
         })
 @org.hibernate.annotations.Table(appliesTo = "sys_user", comment = "用户对象")
 public class SysUser extends BaseEntity {
@@ -122,20 +123,19 @@ public class SysUser extends BaseEntity {
     /**
      * 角色对象
      */
-    @Transient
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = {
+                    @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "role_id", referencedColumnName = "role_id")
+            },
+            foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT),
+            inverseForeignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT)
+    )
     private List<SysRole> roles;
-
-    /**
-     * 角色组
-     */
-    @Transient
-    private Long[] roleIds;
-
-    /**
-     * 数据权限 当前角色ID
-     */
-    @Transient
-    private Long roleId;
 
     public SysUser(Long userId) {
         this.userId = userId;

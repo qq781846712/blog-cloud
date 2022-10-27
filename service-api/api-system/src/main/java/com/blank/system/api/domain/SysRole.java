@@ -11,7 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Set;
+import java.util.List;
 
 /**
  * 角色表 sys_role
@@ -81,23 +81,39 @@ public class SysRole extends BaseEntity {
     @Transient
     private boolean flag = false;
 
-    /**
-     * 菜单组
-     */
-    @Transient
-    private Long[] menuIds;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = {
+                    @JoinColumn(name = "role_id", referencedColumnName = "role_id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+            },
+            foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT),
+            inverseForeignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT)
+    )
+    private List<SysUser> users;
 
-    /**
-     * 部门组（数据权限）
-     */
-    @Transient
-    private Long[] deptIds;
+    /*@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")],
+    inverseJoinColumns = [JoinColumn(name = "user_id", referencedColumnName = "id")],
+    foreignKey = ForeignKey(value = ConstraintMode.NO_CONSTRAINT),
+    inverseForeignKey = ForeignKey(value = ConstraintMode.NO_CONSTRAINT)
+    )
+    var users: Set<User> = HashSet<User>()
 
-    /**
-     * 角色菜单权限
-     */
-    @Transient
-    private Set<String> permissions;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "role_resource",
+            joinColumns = [JoinColumn(name = "resource_id", referencedColumnName = "id")],
+    inverseJoinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")],
+    foreignKey = ForeignKey(value = ConstraintMode.NO_CONSTRAINT),
+    inverseForeignKey = ForeignKey(value = ConstraintMode.NO_CONSTRAINT)
+    )
+    var resources: Set<Resource> = HashSet<Resource>()*/
 
     public SysRole(Long roleId) {
         this.roleId = roleId;
