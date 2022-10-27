@@ -71,7 +71,7 @@ public interface RuleRepository<T, ID> {
      *
      * @param appName valid app name
      * @return all rules of the application
-     * @since 1.4.0
+
      */
     List<T> findAllByApp(String appName);
 

@@ -17,7 +17,7 @@ package com.alibaba.csp.sentinel.dashboard.datasource.entity;
 
 /**
  *
- * @since 0.2.1
+
  */
 public class SentinelVersion {
     private int majorVersion;

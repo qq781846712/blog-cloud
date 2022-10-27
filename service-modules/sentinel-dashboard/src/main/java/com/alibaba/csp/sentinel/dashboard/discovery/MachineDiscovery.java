@@ -32,7 +32,7 @@ public interface MachineDiscovery {
      * Remove the given app from the application registry.
      *
      * @param app application name
-     * @since 1.5.0
+
      */
     void removeApp(String app);
 
@@ -45,7 +45,7 @@ public interface MachineDiscovery {
      * @param ip   machine IP
      * @param port machine port
      * @return true if removed, otherwise false
-     * @since 1.5.0
+
      */
     boolean removeMachine(String app, String ip, int port);
 }

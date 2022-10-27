@@ -8,7 +8,6 @@ import java.io.Serializable;
 /**
  * 当前在线会话
  */
-
 @Data
 @NoArgsConstructor
 public class SysUserOnline implements Serializable {

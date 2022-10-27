@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @since 1.7.0
+
  */
 @RestController
 public class VersionController {

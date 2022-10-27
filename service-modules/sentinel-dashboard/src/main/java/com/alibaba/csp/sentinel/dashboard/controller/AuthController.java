@@ -32,7 +32,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  *
- * @since 1.6.0
+
  */
 @RestController
 @RequestMapping("/auth")

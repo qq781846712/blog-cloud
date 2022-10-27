@@ -17,7 +17,7 @@ package com.alibaba.csp.sentinel.dashboard.domain.cluster.state;
 
 /**
  *
- * @since 1.4.0
+
  */
 public class ClusterUniversalStateVO {
 

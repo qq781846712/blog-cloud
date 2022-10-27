@@ -482,7 +482,7 @@ public class SentinelApiClient {
      * @param ip   machine client IP
      * @param port machine client port
      * @return all retrieved parameter flow rules
-     * @since 0.2.1
+
      */
     public CompletableFuture<List<ParamFlowRuleEntity>> fetchParamFlowRulesOfMachine(String app, String ip, int port) {
         try {
@@ -507,7 +507,7 @@ public class SentinelApiClient {
      * @param ip   machine client IP
      * @param port machine client port
      * @return all retrieved authority rules
-     * @since 0.2.1
+
      */
     public List<AuthorityRuleEntity> fetchAuthorityRulesOfMachine(String app, String ip, int port) {
         AssertUtil.notEmpty(app, "Bad app name");

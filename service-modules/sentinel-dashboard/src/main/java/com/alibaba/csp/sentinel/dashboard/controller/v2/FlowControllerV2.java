@@ -36,7 +36,7 @@ import java.util.List;
  * Flow rule controller (v2).
  *
  *
- * @since 1.4.0
+
  */
 @RestController
 @RequestMapping(value = "/v2/flow")

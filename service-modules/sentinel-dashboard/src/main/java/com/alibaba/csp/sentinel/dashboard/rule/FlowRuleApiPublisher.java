@@ -28,7 +28,7 @@ import java.util.Set;
 
 /**
  *
- * @since 1.4.0
+
  */
 @Component("flowRuleDefaultPublisher")
 public class FlowRuleApiPublisher implements DynamicRulePublisher<List<FlowRuleEntity>> {

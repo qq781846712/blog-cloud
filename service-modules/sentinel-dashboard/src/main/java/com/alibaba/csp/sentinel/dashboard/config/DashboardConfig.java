@@ -31,7 +31,7 @@ import java.util.concurrent.ConcurrentMap;
  * </p>
  *
  *
- * @since 1.5.0
+
  */
 public class DashboardConfig {
 

@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
- * @since 0.2.1
+
  */
 public class AuthorityRuleEntity extends AbstractRuleEntity<AuthorityRule> {
 

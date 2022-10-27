@@ -24,7 +24,7 @@ import java.util.Optional;
  * Util class for parsing version.
  *
  *
- * @since 0.2.1
+
  */
 public final class VersionUtils {
 

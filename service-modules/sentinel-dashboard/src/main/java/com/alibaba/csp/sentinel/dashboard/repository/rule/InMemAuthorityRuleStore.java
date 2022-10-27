@@ -24,7 +24,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * In-memory storage for authority rules.
  *
  *
- * @since 0.2.1
+
  */
 @Component
 public class InMemAuthorityRuleStore extends InMemoryRuleRepositoryAdapter<AuthorityRuleEntity> {

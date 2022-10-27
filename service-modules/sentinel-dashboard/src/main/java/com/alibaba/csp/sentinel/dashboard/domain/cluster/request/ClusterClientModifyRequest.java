@@ -19,7 +19,7 @@ import com.alibaba.csp.sentinel.dashboard.domain.cluster.config.ClusterClientCon
 
 /**
  *
- * @since 1.4.0
+
  */
 public class ClusterClientModifyRequest implements ClusterModifyRequest {
 

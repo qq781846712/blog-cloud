@@ -23,7 +23,7 @@ import java.util.Set;
 
 /**
  *
- * @since 1.4.1
+
  */
 public interface ClusterAssignService {
 

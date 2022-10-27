@@ -17,7 +17,7 @@ package com.alibaba.csp.sentinel.dashboard.domain.cluster.config;
 
 /**
  *
- * @since 1.4.0
+
  */
 public class ServerFlowConfig {
 

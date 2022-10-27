@@ -44,7 +44,7 @@ import java.util.concurrent.ExecutionException;
 
 /**
  *
- * @since 1.4.0
+
  */
 @RestController
 @RequestMapping(value = "/cluster")

@@ -32,7 +32,7 @@ import javax.servlet.Filter;
  *
  *
  *
- * @since 1.6.0
+
  */
 public interface LoginAuthenticationFilter extends Filter {
 

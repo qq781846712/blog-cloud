@@ -104,7 +104,7 @@ public class RedisUtils {
      * @param key       缓存的键值
      * @param value     缓存的值
      * @param isSaveTtl 是否保留TTL有效期(例如: set之前ttl剩余90 set之后还是为90)
-     * @since Redis 6.X 以上使用 setAndKeepTTL 兼容 5.X 方案
+
      */
     public static <T> void setCacheObject(final String key, final T value, final boolean isSaveTtl) {
         RBucket<T> bucket = CLIENT.getBucket(key);

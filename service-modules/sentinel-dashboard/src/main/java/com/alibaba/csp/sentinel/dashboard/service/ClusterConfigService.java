@@ -42,7 +42,7 @@ import java.util.stream.Collectors;
 
 /**
  *
- * @since 1.4.0
+
  */
 @Service
 public class ClusterConfigService {
@@ -97,7 +97,7 @@ public class ClusterConfigService {
      *
      * @param app application name
      * @return cluster state list of all available machines of the application
-     * @since 1.4.1
+
      */
     public CompletableFuture<List<ClusterUniversalStatePairVO>> getClusterUniversalState(String app) {
         if (StringUtil.isBlank(app)) {

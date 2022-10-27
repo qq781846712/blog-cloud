@@ -19,7 +19,7 @@ package com.alibaba.csp.sentinel.dashboard.domain.vo.gateway.rule;
  * Value Object for add or update gateway flow rule.
  *
  *
- * @since 1.7.0
+
  */
 public class GatewayParamFlowItemVo {
 

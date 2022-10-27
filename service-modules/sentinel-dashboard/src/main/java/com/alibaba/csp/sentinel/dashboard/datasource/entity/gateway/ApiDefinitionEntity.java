@@ -30,7 +30,7 @@ import java.util.Set;
  * Entity for {@link ApiDefinition}.
  *
  *
- * @since 1.7.0
+
  */
 public class ApiDefinitionEntity implements RuleEntity {
 

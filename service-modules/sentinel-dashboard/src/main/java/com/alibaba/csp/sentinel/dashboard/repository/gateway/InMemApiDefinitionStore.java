@@ -25,7 +25,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * Store {@link ApiDefinitionEntity} in memory.
  *
  *
- * @since 1.7.0
+
  */
 @Component
 public class InMemApiDefinitionStore extends InMemoryRuleRepositoryAdapter<ApiDefinitionEntity> {

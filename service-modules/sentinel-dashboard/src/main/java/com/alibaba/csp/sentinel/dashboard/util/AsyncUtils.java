@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 
 /**
  *
- * @since 1.4.1
+
  */
 public final class AsyncUtils {
 

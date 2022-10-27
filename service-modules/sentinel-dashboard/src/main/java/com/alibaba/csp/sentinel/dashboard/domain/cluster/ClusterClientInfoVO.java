@@ -17,7 +17,7 @@ package com.alibaba.csp.sentinel.dashboard.domain.cluster;
 
 /**
  *
- * @since 1.4.1
+
  */
 public class ClusterClientInfoVO {
 

@@ -23,7 +23,7 @@ import java.util.Objects;
  * Entity for {@link GatewayParamFlowItem}.
  *
  *
- * @since 1.7.0
+
  */
 public class GatewayParamFlowItemEntity {
 

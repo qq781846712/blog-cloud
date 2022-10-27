@@ -26,7 +26,7 @@ import java.util.List;
 
 /**
  *
- * @since 0.2.1
+
  */
 public class ParamFlowRuleEntity extends AbstractRuleEntity<ParamFlowRule> {
 

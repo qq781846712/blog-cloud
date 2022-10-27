@@ -31,7 +31,7 @@ import java.util.Set;
 
 /**
  *
- * @since 1.4.1
+
  */
 @RestController
 @RequestMapping("/cluster/assign")

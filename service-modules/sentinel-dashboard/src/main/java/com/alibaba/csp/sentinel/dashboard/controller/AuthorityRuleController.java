@@ -34,7 +34,7 @@ import java.util.List;
 
 /**
  *
- * @since 0.2.1
+
  */
 @RestController
 @RequestMapping(value = "/authority")

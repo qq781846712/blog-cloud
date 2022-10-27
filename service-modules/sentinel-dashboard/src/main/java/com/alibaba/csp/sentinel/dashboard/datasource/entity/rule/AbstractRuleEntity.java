@@ -21,7 +21,7 @@ import java.util.Date;
 
 /**
  *
- * @since 0.2.1
+
  */
 public abstract class AbstractRuleEntity<T extends AbstractRule> implements RuleEntity {
 

@@ -25,7 +25,7 @@ import java.util.*;
 
 /**
  *
- * @since 1.4.1
+
  */
 public final class ClusterEntityUtils {
 

@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @since 1.6.0
+
  */
 public class SimpleWebAuthServiceImpl implements AuthService<HttpServletRequest> {
 
