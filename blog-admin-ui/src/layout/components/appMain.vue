@@ -1,52 +1,147 @@
+<script setup lang="ts">
+import {useGlobal} from "@pureadmin/utils";
+import {computed, defineComponent, h, Transition} from "vue";
+import {usePermissionStoreHook} from "@/store/modules/permission";
+
+const props = defineProps({
+  fixedHeader: Boolean
+});
+
+const {$storage, $config} = useGlobal<GlobalPropertiesApi>();
+
+const keepAlive = computed(() => {
+  return $config?.KeepAlive;
+});
+
+const transitions = computed(() => {
+  return route => {
+    return route.meta.transition;
+  };
+});
+
+const hideTabs = computed(() => {
+  return $storage?.configure.hideTabs;
+});
+
+const layout = computed(() => {
+  return $storage?.layout.layout === "vertical";
+});
+
+const getSectionStyle = computed(() => {
+  return [
+    hideTabs.value && layout ? "padding-top: 48px;" : "",
+    !hideTabs.value && layout ? "padding-top: 85px;" : "",
+    hideTabs.value && !layout.value ? "padding-top: 48px" : "",
+    !hideTabs.value && !layout.value ? "padding-top: 85px;" : "",
+    props.fixedHeader ? "" : "padding-top: 0;"
+  ];
+});
+
+const transitionMain = defineComponent({
+  render() {
+    return h(
+        Transition,
+        {
+          name:
+              transitions.value(this.route) &&
+              this.route.meta.transition.enterTransition
+                  ? "pure-classes-transition"
+                  : (transitions.value(this.route) &&
+                      this.route.meta.transition.name) ||
+                  "fade-transform",
+          enterActiveClass:
+              transitions.value(this.route) &&
+              `animate__animated ${this.route.meta.transition.enterTransition}`,
+          leaveActiveClass:
+              transitions.value(this.route) &&
+              `animate__animated ${this.route.meta.transition.leaveTransition}`,
+          mode: "out-in",
+          appear: true
+        },
+        {
+          default: () => [this.$slots.default()]
+        }
+    );
+  },
+  props: {
+    route: {
+      type: undefined,
+      required: true
+    }
+  }
+});
+</script>
+
 <template>
-  <section class="app-main">
-    <router-view v-slot="{ Component, route }">
-      <transition name="fade-transform" mode="out-in">
-        <keep-alive :include="tagsViewStore.cachedViews">
-          <component v-if="!route.meta.link" :is="Component" :key="route.path"/>
-        </keep-alive>
-      </transition>
+  <section
+      :class="[props.fixedHeader ? 'app-main' : 'app-main-nofixed-header']"
+      :style="getSectionStyle"
+  >
+    <router-view>
+      <template #default="{ Component, route }">
+        <el-scrollbar v-if="props.fixedHeader">
+          <el-backtop title="回到顶部" target=".app-main .el-scrollbar__wrap">
+            <backTop/>
+          </el-backtop>
+          <transitionMain :route="route">
+            <keep-alive
+                v-if="keepAlive"
+                :include="usePermissionStoreHook().cachePageList"
+            >
+              <component
+                  :is="Component"
+                  :key="route.fullPath"
+                  class="main-content"
+              />
+            </keep-alive>
+            <component
+                v-else
+                :is="Component"
+                :key="route.fullPath"
+                class="main-content"
+            />
+          </transitionMain>
+        </el-scrollbar>
+        <div v-else>
+          <transitionMain :route="route">
+            <keep-alive
+                v-if="keepAlive"
+                :include="usePermissionStoreHook().cachePageList"
+            >
+              <component
+                  :is="Component"
+                  :key="route.fullPath"
+                  class="main-content"
+              />
+            </keep-alive>
+            <component
+                v-else
+                :is="Component"
+                :key="route.fullPath"
+                class="main-content"
+            />
+          </transitionMain>
+        </div>
+      </template>
     </router-view>
-    <iframe-toggle/>
   </section>
 </template>
 
-<script setup>
-import useTagsViewStore from '@/store/modules/tagsView'
-
-const tagsViewStore = useTagsViewStore()
-</script>
-
-<style lang="scss" scoped>
+<style scoped>
 .app-main {
-  /* 50= navbar  50  */
-  min-height: calc(100vh - 50px);
   width: 100%;
+  height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-.fixed-header + .app-main {
-  padding-top: 50px;
+.app-main-nofixed-header {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
 }
 
-.hasTagsView {
-  .app-main {
-    /* 84 = navbar + tags-view = 50 + 34 */
-    min-height: calc(100vh - 84px);
-  }
-
-  .fixed-header + .app-main {
-    padding-top: 84px;
-  }
-}
-</style>
-
-<style lang="scss">
-// fix css style bug in open el-dialog
-.el-popup-parent--hidden {
-  .fixed-header {
-    padding-right: 17px;
-  }
+.main-content {
+  margin: 24px;
 }
 </style>

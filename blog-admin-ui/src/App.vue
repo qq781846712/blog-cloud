@@ -1,15 +1,24 @@
 <template>
-  <router-view/>
+  <el-config-provider :locale="currentLocale">
+    <router-view/>
+  </el-config-provider>
 </template>
 
-<script setup>
-import useSettingsStore from '@/store/modules/settings'
-import {handleThemeStyle} from '@/utils/theme'
+<script lang="ts">
+import {defineComponent} from "vue";
+import {ElConfigProvider} from "element-plus";
+import zhCn from "element-plus/lib/locale/lang/zh-cn";
+import en from "element-plus/lib/locale/lang/en";
 
-onMounted(() => {
-  nextTick(() => {
-    // ��ʼ��������ʽ
-    handleThemeStyle(useSettingsStore().theme)
-  })
-})
+export default defineComponent({
+  name: "app",
+  components: {
+    [ElConfigProvider.name]: ElConfigProvider
+  },
+  computed: {
+    currentLocale() {
+      return this.$storage.locale?.locale === "zh" ? zhCn : en;
+    }
+  }
+});
 </script>

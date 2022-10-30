@@ -1,85 +1,73 @@
+<script setup lang="ts">
+import {useNav} from "@/layout/hooks/useNav";
+
+const props = defineProps({
+  collapse: Boolean
+});
+
+const {title} = useNav();
+</script>
+
 <template>
-  <div class="sidebar-logo-container" :class="{ 'collapse': collapse }"
-       :style="{ backgroundColor: sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackground }">
+  <div class="sidebar-logo-container" :class="{ collapse: props.collapse }">
     <transition name="sidebarLogoFade">
-      <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
-        <img v-if="logo" :src="logo" class="sidebar-logo"/>
-        <h1 v-else class="sidebar-title"
-            :style="{ color: sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor }">
-          {{ title }}</h1>
+      <router-link
+          v-if="props.collapse"
+          key="props.collapse"
+          :title="title"
+          class="sidebar-logo-link"
+          to="/"
+      >
+        <FontIcon icon="team-iconlogo" svg style="width: 35px; height: 35px"/>
+        <span class="sidebar-title">{{ title }}</span>
       </router-link>
-      <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <img v-if="logo" :src="logo" class="sidebar-logo"/>
-        <h1 class="sidebar-title"
-            :style="{ color: sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor }">
-          {{ title }}</h1>
+      <router-link
+          v-else
+          key="expand"
+          :title="title"
+          class="sidebar-logo-link"
+          to="/"
+      >
+        <FontIcon icon="team-iconlogo" svg style="width: 35px; height: 35px"/>
+        <span class="sidebar-title">{{ title }}</span>
       </router-link>
     </transition>
   </div>
 </template>
 
-<script setup>
-import variables from '@/assets/styles/variables.module.scss'
-import logo from '@/assets/logo/logo.png'
-import useSettingsStore from '@/store/modules/settings'
-
-defineProps({
-  collapse: {
-    type: Boolean,
-    required: true
-  }
-})
-
-const title = ref('RuoYi-Cloud-Plus');
-const settingsStore = useSettingsStore();
-const sideTheme = computed(() => settingsStore.sideTheme);
-</script>
-
 <style lang="scss" scoped>
-.sidebarLogoFade-enter-active {
-  transition: opacity 1.5s;
-}
-
-.sidebarLogoFade-enter,
-.sidebarLogoFade-leave-to {
-  opacity: 0;
-}
-
 .sidebar-logo-container {
   position: relative;
   width: 100%;
-  height: 50px;
-  line-height: 50px;
-  background: #2b2f3a;
+  height: 48px;
   text-align: center;
   overflow: hidden;
 
-  & .sidebar-logo-link {
+  .sidebar-logo-link {
     height: 100%;
-    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 5px;
 
-    & .sidebar-logo {
-      width: 32px;
-      height: 32px;
-      vertical-align: middle;
-      margin-right: 12px;
-    }
-
-    & .sidebar-title {
-      display: inline-block;
-      margin: 0;
-      color: #fff;
+    .sidebar-title {
+      display: block;
+      width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: left;
+      color: #1890ff;
       font-weight: 600;
-      line-height: 50px;
-      font-size: 14px;
+      font-size: 20px;
+      margin-top: 10px;
       font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
-      vertical-align: middle;
     }
   }
 
-  &.collapse {
+  .collapse {
     .sidebar-logo {
-      margin-right: 0px;
+      margin-right: 0;
     }
   }
 }
