@@ -57,7 +57,7 @@ public class SysLogininfor implements Serializable {
     /**
      * 描述
      */
-    @Column(name = "ipaddr", columnDefinition = "varchar(4000) COMMENT '地址'")
+    @Column(name = "msg", columnDefinition = "varchar(4000) COMMENT '地址'")
     private String msg;
 
     /**

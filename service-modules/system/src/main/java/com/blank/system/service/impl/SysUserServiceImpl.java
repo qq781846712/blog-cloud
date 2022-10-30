@@ -55,4 +55,8 @@ public class SysUserServiceImpl implements ISysUserService {
         }*/
     }
 
+    @Override
+    public SysUser findByUserNameEquals(String username) {
+        return baseMapper.findByUserNameEquals(username);
+    }
 }

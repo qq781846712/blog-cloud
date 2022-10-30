@@ -16,4 +16,6 @@ public interface SysUserRepository extends JpaRepository<SysUser, Long>, JpaSpec
 
     Page<SysUser> findByUserNameLikeIgnoreCaseAndNickNameLikeIgnoreCaseOrderByUserIdDesc(@Nullable String userName, @Nullable String nickName, Pageable pageable);
 
+    SysUser findByUserNameEquals(String userName);
+
 }

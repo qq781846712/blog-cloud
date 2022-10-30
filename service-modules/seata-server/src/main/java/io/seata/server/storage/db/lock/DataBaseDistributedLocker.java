@@ -128,7 +128,8 @@ public class DataBaseDistributedLocker implements DistributedLocker {
 
             return ret;
         } catch (SQLException ex) {
-            LOGGER.error("execute acquire lock failure, key is: {}", distributedLockDO.getLockKey(), ex);
+            // DOTO 关闭错误提示
+            // LOGGER.error("execute acquire lock failure, key is: {}", distributedLockDO.getLockKey(), ex);
             try {
                 if (connection != null) {
                     connection.rollback();
@@ -181,7 +182,8 @@ public class DataBaseDistributedLocker implements DistributedLocker {
             connection.commit();
             return ret;
         } catch (SQLException ex) {
-            LOGGER.error("execute release lock failure, key is: {}", distributedLockDO.getLockKey(), ex);
+            // DOTO 关闭错误提示
+            // LOGGER.error("execute release lock failure, key is: {}", distributedLockDO.getLockKey(), ex);
 
             try {
                 if (connection != null) {

@@ -59,7 +59,7 @@ public class SysMenu extends TreeEntity {
      * 组件路径
      */
     @Size(min = 0, max = 255, message = "组件路径不能超过255个字符")
-    @Column(name = "path", columnDefinition = "varchar(255) COMMENT '组件路径'")
+    @Column(name = "component", columnDefinition = "varchar(255) COMMENT '组件路径'")
     private String component;
 
     /**

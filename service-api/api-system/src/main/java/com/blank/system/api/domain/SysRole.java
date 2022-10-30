@@ -66,7 +66,7 @@ public class SysRole extends BaseEntity {
     /**
      * 菜单树选择项是否关联显示（ 0：父子不互相关联显示 1：父子互相关联显示）
      */
-    @Column(name = "data_scope", nullable = false, columnDefinition = "tinyint(1) default 1 COMMENT '数据范围（1：所有数据权限；2：自定义数据权限；3：本部门数据权限；4：本部门及以下数据权限；5：仅本人数据权限）'")
+    @Column(name = "menu_check_strictly", nullable = false, columnDefinition = "tinyint(1) default 1 COMMENT '数据范围（1：所有数据权限；2：自定义数据权限；3：本部门数据权限；4：本部门及以下数据权限；5：仅本人数据权限）'")
     private Boolean menuCheckStrictly;
 
     /**

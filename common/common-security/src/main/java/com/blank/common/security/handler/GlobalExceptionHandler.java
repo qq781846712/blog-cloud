@@ -8,6 +8,7 @@ import cn.hutool.core.util.ObjectUtil;
 import com.blank.common.core.constant.HttpStatus;
 import com.blank.common.core.domain.R;
 import com.blank.common.core.exception.ServiceException;
+import com.blank.common.core.exception.base.BaseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -23,6 +24,16 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    /**
+     * 权限码异常
+     */
+    @ExceptionHandler(BaseException.class)
+    public R<Void> handleNotPermissionException(BaseException e, HttpServletRequest request) {
+        String requestURI = request.getRequestURI();
+        log.error("请求地址'{}',发生自定义异常'{}'", requestURI, e.getMessage());
+        return R.fail(e.getMessage());
+    }
 
     /**
      * 权限码异常

@@ -82,6 +82,11 @@
             <artifactId>common-seata</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.blank</groupId>
+            <artifactId>common-security</artifactId>
+        </dependency>
+
         <!-- RuoYi Api System -->
         <dependency>
             <groupId>com.blank</groupId>

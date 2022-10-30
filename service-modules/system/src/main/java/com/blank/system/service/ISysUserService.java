@@ -14,4 +14,6 @@ public interface ISysUserService {
     void checkUserAllowed(SysUser user);
 
     void checkUserDataScope(Long userId);
+
+    SysUser findByUserNameEquals(String username);
 }

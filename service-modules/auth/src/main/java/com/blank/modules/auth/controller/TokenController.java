@@ -33,7 +33,8 @@ public class TokenController {
 
         // 接口返回信息
         Map<String, Object> rspMap = new HashMap<String, Object>();
-        rspMap.put("access_token", accessToken);
+        rspMap.put("accessToken", accessToken);
+
         return R.ok(rspMap);
     }
 

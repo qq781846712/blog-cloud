@@ -1,7 +1,6 @@
 package com.blank.system.controller;
 
 import com.blank.common.core.web.controller.BaseController;
-import com.blank.system.service.ISysPermissionService;
 import com.blank.system.service.ISysRoleService;
 import com.blank.system.service.ISysUserService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +19,6 @@ public class SysRoleController extends BaseController {
 
     private final ISysRoleService roleService;
     private final ISysUserService userService;
-    private final ISysPermissionService permissionService;
 
 
 }
