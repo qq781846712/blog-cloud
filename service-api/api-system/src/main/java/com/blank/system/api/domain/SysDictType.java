@@ -29,7 +29,7 @@ public class SysDictType extends BaseEntity {
     @Id
     @GenericGenerator(name = "snowFlow", strategy = "com.blank.common.jpa.generator.SnowflowID")
     @GeneratedValue(generator = "snowFlow")
-    @Column(name = "dict_id", columnDefinition = "long COMMENT '字典主键'")
+    @Column(name = "dict_id", columnDefinition = "bigint(20) COMMENT '字典主键'")
     private Long dictId;
 
     /**

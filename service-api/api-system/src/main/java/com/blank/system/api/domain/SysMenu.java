@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 /**
  * 菜单权限表 sys_menu
@@ -113,4 +114,17 @@ public class SysMenu extends TreeEntity {
     @Column(name = "icon", columnDefinition = "varchar(100) default '#' comment '菜单图标'")
     private String icon;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "role_menu",
+            joinColumns = {
+                    @JoinColumn(name = "menu_id", referencedColumnName = "menu_id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "role_id", referencedColumnName = "role_id")
+            },
+            foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT),
+            inverseForeignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT)
+    )
+    private List<SysRole> roles;
 }

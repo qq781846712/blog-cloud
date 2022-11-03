@@ -32,7 +32,7 @@ public class SysLogininfor implements Serializable {
     @Id
     @GenericGenerator(name = "snowFlow", strategy = "com.blank.common.jpa.generator.SnowflowID")
     @GeneratedValue(generator = "snowFlow")
-    @Column(name = "info_id", columnDefinition = "long COMMENT 'ID'")
+    @Column(name = "info_id", columnDefinition = "bigint(20) COMMENT 'ID'")
     private Long infoId;
 
     /**

@@ -95,25 +95,19 @@ public class SysRole extends BaseEntity {
     )
     private List<SysUser> users;
 
-    /*@ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "user_role",
-            joinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")],
-    inverseJoinColumns = [JoinColumn(name = "user_id", referencedColumnName = "id")],
-    foreignKey = ForeignKey(value = ConstraintMode.NO_CONSTRAINT),
-    inverseForeignKey = ForeignKey(value = ConstraintMode.NO_CONSTRAINT)
-    )
-    var users: Set<User> = HashSet<User>()
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "role_resource",
-            joinColumns = [JoinColumn(name = "resource_id", referencedColumnName = "id")],
-    inverseJoinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")],
-    foreignKey = ForeignKey(value = ConstraintMode.NO_CONSTRAINT),
-    inverseForeignKey = ForeignKey(value = ConstraintMode.NO_CONSTRAINT)
+            name = "role_menu",
+            joinColumns = {
+                    @JoinColumn(name = "role_id", referencedColumnName = "role_id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "menu_id", referencedColumnName = "menu_id")
+            },
+            foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT),
+            inverseForeignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT)
     )
-    var resources: Set<Resource> = HashSet<Resource>()*/
+    private List<SysMenu> menus;
 
     public SysRole(Long roleId) {
         this.roleId = roleId;

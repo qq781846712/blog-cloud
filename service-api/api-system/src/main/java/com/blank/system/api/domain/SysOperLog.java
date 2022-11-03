@@ -35,7 +35,7 @@ public class SysOperLog implements Serializable {
     @Id
     @GenericGenerator(name = "snowFlow", strategy = "com.blank.common.jpa.generator.SnowflowID")
     @GeneratedValue(generator = "snowFlow")
-    @Column(name = "oper_id", columnDefinition = "long COMMENT '日志主键'")
+    @Column(name = "oper_id", columnDefinition = "bigint(20) COMMENT '日志主键'")
     private Long operId;
 
     /**
