@@ -32,6 +32,8 @@
         <lock4j.version>2.2.2</lock4j.version>
         <!-- 统一 guava 版本 解决隐式漏洞问题 -->
         <guava.version>31.1-jre</guava.version>
+
+        <querydsl.version>5.0.0</querydsl.version>
     </properties>
 
     <!-- 依赖声明 -->
@@ -92,6 +94,12 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+            <!-- querydsl -->
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-jpa</artifactId>
+                <version>${querydsl.version}</version>
             </dependency>
 
             <!-- hutool 的依赖配置-->
@@ -233,9 +241,6 @@
                 <directory>src/main/resources</directory>
                 <!-- 关闭过滤 -->
                 <filtering>false</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/webapp/</directory>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
