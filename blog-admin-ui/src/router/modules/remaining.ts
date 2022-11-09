@@ -1,4 +1,3 @@
-import {$t} from "@/plugins/i18n";
 import type {RouteConfigsTable} from "/#/index";
 
 const Layout = () => import("@/layout/index.vue");
@@ -9,7 +8,7 @@ const remainingRouter: Array<RouteConfigsTable> = [
     name: "Login",
     component: () => import("@/views/login/index.vue"),
     meta: {
-      title: $t("menus.hslogin"),
+      title: "登录",
       showLink: false,
       rank: 101
     }
@@ -19,7 +18,7 @@ const remainingRouter: Array<RouteConfigsTable> = [
     component: Layout,
     meta: {
       icon: "home-filled",
-      title: $t("menus.hshome"),
+      title: "首页",
       showLink: false,
       rank: 104
     },

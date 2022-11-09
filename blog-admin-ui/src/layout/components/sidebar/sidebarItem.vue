@@ -2,7 +2,6 @@
 import path from "path";
 import {childrenType} from "../../types";
 import {useNav} from "@/layout/hooks/useNav";
-import {transformI18n} from "@/plugins/i18n";
 import {useRenderIcon} from "@/components/ReIcon/src/hooks";
 import {computed, CSSProperties, nextTick, PropType, ref, toRaw} from "vue";
 
@@ -89,12 +88,12 @@ function hoverMenu(key) {
   nextTick(() => {
     // 如果文本内容的整体宽度大于其可视宽度，则文本溢出
     menuTextRef.value?.scrollWidth > menuTextRef.value?.clientWidth
-      ? Object.assign(key, {
-        showTooltip: true
-      })
-      : Object.assign(key, {
-        showTooltip: false
-      });
+        ? Object.assign(key, {
+          showTooltip: true
+        })
+        : Object.assign(key, {
+          showTooltip: false
+        });
     hoverMenuMap.set(key, true);
   });
 }
@@ -164,7 +163,7 @@ function resolvePath(routePath) {
         :style="getDivStyle"
       >
         <span :style="getMenuTextStyle">
-          {{ transformI18n(onlyOneChild.meta.title) }}
+          {{ onlyOneChild.meta.title }}
         </span>
       </div>
       <div
@@ -174,13 +173,13 @@ function resolvePath(routePath) {
         :style="getDivStyle"
       >
         <span :style="getMenuTextStyle">
-          {{ transformI18n(onlyOneChild.meta.title) }}
+          {{ onlyOneChild.meta.title }}
         </span>
       </div>
       <template #title>
         <div :style="getDivStyle">
           <span v-if="layout === 'horizontal'">
-            {{ transformI18n(onlyOneChild.meta.title) }}
+            {{ onlyOneChild.meta.title }}
           </span>
           <el-tooltip
             v-else
@@ -189,14 +188,14 @@ function resolvePath(routePath) {
             :disabled="!onlyOneChild.showTooltip"
           >
             <template #content>
-              {{ transformI18n(onlyOneChild.meta.title) }}
+              {{ onlyOneChild.meta.title }}
             </template>
             <span
               ref="menuTextRef"
               :style="getMenuTextStyle"
               @mouseover="hoverMenu(onlyOneChild)"
             >
-              {{ transformI18n(onlyOneChild.meta.title) }}
+              {{ onlyOneChild.meta.title }}
             </span>
           </el-tooltip>
           <FontIcon
@@ -220,7 +219,7 @@ function resolvePath(routePath) {
         />
       </div>
       <span v-if="layout === 'horizontal'">
-        {{ transformI18n(props.item.meta.title) }}
+        {{ props.item.meta.title }}
       </span>
       <el-tooltip
         v-else
@@ -229,7 +228,7 @@ function resolvePath(routePath) {
         :disabled="!isCollapse || !props.item.showTooltip"
       >
         <template #content>
-          {{ transformI18n(props.item.meta.title) }}
+          {{ props.item.meta.title }}
         </template>
         <div
           ref="menuTextRef"
@@ -237,7 +236,7 @@ function resolvePath(routePath) {
           @mouseover="hoverMenu(props.item)"
         >
           <span :style="getSpanStyle">
-            {{ transformI18n(props.item.meta.title) }}
+            {{ props.item.meta.title }}
           </span>
         </div>
       </el-tooltip>

@@ -4,7 +4,6 @@ import {cloneDeep} from "lodash-unified";
 import SearchResult from "./SearchResult.vue";
 import SearchFooter from "./SearchFooter.vue";
 import {useNav} from "@/layout/hooks/useNav";
-import {transformI18n} from "@/plugins/i18n";
 import {deleteChildren} from "@pureadmin/utils";
 import {onKeyStroke, useDebounceFn} from "@vueuse/core";
 import {computed, nextTick, ref, shallowRef, watch} from "vue";
@@ -55,14 +54,12 @@ watch(show, async val => {
 /** 将菜单树形结构扁平化为一维数组，用于菜单查询 */
 function flatTree(arr) {
   const res = [];
-
   function deep(arr) {
     arr.forEach(item => {
       res.push(item);
       item.children && deep(item.children);
     });
   }
-
   deep(arr);
   return res;
 }
@@ -73,7 +70,7 @@ function search() {
   resultOptions.value = flatMenusData.filter(
       menu =>
           keyword.value &&
-          transformI18n(menu.meta?.title)
+          menu.meta?.title
               .toLocaleLowerCase()
               .includes(keyword.value.toLocaleLowerCase().trim())
   );

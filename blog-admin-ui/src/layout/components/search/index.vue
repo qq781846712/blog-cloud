@@ -3,7 +3,6 @@ import {SearchModal} from "./components";
 import {useBoolean} from "../../hooks/useBoolean";
 
 const {bool: show, toggle} = useBoolean();
-
 function handleSearch() {
   toggle();
 }

@@ -140,7 +140,6 @@ html.dark {
     .el-divider__text {
       --el-bg-color: var(--el-bg-color);
     }
-
     .el-divider--horizontal {
       border-top: none;
     }
@@ -150,17 +149,14 @@ html.dark {
   .el-table__cell {
     background: var(--el-bg-color);
   }
-
   .el-card {
     --el-card-bg-color: var(--el-bg-color);
     // border: none !important;
   }
-
   .el-backtop {
     --el-backtop-bg-color: var(--el-color-primary-light-9);
     --el-backtop-hover-bg-color: var(--el-color-primary);
   }
-
   .el-dropdown-menu__item:not(.is-disabled):hover {
     background: transparent;
   }

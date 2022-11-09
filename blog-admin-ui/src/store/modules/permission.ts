@@ -18,7 +18,7 @@ export const usePermissionStore = defineStore({
     /** 组装整体路由生成的菜单 */
     handleWholeMenus(routes: any[]) {
       this.wholeMenus = filterNoPermissionTree(
-          filterTree(ascending(this.constantMenus.concat(routes)))
+        filterTree(ascending(this.constantMenus.concat(routes)))
       );
     },
     cacheOperate({mode, name}: cacheType) {

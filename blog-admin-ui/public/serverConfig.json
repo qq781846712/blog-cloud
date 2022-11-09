@@ -1,11 +1,10 @@
 {
-  "Version": "3.6.2",
+  "Version": "3.6.3",
   "Title": "PureAdmin",
   "FixedHeader": true,
   "HiddenSideBar": false,
   "MultiTagsCache": false,
   "KeepAlive": true,
-  "Locale": "zh",
   "Layout": "vertical",
   "Theme": "default",
   "DarkMode": false,

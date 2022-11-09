@@ -39,12 +39,12 @@ export const configCompressPlugin = (
         if (isArray(item.v)) {
           item.v.forEach(vItem => {
             plugins.push(
-              compressPlugin(Object.assign(vItem, {deleteOriginFile: true}))
+                compressPlugin(Object.assign(vItem, {deleteOriginFile: true}))
             );
           });
         } else {
           plugins.push(
-            compressPlugin(Object.assign(item.v, {deleteOriginFile: true}))
+              compressPlugin(Object.assign(item.v, {deleteOriginFile: true}))
           );
         }
       } else {

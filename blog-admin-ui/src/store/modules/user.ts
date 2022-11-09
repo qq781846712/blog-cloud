@@ -11,6 +11,7 @@ import {type DataInfo, removeToken, sessionKey, setToken} from "@/utils/auth";
 export const useUserStore = defineStore({
   id: "pure-user",
   state: (): userType => ({
+    // 用户名
     username:
       storageSession.getItem<DataInfo<number>>(sessionKey)?.username ?? "",
     // 页面级别权限

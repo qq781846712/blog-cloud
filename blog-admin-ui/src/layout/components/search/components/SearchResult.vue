@@ -1,10 +1,7 @@
 <script lang="ts" setup>
 import {computed} from "vue";
-import {useI18n} from "vue-i18n";
 import {useEpThemeStoreHook} from "@/store/modules/epTheme";
 import {useRenderIcon} from "@/components/ReIcon/src/hooks";
-
-const {t} = useI18n();
 
 interface optionsItem {
   path: string;
@@ -21,7 +18,6 @@ interface Props {
 
 interface Emits {
   (e: "update:value", val: string): void;
-
   (e: "enter"): void;
 }
 
@@ -62,13 +58,13 @@ function handleTo() {
   <div class="result">
     <template v-for="item in options" :key="item.path">
       <div
-        class="result-item dark:bg-[#1d1d1d]"
-        :style="itemStyle(item)"
-        @click="handleTo"
-        @mouseenter="handleMouse(item)"
+          class="result-item dark:bg-[#1d1d1d]"
+          :style="itemStyle(item)"
+          @click="handleTo"
+          @mouseenter="handleMouse(item)"
       >
         <component :is="useRenderIcon(item.meta?.icon ?? 'bookmark-2-line')"/>
-        <span class="result-item-title">{{ t(item.meta?.title) }}</span>
+        <span class="result-item-title">{{ item.meta?.title }}</span>
         <enterOutlined/>
       </div>
     </template>

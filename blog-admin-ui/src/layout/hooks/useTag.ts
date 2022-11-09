@@ -4,7 +4,6 @@ import {isEqual} from "lodash-unified";
 import type {StorageConfigs} from "/#/index";
 import {useEventListener} from "@vueuse/core";
 import {useRoute, useRouter} from "vue-router";
-import {$t, transformI18n} from "@/plugins/i18n";
 import {useSettingStoreHook} from "@/store/modules/settings";
 import {useMultiTagsStoreHook} from "@/store/modules/multiTags";
 import {hasClass, storageLocal, toggleClass} from "@pureadmin/utils";
@@ -40,56 +39,56 @@ export function useTags() {
   const tagsViews = reactive<Array<tagsViewsType>>([
     {
       icon: "refresh-right",
-      text: $t("buttons.hsreload"),
+      text: "重新加载",
       divided: false,
       disabled: false,
       show: true
     },
     {
       icon: "close",
-      text: $t("buttons.hscloseCurrentTab"),
+      text: "关闭当前标签页",
       divided: false,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
       icon: "close-left-tags",
-      text: $t("buttons.hscloseLeftTabs"),
+      text: "关闭左侧标签页",
       divided: true,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
       icon: "close-right-tags",
-      text: $t("buttons.hscloseRightTabs"),
+      text: "关闭右侧标签页",
       divided: false,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
       icon: "close-other-tags",
-      text: $t("buttons.hscloseOtherTabs"),
+      text: "关闭其他标签页",
       divided: true,
       disabled: multiTags.value.length > 2 ? false : true,
       show: true
     },
     {
       icon: "close-all-tags",
-      text: $t("buttons.hscloseAllTabs"),
+      text: "关闭全部标签页",
       divided: false,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
       icon: "fullscreen",
-      text: $t("buttons.hswholeFullScreen"),
+      text: "整体页面全屏",
       divided: true,
       disabled: false,
       show: true
     },
     {
       icon: "fullscreen",
-      text: $t("buttons.hscontentFullScreen"),
+      text: "内容区全屏",
       divided: false,
       disabled: false,
       show: true
@@ -215,12 +214,10 @@ export function useTags() {
     currentSelect,
     scheduleIsActive,
     getContextMenuStyle,
-    $t,
     closeMenu,
     onMounted,
     onMouseenter,
     onMouseleave,
-    transformI18n,
     onContentFullScreen
   };
 }

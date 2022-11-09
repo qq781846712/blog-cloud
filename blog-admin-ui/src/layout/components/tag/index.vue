@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {$t} from "@/plugins/i18n";
 import {emitter} from "@/utils/mitt";
 import {RouteConfigs} from "../../types";
 import {useTags} from "../../hooks/useTag";
@@ -35,7 +34,6 @@ const {
   onMounted,
   onMouseenter,
   onMouseleave,
-  transformI18n,
   onContentFullScreen
 } = useTags();
 
@@ -145,7 +143,6 @@ function dynamicRouteTag(value: string, parentPath: string): void {
       });
     }
   }
-
   concatPath(router.options.routes as any, value, parentPath);
 }
 
@@ -286,10 +283,10 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
       setTimeout(() => {
         if (isFullscreen.value) {
           tagsViews[6].icon = "exit-fullscreen";
-          tagsViews[6].text = $t("buttons.hswholeExitFullScreen");
+          tagsViews[6].text = "整体页面退出全屏";
         } else {
           tagsViews[6].icon = "fullscreen";
-          tagsViews[6].text = $t("buttons.hswholeFullScreen");
+          tagsViews[6].text = "整体页面全屏";
         }
       }, 100);
       break;
@@ -299,10 +296,10 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
       setTimeout(() => {
         if (pureSetting.hiddenSideBar) {
           tagsViews[7].icon = "exit-fullscreen";
-          tagsViews[7].text = $t("buttons.hscontentExitFullScreen");
+          tagsViews[7].text = "内容区退出全屏";
         } else {
           tagsViews[7].icon = "fullscreen";
-          tagsViews[7].text = $t("buttons.hscontentFullScreen");
+          tagsViews[7].text = "内容区全屏";
         }
       }, 100);
       break;
@@ -500,7 +497,7 @@ onMounted(() => {
       <IconifyIconOffline icon="arrow-left-s-line" @click="handleScroll(200)"/>
     </span>
     <div ref="scrollbarDom" class="scroll-container">
-      <div class="tab" ref="tabDom" :style="getTabStyle">
+      <div class="tab select-none" ref="tabDom" :style="getTabStyle">
         <div
             :ref="'dynamic' + index"
             v-for="(item, index) in multiTags"
@@ -521,7 +518,7 @@ onMounted(() => {
               :to="item.path"
               class="dark:!text-text_color_primary dark:hover:!text-primary"
           >
-            {{ transformI18n(item.meta.title) }}
+            {{ item.meta.title }}
           </router-link>
           <span
               v-if="
@@ -562,7 +559,7 @@ onMounted(() => {
         >
           <li v-if="item.show" @click="selectTag(key, item)">
             <IconifyIconOffline :icon="item.icon"/>
-            {{ transformI18n(item.text) }}
+            {{ item.text }}
           </li>
         </div>
       </ul>
@@ -586,7 +583,7 @@ onMounted(() => {
               :disabled="item.disabled"
           >
             <IconifyIconOffline :icon="item.icon"/>
-            {{ transformI18n(item.text) }}
+            {{ item.text }}
           </el-dropdown-item>
         </el-dropdown-menu>
       </template>

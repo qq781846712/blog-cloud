@@ -104,7 +104,6 @@
         /* logo: 48px、leftCollapse: 40px、leftCollapse-shadow: 4px */
         height: calc(100% - 92px);
       }
-
       .el-scrollbar.mobile {
         height: 100%;
       }
@@ -232,12 +231,10 @@
 
       /* 搜索 */
       .search-container,
-        /* 告警 */
+      /* 告警 */
       .dropdown-badge,
         /* 全屏 */
       .screen-full,
-        /* 国际化 */
-      .globalization,
         /* 登录名 */
       .el-dropdown-link,
         /* 设置 */
@@ -249,15 +246,6 @@
 
       .dropdown-badge {
         height: 48px;
-        color: $subMenuActiveText;
-      }
-
-      .globalization {
-        width: 40px;
-        height: 48px;
-        padding: 11px;
-        outline: none;
-        cursor: pointer;
         color: $subMenuActiveText;
       }
 
@@ -590,8 +578,6 @@ body[layout="vertical"] {
   .dropdown-badge,
     /* 全屏 */
   .screen-full,
-    /* 国际化 */
-  .globalization,
     /* 登录名 */
   .el-dropdown-link,
     /* 设置 */

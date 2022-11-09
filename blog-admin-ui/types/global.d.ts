@@ -22,7 +22,6 @@ declare global {
     };
     lastBuildTime: string;
   };
-
   interface Window {
     // Global vue app instance
     __APP__: App<Element>;
@@ -65,7 +64,6 @@ declare global {
   interface WheelEvent {
     path?: EventTarget[];
   }
-
   interface ImportMetaEnv extends ViteEnv {
     __: unknown;
   }
@@ -97,7 +95,6 @@ declare global {
     HiddenSideBar?: boolean;
     MultiTagsCache?: boolean;
     KeepAlive?: boolean;
-    Locale?: string;
     Layout?: string;
     Theme?: string;
     DarkMode?: boolean;
@@ -133,15 +130,12 @@ declare global {
     type Element = VNode;
     // tslint:disable no-empty-interface
     type ElementClass = ComponentRenderProxy;
-
     interface ElementAttributesProperty {
       $props: any;
     }
-
     interface IntrinsicElements {
       [elem: string]: any;
     }
-
     interface IntrinsicAttributes {
       [elem: string]: any;
     }
