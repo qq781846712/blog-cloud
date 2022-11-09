@@ -101,6 +101,12 @@
                 <artifactId>querydsl-jpa</artifactId>
                 <version>${querydsl.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <version>${querydsl.version}</version>
+                <scope>provided</scope>
+            </dependency>
 
             <!-- hutool 的依赖配置-->
             <dependency>
