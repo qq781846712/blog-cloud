@@ -12,11 +12,11 @@ const {VITE_PROXY_DOMAIN, VITE_PROXY_DOMAIN_REAL} = loadEnv();
 // 相关配置请参考：www.axios-js.com/zh-cn/docs/#axios-request-config-1
 const defaultConfig: AxiosRequestConfig = {
   baseURL:
-    process.env.NODE_ENV === "production"
-      ? VITE_PROXY_DOMAIN_REAL
-      : VITE_PROXY_DOMAIN,
+      process.env.NODE_ENV === "production"
+          ? VITE_PROXY_DOMAIN_REAL
+          : VITE_PROXY_DOMAIN,
   // 当前使用mock模拟请求，将baseURL制空，如果你的环境用到了http请求，请删除下面的baseURL启用上面的baseURL，并将第14行、19行代码注释取消
-  // baseURL: "",
+  //baseURL: "",
   timeout: 10000,
   headers: {
     Accept: "application/json, text/plain, */*",
@@ -68,12 +68,12 @@ class PureHttp {
             config.beforeRequestCallback(config);
             return config;
           }
-        if (PureHttp.initConfig.beforeRequestCallback) {
-          PureHttp.initConfig.beforeRequestCallback(config);
-          return config;
-        }
-        /** 请求白名单，放置一些不需要token的接口（通过设置请求白名单，防止token过期后再请求造成的死循环问题） */
-        const whiteList = ["/auth/refreshToken", "/auth/login"];
+          if (PureHttp.initConfig.beforeRequestCallback) {
+            PureHttp.initConfig.beforeRequestCallback(config);
+            return config;
+          }
+          /** 请求白名单，放置一些不需要token的接口（通过设置请求白名单，防止token过期后再请求造成的死循环问题） */
+          const whiteList = ["/refreshToken", "/login"];
           return whiteList.some(v => config.url.indexOf(v) > -1)
               ? config
               : new Promise(resolve => {
@@ -108,7 +108,7 @@ class PureHttp {
                   resolve(config);
                 }
               });
-      },
+        },
       error => {
         return Promise.reject(error);
       }

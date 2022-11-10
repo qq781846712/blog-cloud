@@ -21,21 +21,21 @@ const alias: Record<string, string> = {
 
 const {dependencies, devDependencies, name, version} = pkg;
 const __APP_INFO__ = {
-  pkg: {dependencies, devDependencies, name, version},
-  lastBuildTime: dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss")
+    pkg: {dependencies, devDependencies, name, version},
+    lastBuildTime: dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss")
 };
 
 export default ({command, mode}: ConfigEnv): UserConfigExport => {
-  const {
-    VITE_CDN,
-    VITE_PORT,
-    VITE_LEGACY,
-    VITE_COMPRESSION,
-    VITE_PUBLIC_PATH,
-    VITE_PROXY_DOMAIN,
-    VITE_PROXY_DOMAIN_REAL
-  } = warpperEnv(loadEnv(mode, root));
-  return {
+    const {
+        VITE_CDN,
+        VITE_PORT,
+        VITE_LEGACY,
+        VITE_COMPRESSION,
+        VITE_PUBLIC_PATH,
+        VITE_PROXY_DOMAIN,
+        VITE_PROXY_DOMAIN_REAL
+    } = warpperEnv(loadEnv(mode, root));
+    return {
     base: VITE_PUBLIC_PATH,
     root,
     resolve: {

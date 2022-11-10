@@ -45,24 +45,24 @@ const onLogin = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
       useUserStoreHook()
-        .loginByUsername({
-          username: ruleForm.username,
-          password: ruleForm.password,
-          uuid: ruleForm.uuid,
-          code: ruleForm.code
-        })
-        .then(res => {
-          if (res.success) {
-            // 获取后端路由
-            initRouter().then(() => {
-              message.success("登录成功");
-              router.push("/");
-            });
-          } else {
-            loading.value = false;
-            message.error(res.msg);
-          }
-        });
+          .loginByUsername({
+            username: ruleForm.username,
+            password: ruleForm.password,
+            uuid: ruleForm.uuid,
+            code: ruleForm.code
+          })
+          .then(res => {
+            if (res.success) {
+              // 获取后端路由
+              initRouter().then(() => {
+                message.success("登录成功");
+                router.push("/");
+              });
+            } else {
+              loading.value = false;
+              message.error(res.msg);
+            }
+          });
     } else {
       loading.value = false;
       return fields;
@@ -101,11 +101,11 @@ getCode();
     <div class="flex-c absolute right-5 top-3">
       <!-- 主题 -->
       <el-switch
-        v-model="dataTheme"
-        inline-prompt
-        :active-icon="dayIcon"
-        :inactive-icon="darkIcon"
-        @change="dataThemeChange"
+          v-model="dataTheme"
+          inline-prompt
+          :active-icon="dayIcon"
+          :inactive-icon="darkIcon"
+          @change="dataThemeChange"
       />
     </div>
     <div class="login-container">
@@ -120,21 +120,21 @@ getCode();
           </Motion>
 
           <el-form
-            ref="ruleFormRef"
-            :model="ruleForm"
-            :rules="loginRules"
-            size="large"
+              ref="ruleFormRef"
+              :model="ruleForm"
+              :rules="loginRules"
+              size="large"
           >
             <Motion :delay="100">
               <el-form-item
-                :rules="[
+                  :rules="[
                   {
                     required: true,
                     message: '请输入账号',
                     trigger: 'blur'
                   }
                 ]"
-                prop="username"
+                  prop="username"
               >
                 <el-input
                     clearable
@@ -159,14 +159,14 @@ getCode();
 
             <Motion :delay="200">
               <el-form-item
-                :rules="[
+                  :rules="[
                   {
                     required: true,
                     message: '请输入验证码！',
                     trigger: 'blur'
                   }
                 ]"
-                prop="code">
+                  prop="code">
                 <el-input
                     clearable
                     v-model="ruleForm.code"
@@ -186,11 +186,11 @@ getCode();
 
             <Motion :delay="250">
               <el-button
-                class="w-full mt-4"
-                size="default"
-                type="primary"
-                :loading="loading"
-                @click="onLogin(ruleFormRef)"
+                  class="w-full mt-4"
+                  size="default"
+                  type="primary"
+                  :loading="loading"
+                  @click="onLogin(ruleFormRef)"
               >
                 登录
               </el-button>

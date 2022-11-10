@@ -27,7 +27,7 @@ const routes = [homeRouter, errorRouter];
 
 /** 导出处理后的静态路由（三级及以上的路由全部拍成二级） */
 export const constantRoutes: Array<RouteRecordRaw> = formatTwoStageRoutes(
-    formatFlatteningRoutes(buildHierarchyTree(ascending(routes)))
+  formatFlatteningRoutes(buildHierarchyTree(ascending(routes)))
 );
 
 /** 用于渲染菜单，保持原始层级 */

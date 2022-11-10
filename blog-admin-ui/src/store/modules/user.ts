@@ -13,7 +13,7 @@ export const useUserStore = defineStore({
   state: (): userType => ({
     // 用户名
     username:
-      storageSession.getItem<DataInfo<number>>(sessionKey)?.username ?? "",
+        storageSession.getItem<DataInfo<number>>(sessionKey)?.username ?? "",
     // 页面级别权限
     roles: storageSession.getItem<DataInfo<number>>(sessionKey)?.roles ?? [],
     // 前端生成的验证码（按实际需求替换）
@@ -42,15 +42,15 @@ export const useUserStore = defineStore({
     async loginByUsername(data) {
       return new Promise<UserResult>((resolve, reject) => {
         getLogin(data)
-          .then(data => {
-            if (data.code === 200) {
-              setToken(data.data);
-            }
-            resolve(data);
-          })
-          .catch(error => {
-            reject(error);
-          });
+            .then(data => {
+              if (data.code === 200) {
+                setToken(data.data);
+              }
+              resolve(data);
+            })
+            .catch(error => {
+              reject(error);
+            });
       });
     },
     /** 前端登出（不调用接口） */
@@ -66,27 +66,27 @@ export const useUserStore = defineStore({
     async handRefreshToken(data) {
       return new Promise<RefreshTokenResult>((resolve, reject) => {
         refreshTokenApi(data)
-          .then(data => {
-            if (data) {
-              setToken(data.data);
-              resolve(data);
-            }
-          })
-          .catch(error => {
-            reject(error);
-          });
+            .then(data => {
+              if (data) {
+                setToken(data.data);
+                resolve(data);
+              }
+            })
+            .catch(error => {
+              reject(error);
+            });
       });
     },
     /** 获取验证码 */
     async getCode() {
       return new Promise<CodeResult>((resolve, reject) => {
         getCode()
-          .then(data => {
-            resolve(data);
-          })
-          .catch(error => {
-            reject(error);
-          });
+            .then(data => {
+              resolve(data);
+            })
+            .catch(error => {
+              reject(error);
+            });
       });
     }
   }
