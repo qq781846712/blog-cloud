@@ -17,5 +17,5 @@ export const getUserList = (data?: object) => {
 
 /** 获取角色管理列表 */
 export const getRoleList = (data?: object) => {
-    return http.request<Result>("post", "/system/role", {data});
+    return http.request<Result>("post", "/system/role/list", {data});
 };
