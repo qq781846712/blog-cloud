@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import noServer from "@/assets/status/500.svg?component";
 
 defineOptions({
   name: "500"

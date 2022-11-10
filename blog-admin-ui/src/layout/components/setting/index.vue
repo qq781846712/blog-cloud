@@ -1,7 +1,16 @@
 <script setup lang="ts">
-import {computed, nextTick, reactive, ref, unref, useCssModule, watch} from "vue";
+import {
+  ref,
+  unref,
+  watch,
+  reactive,
+  computed,
+  nextTick,
+  useCssModule
+} from "vue";
 import {getConfig} from "@/config";
 import {useRouter} from "vue-router";
+import panel from "../panel/index.vue";
 import {emitter} from "@/utils/mitt";
 import {resetRouter} from "@/router";
 import {templateRef} from "@vueuse/core";
@@ -11,7 +20,13 @@ import {useNav} from "@/layout/hooks/useNav";
 import {useAppStoreHook} from "@/store/modules/app";
 import {useMultiTagsStoreHook} from "@/store/modules/multiTags";
 import {useDataThemeChange} from "@/layout/hooks/useDataThemeChange";
-import {debounce, storageLocal, storageSession, useDark, useGlobal} from "@pureadmin/utils";
+import {
+  useDark,
+  debounce,
+  useGlobal,
+  storageLocal,
+  storageSession
+} from "@pureadmin/utils";
 import {toggleTheme} from "@pureadmin/theme/dist/browser-utils";
 
 import dayIcon from "@/assets/svg/day.svg?component";

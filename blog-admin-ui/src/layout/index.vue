@@ -5,12 +5,15 @@ import {useLayout} from "./hooks/useLayout";
 import {useAppStoreHook} from "@/store/modules/app";
 import {useSettingStoreHook} from "@/store/modules/settings";
 import {deviceDetection, useDark, useGlobal} from "@pureadmin/utils";
-import {computed, defineComponent, h, onMounted, reactive} from "vue";
+import {h, reactive, computed, onMounted, defineComponent} from "vue";
 
 import navbar from "./components/navbar.vue";
 import tag from "./components/tag/index.vue";
+import appMain from "./components/appMain.vue";
+import setting from "./components/setting/index.vue";
 import Vertical from "./components/sidebar/vertical.vue";
 import Horizontal from "./components/sidebar/horizontal.vue";
+import backTop from "@/assets/svg/back_top.svg?component";
 
 const {isDark} = useDark();
 const {layout} = useLayout();

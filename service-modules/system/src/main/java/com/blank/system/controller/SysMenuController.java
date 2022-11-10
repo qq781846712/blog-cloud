@@ -22,7 +22,7 @@ public class SysMenuController extends BaseController {
 
     private final ISysMenuService menuService;
 
-    /*@GetMapping("getAsyncRoutes")
+    @GetMapping("getAsyncRoutes")
     public Map getAsyncRoutes() {
         return JSONUtil.toBean("{\n" +
                 "  success: true,\n" +
@@ -30,7 +30,7 @@ public class SysMenuController extends BaseController {
                 "  path: \"/system\",\n" +
                 "  meta: {\n" +
                 "    icon: \"setting\",\n" +
-                "    title: \"menus.hssysManagement\",\n" +
+                "    title: \"系统管理\",\n" +
                 "    rank: 11\n" +
                 "  },\n" +
                 "  children: [\n" +
@@ -39,7 +39,7 @@ public class SysMenuController extends BaseController {
                 "      name: \"User\",\n" +
                 "      meta: {\n" +
                 "        icon: \"flUser\",\n" +
-                "        title: \"menus.hsUser\",\n" +
+                "        title: \"用户管理\",\n" +
                 "        roles: [\"admin\"]\n" +
                 "      }\n" +
                 "    },\n" +
@@ -48,7 +48,7 @@ public class SysMenuController extends BaseController {
                 "      name: \"Role\",\n" +
                 "      meta: {\n" +
                 "        icon: \"role\",\n" +
-                "        title: \"menus.hsRole\",\n" +
+                "        title: \"角色管理\",\n" +
                 "        roles: [\"admin\"]\n" +
                 "      }\n" +
                 "    },\n" +
@@ -58,45 +58,12 @@ public class SysMenuController extends BaseController {
                 "      name: \"Dict\",\n" +
                 "      meta: {\n" +
                 "        icon: \"dict\",\n" +
-                "        title: \"menus.hsDict\",\n" +
+                "        title: \"字典管理\",\n" +
                 "        keepAlive: true,\n" +
                 "        roles: [\"admin\"]\n" +
                 "      }\n" +
                 "    }\n" +
                 "  ]\n" +
                 "}]}", Map.class);
-    }*/
-    @GetMapping("getAsyncRoutes")
-    public Map getAsyncRoutes() {
-        return JSONUtil.toBean("{\n" +
-                "  success: true,\n" +
-                "  data: [{\n" +
-                "    path: \"/permission\",\n" +
-                "    meta: {\n" +
-                "      title: \"menus.permission\",\n" +
-                "      icon: \"lollipop\",\n" +
-                "      rank: 10\n" +
-                "    },\n" +
-                "    children: [\n" +
-                "      {\n" +
-                "        path: \"/permission/page/index\",\n" +
-                "        name: \"PermissionPage\",\n" +
-                "        meta: {\n" +
-                "          roles: [\"admin\", \"common\"],\n" +
-                "          title: \"menus.permissionPage\"\n" +
-                "        }\n" +
-                "      },\n" +
-                "      {\n" +
-                "        path: \"/permission/button/index\",\n" +
-                "        name: \"PermissionButton\",\n" +
-                "        meta: {\n" +
-                "          title: \"menus.permissionButton\",\n" +
-                "          roles: [\"admin\", \"common\"],\n" +
-                "          auths: [\"btn_add\", \"btn_edit\", \"btn_delete\"]\n" +
-                "        }\n" +
-                "      }\n" +
-                "    ]\n" +
-                "  }]\n" +
-                "}", Map.class);
     }
 }
