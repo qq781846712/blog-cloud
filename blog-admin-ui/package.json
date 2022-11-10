@@ -58,8 +58,6 @@
     "xe-utils": "^3.5.6"
   },
   "devDependencies": {
-    "@commitlint/cli": "13.1.0",
-    "@commitlint/config-conventional": "13.1.0",
     "@iconify-icons/ep": "^1.2.7",
     "@iconify-icons/ri": "^1.2.3",
     "@iconify/vue": "^3.2.1",

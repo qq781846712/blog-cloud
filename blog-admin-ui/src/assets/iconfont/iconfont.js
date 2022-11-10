@@ -34,7 +34,7 @@
     v();
   }
   (l = function () {
-    var c, l;
+      var c, l;
       ((l = document.createElement("div")).innerHTML = a),
           (a = null),
       (c = l.getElementsByTagName("svg")[0]) &&
@@ -46,19 +46,19 @@
           (l = c),
           (c = document.body).firstChild ? o(l, c.firstChild) : c.appendChild(l));
   }),
-    document.addEventListener
-      ? ~["complete", "loaded", "interactive"].indexOf(document.readyState)
-        ? setTimeout(l, 0)
-        : ((t = function () {
-                document.removeEventListener("DOMContentLoaded", t, !1), l();
-            }),
-                document.addEventListener("DOMContentLoaded", t, !1))
-      : document.attachEvent &&
-        ((e = l),
-            (h = c.document),
-            (i = !1),
-            d(),
-            (h.onreadystatechange = function () {
-                "complete" == h.readyState && ((h.onreadystatechange = null), v());
-            }));
+      document.addEventListener
+          ? ~["complete", "loaded", "interactive"].indexOf(document.readyState)
+              ? setTimeout(l, 0)
+              : ((t = function () {
+                  document.removeEventListener("DOMContentLoaded", t, !1), l();
+              }),
+                  document.addEventListener("DOMContentLoaded", t, !1))
+          : document.attachEvent &&
+          ((e = l),
+              (h = c.document),
+              (i = !1),
+              d(),
+              (h.onreadystatechange = function () {
+                  "complete" == h.readyState && ((h.onreadystatechange = null), v());
+              }));
 })(window);

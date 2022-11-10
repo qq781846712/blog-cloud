@@ -22,16 +22,16 @@ public class BaseEntity {
     private char isDeleted = 'N';
 
     @CreatedBy
-    @Column(name = "createby", length = 64, columnDefinition = "long COMMENT '创建人'")
-    private Long createby;
+    @Column(name = "createUser", length = 64, columnDefinition = "bigint(20) COMMENT '创建人'")
+    private Long createUser;
 
     @CreatedDate
     @Column(name = "create_time", columnDefinition = "DATETIME COMMENT '创建时间'")
     private Timestamp createTime;
 
     @LastModifiedBy
-    @Column(name = "updateby", length = 64, columnDefinition = "long COMMENT '修改人'")
-    private Long updateby;
+    @Column(name = "updateUser", length = 64, columnDefinition = "bigint(20) COMMENT '修改人'")
+    private Long updateUser;
 
     @LastModifiedDate
     @Column(name = "update_time", columnDefinition = "DATETIME COMMENT '修改时间'")

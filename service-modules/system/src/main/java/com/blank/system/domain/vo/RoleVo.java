@@ -12,20 +12,17 @@ import lombok.NoArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class RoleVo {
 
-    private String id;
+    private String roleId;
     private String name;
     private String code;
     private String createTime;
     private String updateTime;
-    private String creator;
-    private String updater;
-    private String deleted;
-    private String tenantId;
+    private String createUser;
+    private String updateUser;
+    private String isDeleted;
     private String sort;
     private String status;
-    private String type;
     private String remark;
     private String dataScope;
-    private String dataScopeDeptIds;
 
 }

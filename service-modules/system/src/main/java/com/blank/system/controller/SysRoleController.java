@@ -3,7 +3,7 @@ package com.blank.system.controller;
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import com.blank.common.core.domain.R;
 import com.blank.common.core.web.controller.BaseController;
-import com.blank.system.api.domain.SysRole;
+import com.blank.system.domain.vo.RoleVo;
 import com.blank.system.service.ISysRoleService;
 import com.blank.system.service.ISysUserService;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +32,7 @@ public class SysRoleController extends BaseController {
      */
     @SaCheckPermission("system:role:list")
     @GetMapping("/list")
-    public R<List<SysRole>> list() {
+    public R<List<RoleVo>> list() {
         return null;
     }
 
