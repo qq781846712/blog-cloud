@@ -26,7 +26,6 @@ public class SysUserController extends BaseController {
     /**
      * 获取用户列表
      */
-    @SaCheckPermission("system:user:list")
     @GetMapping("/list")
     public Page<SysUser> list(SysUser user, PageRequest pageRequest) {
         return userService.selectPageUserList(user, pageRequest);

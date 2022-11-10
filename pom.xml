@@ -34,6 +34,7 @@
         <guava.version>31.1-jre</guava.version>
 
         <querydsl.version>5.0.0</querydsl.version>
+        <blaze-persistence.version>1.6.7</blaze-persistence.version>
     </properties>
 
     <!-- 依赖声明 -->
@@ -106,6 +107,13 @@
                 <artifactId>querydsl-apt</artifactId>
                 <version>${querydsl.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.blazebit</groupId>
+                <artifactId>blaze-persistence-bom</artifactId>
+                <version>${blaze-persistence.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
             <!-- hutool 的依赖配置-->

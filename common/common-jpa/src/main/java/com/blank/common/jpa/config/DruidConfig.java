@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Primary;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 
-@Configuration
+// @Configuration
 @Slf4j
 public class DruidConfig {
 
@@ -72,8 +72,8 @@ public class DruidConfig {
     @Value("${spring.datasource.connectionProperties}")
     private String connectionProperties;
 
-    @Bean
-    @Primary
+    //@Bean
+    //@Primary
     public DataSource dataSource() {
 
         DruidDataSource datasource = new DruidDataSource();
@@ -103,7 +103,7 @@ public class DruidConfig {
         return datasource;
     }
 
-    @Bean
+    //@Bean
     public ServletRegistrationBean statViewServlet() {
 
         log.info("init Druid Monitor Servlet ...");
@@ -122,7 +122,7 @@ public class DruidConfig {
         return servletRegistrationBean;
     }
 
-    @Bean
+    //@Bean
     public FilterRegistrationBean startFilter() {
 
         //FilterRegistrationBean filterRegistrationBean =

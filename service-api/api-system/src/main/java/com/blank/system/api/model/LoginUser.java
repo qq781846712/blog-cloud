@@ -1,6 +1,7 @@
 package com.blank.system.api.model;
 
 import com.blank.common.core.constant.CacheConstants;
+import com.blank.system.api.model.dto.RoleDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;

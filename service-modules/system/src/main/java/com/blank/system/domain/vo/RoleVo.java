@@ -13,14 +13,9 @@ import lombok.NoArgsConstructor;
 public class RoleVo {
 
     private String roleId;
-    private String name;
-    private String code;
-    private String createTime;
-    private String updateTime;
-    private String createUser;
-    private String updateUser;
-    private String isDeleted;
-    private String sort;
+    private String roleName;
+    private String roleKey;
+    private String roleSort;
     private String status;
     private String remark;
     private String dataScope;

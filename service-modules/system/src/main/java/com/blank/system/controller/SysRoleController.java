@@ -1,12 +1,18 @@
 package com.blank.system.controller;
 
-import cn.dev33.satoken.annotation.SaCheckPermission;
 import com.blank.common.core.domain.R;
 import com.blank.common.core.web.controller.BaseController;
+import com.blank.system.api.model.dto.RoleDTO;
 import com.blank.system.domain.vo.RoleVo;
 import com.blank.system.service.ISysRoleService;
 import com.blank.system.service.ISysUserService;
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.Predicate;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,11 +36,9 @@ public class SysRoleController extends BaseController {
     /**
      * 查询角色信息列表
      */
-    @SaCheckPermission("system:role:list")
     @GetMapping("/list")
-    public R<List<RoleVo>> list() {
-        return null;
+    public R<Page<RoleVo>> list(RoleDTO roleDTO, Pageable pageable) {
+        return R.ok(roleService.selectList(roleDTO, pageable));
     }
-
 }
 

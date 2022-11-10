@@ -9,7 +9,7 @@ import org.springframework.boot.context.metrics.buffering.BufferingApplicationSt
  * 系统模块
  */
 @EnableDubbo
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.blank")
 public class SystemApplication {
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(SystemApplication.class);
