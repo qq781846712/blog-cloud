@@ -1,6 +1,7 @@
 package com.blank.system.service.impl;
 
 import cn.hutool.core.util.ObjectUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.blank.common.core.exception.ServiceException;
 import com.blank.system.api.domain.SysUser;
 import com.blank.system.mapper.SysUserMapper;
@@ -23,7 +24,7 @@ public class SysUserServiceImpl implements ISysUserService {
 
     @Override
     public Page<SysUser> selectPageUserList(SysUser user, PageRequest pageRequest) {
-        return baseMapper.findByUserNameLikeIgnoreCaseAndNickNameLikeIgnoreCaseOrderByUserIdDesc(user.getUserName(), user.getNickName(), pageRequest);
+        return null;
     }
 
     /**
@@ -56,7 +57,11 @@ public class SysUserServiceImpl implements ISysUserService {
     }
 
     @Override
-    public SysUser findByUserNameEquals(String username) {
-        return baseMapper.findByUserNameEquals(username);
+    public SysUser findByUserName(String username) {
+
+        LambdaQueryWrapper<SysUser> lqw = new LambdaQueryWrapper<>();
+        lqw.eq(SysUser::getUserName, username);
+
+        return baseMapper.selectVoOne(lqw);
     }
 }

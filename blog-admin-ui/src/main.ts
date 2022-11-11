@@ -9,7 +9,7 @@ import {MotionPlugin} from "@vueuse/motion";
 // import { useTable } from "@/plugins/vxe-table";
 import {injectResponsiveStorage} from "@/utils/responsive";
 
-// import Table from "@pureadmin/table";
+import Table from "@pureadmin/table";
 // import PureDescriptions from "@pureadmin/descriptions";
 import "animate.css";
 // 引入重置样式
@@ -46,10 +46,10 @@ getServerConfig(app).then(async config => {
   app.use(router);
   await router.isReady();
   injectResponsiveStorage(app, config);
-  setupStore(app);
-  app.use(MotionPlugin).use(ElementPlus);
-  // .use(useEcharts);
-  // .use(Table);
+    setupStore(app);
+    app.use(MotionPlugin).use(ElementPlus)
+        // .use(useEcharts);
+        .use(Table);
   // .use(PureDescriptions);
   // .use(useTable);
   app.mount("#app");

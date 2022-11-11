@@ -9,13 +9,12 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class RoleVo {
 
-    private String roleId;
+    private Long roleId;
     private String roleName;
     private String roleKey;
-    private String roleSort;
+    private Integer roleSort;
     private String status;
     private String remark;
     private String dataScope;

@@ -22,7 +22,7 @@ public class RemoteUserServiceImpl implements RemoteUserService {
 
     @Override
     public LoginUser getUserInfo(String username) throws UserException {
-        return buildLoginUser(userService.findByUserNameEquals(username));
+        return buildLoginUser(userService.findByUserName(username));
     }
 
     /**

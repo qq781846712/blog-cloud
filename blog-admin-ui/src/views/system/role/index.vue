@@ -12,8 +12,8 @@ defineOptions({
 });
 
 const form = reactive({
-  name: "",
-  code: "",
+  roleName: "",
+  roleKey: "",
   status: ""
 });
 
@@ -52,8 +52,8 @@ function handleSelectionChange(val) {
 
 async function onSearch() {
   loading.value = true;
-  let {data} = await getRoleList();
-  dataList.value = data.list;
+  let {data} = await getRoleList({...form, ...pagination});
+  dataList.value = data.rows;
   pagination.total = data.total;
   setTimeout(() => {
     loading.value = false;
@@ -80,15 +80,15 @@ onMounted(() => {
         class="bg-bg_color w-[99/100] pl-8 pt-4"
     >
       <el-form-item label="角色名称：" prop="name">
-        <el-input v-model="form.name" placeholder="请输入角色名称" clearable/>
+        <el-input v-model="form.roleName" placeholder="请输入角色名称" clearable/>
       </el-form-item>
       <el-form-item label="角色标识：" prop="code">
-        <el-input v-model="form.code" placeholder="请输入角色标识" clearable/>
+        <el-input v-model="form.roleKey" placeholder="请输入角色标识" clearable/>
       </el-form-item>
       <el-form-item label="状态：" prop="status">
         <el-select v-model="form.status" placeholder="请选择状态" clearable>
-          <el-option label="已开启" value="1"/>
-          <el-option label="已关闭" value="0"/>
+          <el-option label="已开启" value="0"/>
+          <el-option label="已关闭" value="1"/>
         </el-select>
       </el-form-item>
       <el-form-item>

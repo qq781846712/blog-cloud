@@ -20,32 +20,19 @@ export function useColumns() {
         },
         {
             label: "角色编号",
-            prop: "id"
+            prop: "roleId"
         },
         {
             label: "角色名称",
-            prop: "name"
+            prop: "roleName"
         },
         {
             label: "角色标识",
-            prop: "code"
-        },
-        {
-            label: "角色类型",
-            prop: "type",
-            cellRenderer: ({row, props}) => (
-                <el-tag
-                    size={props.size}
-                    type={row.type === 1 ? "danger" : ""}
-                    effect="plain"
-                >
-                    {row.type === 1 ? "内置" : "自定义"}
-                </el-tag>
-            )
+            prop: "roleKey"
         },
         {
             label: "显示顺序",
-            prop: "sort"
+            prop: "roleSort"
         },
         {
             label: "状态",
@@ -56,8 +43,8 @@ export function useColumns() {
                     size={scope.props.size === "small" ? "small" : "default"}
                     loading={switchLoadMap.value[scope.index]?.loading}
                     v-model:checked={scope.row.status}
-                    checkedValue={1}
-                    unCheckedValue={0}
+                    checkedValue={0}
+                    unCheckedValue={1}
                     checked-children="已开启"
                     un-checked-children="已关闭"
                     onChange={() => onChange(scope)}
@@ -82,7 +69,7 @@ export function useColumns() {
     function onChange({row, index}) {
         ElMessageBox.confirm(
             `确认要<strong>${
-                row.status === 0 ? "停用" : "启用"
+                row.status === 0 ? "启用" : "停用"
             }</strong><strong style='color:var(--el-color-primary)'>${
                 row.name
             }</strong>角色吗?`,

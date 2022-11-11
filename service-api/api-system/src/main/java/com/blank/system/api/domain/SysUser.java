@@ -1,5 +1,6 @@
 package com.blank.system.api.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.blank.common.core.annotation.Sensitive;
@@ -17,6 +18,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户对象 sys_user
@@ -96,6 +98,18 @@ public class SysUser extends BaseEntity {
      * 最后登录时间
      */
     private Date loginDate;
+
+    /**
+     * 角色对象
+     */
+    @TableField(exist = false)
+    private List<SysRole> roles;
+
+    /**
+     * 角色组
+     */
+    @TableField(exist = false)
+    private Long[] roleIds;
 
     public SysUser(Long userId) {
         this.userId = userId;

@@ -15,5 +15,5 @@ public interface ISysUserService {
 
     void checkUserDataScope(Long userId);
 
-    SysUser findByUserNameEquals(String username);
+    SysUser findByUserName(String username);
 }

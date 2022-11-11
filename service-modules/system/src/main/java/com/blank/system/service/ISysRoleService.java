@@ -1,6 +1,9 @@
 package com.blank.system.service;
 
+import com.blank.common.mybatis.core.page.PageQuery;
+import com.blank.common.mybatis.core.page.TableDataInfo;
 import com.blank.system.api.model.dto.RoleDTO;
+import com.blank.system.domain.bo.RoleBo;
 import com.blank.system.domain.vo.RoleVo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,5 +13,5 @@ import org.springframework.data.domain.Pageable;
  */
 public interface ISysRoleService {
 
-    Page<RoleVo> selectList(RoleDTO roleDTO, Pageable pageable);
+    TableDataInfo<RoleVo> customPageList(RoleBo bo, PageQuery pageQuery);
 }
