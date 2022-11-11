@@ -3,7 +3,6 @@ package com.blank.common.core.domain;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.Version;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -29,7 +28,7 @@ public class BaseEntity implements Serializable {
      * 创建者
      */
     @TableField(fill = FieldFill.INSERT)
-    private String createUser;
+    private Long createUser;
 
     /**
      * 创建时间
@@ -41,7 +40,7 @@ public class BaseEntity implements Serializable {
      * 更新者
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private String updateUser;
+    private Long updateUser;
 
     /**
      * 更新时间
@@ -53,9 +52,6 @@ public class BaseEntity implements Serializable {
     private char isDeleted;
 
     private String remark;
-
-    @Version
-    private int version;
 
     /**
      * 请求参数

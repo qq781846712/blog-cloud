@@ -79,10 +79,10 @@ onMounted(() => {
         :model="form"
         class="bg-bg_color w-[99/100] pl-8 pt-4"
     >
-      <el-form-item label="角色名称：" prop="name">
+      <el-form-item label="角色名称：" prop="roleName">
         <el-input v-model="form.roleName" placeholder="请输入角色名称" clearable/>
       </el-form-item>
-      <el-form-item label="角色标识：" prop="code">
+      <el-form-item label="角色标识：" prop="roleKey">
         <el-input v-model="form.roleKey" placeholder="请输入角色标识" clearable/>
       </el-form-item>
       <el-form-item label="状态：" prop="status">
@@ -206,7 +206,5 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-:deep(.el-dropdown-menu__item i) {
-  margin: 0;
-}
+
 </style>

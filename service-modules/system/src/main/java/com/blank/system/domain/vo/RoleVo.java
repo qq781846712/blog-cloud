@@ -1,6 +1,5 @@
 package com.blank.system.domain.vo;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,5 +17,4 @@ public class RoleVo {
     private String status;
     private String remark;
     private String dataScope;
-
 }

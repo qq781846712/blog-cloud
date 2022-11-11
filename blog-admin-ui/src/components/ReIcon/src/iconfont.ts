@@ -13,30 +13,30 @@ export default defineComponent({
     const attrs = this.$attrs;
     if (Object.keys(attrs).includes("uni") || attrs?.iconType === "uni") {
       return h(
-          "i",
-          {
-            class: "iconfont",
-            ...attrs
-          },
-          this.icon
+        "i",
+        {
+          class: "iconfont",
+          ...attrs
+        },
+        this.icon
       );
     } else if (
-        Object.keys(attrs).includes("svg") ||
-        attrs?.iconType === "svg"
+      Object.keys(attrs).includes("svg") ||
+      attrs?.iconType === "svg"
     ) {
       return h(
-          "svg",
-          {
-            class: "icon-svg",
-            "aria-hidden": true
-          },
-          {
-            default: () => [
-              h("use", {
-                "xlink:href": `#${this.icon}`
-              })
-            ]
-          }
+        "svg",
+        {
+          class: "icon-svg",
+          "aria-hidden": true
+        },
+        {
+          default: () => [
+            h("use", {
+              "xlink:href": `#${this.icon}`
+            })
+          ]
+        }
       );
     } else {
       return h("i", {

@@ -14,17 +14,17 @@ export default defineComponent({
   render() {
     const attrs = this.$attrs;
     return h(
-        IconifyIcon,
-        {
-          icon: `${this.icon}`,
-          style: attrs?.style
-              ? Object.assign(attrs.style, {outline: "none"})
-              : {outline: "none"},
-          ...attrs
-        },
-        {
-          default: () => []
-        }
+      IconifyIcon,
+      {
+        icon: `${this.icon}`,
+        style: attrs?.style
+          ? Object.assign(attrs.style, {outline: "none"})
+          : {outline: "none"},
+        ...attrs
+      },
+      {
+        default: () => []
+      }
     );
   }
 });

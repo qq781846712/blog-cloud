@@ -1,4 +1,4 @@
-import {defineComponent, ref, computed, PropType} from "vue";
+import {computed, defineComponent, PropType, ref} from "vue";
 import {useEpThemeStoreHook} from "@/store/modules/epTheme";
 import {IconifyIconOffline} from "../../ReIcon";
 
@@ -165,34 +165,7 @@ export default defineComponent({
                     />
                   </el-dropdown>
                 </el-tooltip>
-                <el-divider direction="vertical"/>
-
-                <el-popover v-slots={reference} width="200" trigger="click">
-                  <el-checkbox-group v-model={checkList.value}>
-                    <el-checkbox label="序号列"/>
-                    <el-checkbox label="勾选列"/>
-                  </el-checkbox-group>
-                </el-popover>
               </div>
-
-              <el-tooltip
-                  popper-options={{
-                    modifiers: [
-                      {
-                        name: "computeStyles",
-                        options: {
-                          adaptive: false,
-                          enabled: false
-                        }
-                      }
-                    ]
-                  }}
-                  placement="top"
-                  virtual-ref={buttonRef.value}
-                  virtual-triggering
-                  trigger="hover"
-                  content="列设置"
-              />
             </div>
             {props.dataList.length > 0 ? (
                 slots.default({size: size.value, checkList: checkList.value})

@@ -1,18 +1,14 @@
 package com.blank.system.controller;
 
-import cn.dev33.satoken.annotation.SaCheckPermission;
 import com.blank.common.core.domain.R;
 import com.blank.common.core.web.controller.BaseController;
-import com.blank.common.mybatis.core.page.PageQuery;
 import com.blank.common.mybatis.core.page.TableDataInfo;
-import com.blank.system.api.model.dto.RoleDTO;
+import com.blank.system.api.domain.SysRole;
 import com.blank.system.domain.bo.RoleBo;
 import com.blank.system.domain.vo.RoleVo;
 import com.blank.system.service.ISysRoleService;
 import com.blank.system.service.ISysUserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,6 +34,21 @@ public class SysRoleController extends BaseController {
     @PostMapping(value = "/list", produces = "application/json;charset=UTF-8")
     public R<TableDataInfo<RoleVo>> page(HttpServletRequest request, @RequestBody RoleBo bo) {
         return R.ok(roleService.customPageList(bo, bo));
+    }
+
+    /**
+     * 根据 roleId 修改状态
+     */
+    @GetMapping(value = "/updateStatus/{roleId}/{status}")
+    public R<Integer> page(@PathVariable Long roleId, @PathVariable String status) {
+        SysRole sysRole = new SysRole(roleId);
+        sysRole.setStatus(status);
+
+        int count = roleService.update(sysRole);
+        if (count > 0) {
+            return R.ok();
+        }
+        return R.fail();
     }
 }
 

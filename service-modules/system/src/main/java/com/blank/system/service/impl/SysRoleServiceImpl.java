@@ -7,16 +7,12 @@ import com.blank.common.core.utils.StringUtils;
 import com.blank.common.mybatis.core.page.PageQuery;
 import com.blank.common.mybatis.core.page.TableDataInfo;
 import com.blank.system.api.domain.SysRole;
-import com.blank.system.api.model.dto.RoleDTO;
 import com.blank.system.domain.bo.RoleBo;
 import com.blank.system.domain.vo.RoleVo;
 import com.blank.system.mapper.SysRoleMapper;
 import com.blank.system.service.ISysRoleService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 /**
  * 角色 业务层处理
@@ -33,6 +29,11 @@ public class SysRoleServiceImpl implements ISysRoleService {
         Page<RoleVo> result = baseMapper.selectVoPage(pageQuery.build(), lqw);
         baseMapper.selectList(lqw);
         return TableDataInfo.build(result);
+    }
+
+    @Override
+    public int update(SysRole sysRole) {
+        return baseMapper.updateById(sysRole);
     }
 
     private LambdaQueryWrapper<SysRole> buildQueryWrapper(RoleBo bo) {
