@@ -1,6 +1,6 @@
 package com.blank.system.service.impl;
 
-import com.blank.system.repository.SysMenuRepository;
+import com.blank.system.mapper.SysMenuMapper;
 import com.blank.system.service.ISysMenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,5 +12,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysMenuServiceImpl implements ISysMenuService {
 
-    private final SysMenuRepository baseMapper;
+    private final SysMenuMapper baseMapper;
 }

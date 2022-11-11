@@ -69,7 +69,7 @@
 
         <dependency>
             <groupId>com.blank</groupId>
-            <artifactId>common-jpa</artifactId>
+            <artifactId>common-mybatis</artifactId>
         </dependency>
 
         <dependency>

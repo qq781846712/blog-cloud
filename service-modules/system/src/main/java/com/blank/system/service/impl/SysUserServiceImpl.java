@@ -3,7 +3,7 @@ package com.blank.system.service.impl;
 import cn.hutool.core.util.ObjectUtil;
 import com.blank.common.core.exception.ServiceException;
 import com.blank.system.api.domain.SysUser;
-import com.blank.system.repository.SysUserRepository;
+import com.blank.system.mapper.SysUserMapper;
 import com.blank.system.service.ISysUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysUserServiceImpl implements ISysUserService {
 
-    private final SysUserRepository baseMapper;
+    private final SysUserMapper baseMapper;
 
     @Override
     public Page<SysUser> selectPageUserList(SysUser user, PageRequest pageRequest) {

@@ -1,6 +1,6 @@
 package com.blank.system.service.impl;
 
-import com.blank.system.repository.SysDictDataRepository;
+import com.blank.system.mapper.SysDictDataMapper;
 import com.blank.system.service.ISysDictDataService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,5 +12,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysDictDataServiceImpl implements ISysDictDataService {
 
-    private final SysDictDataRepository baseMapper;
+    private final SysDictDataMapper baseMapper;
 }

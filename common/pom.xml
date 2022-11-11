@@ -14,7 +14,8 @@
         <module>common-core</module>
         <module>common-doc</module>
         <module>common-dubbo</module>
-        <module>common-jpa</module>
+        <!--<module>common-jpa</module>-->
+        <module>common-mybatis</module>
         <module>common-loadbalancer</module>
         <module>common-redis</module>
         <module>common-satoken</module>

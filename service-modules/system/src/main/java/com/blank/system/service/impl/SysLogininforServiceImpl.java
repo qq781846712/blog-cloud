@@ -1,6 +1,6 @@
 package com.blank.system.service.impl;
 
-import com.blank.system.repository.SysLogininforRepository;
+import com.blank.system.mapper.SysLogininforMapper;
 import com.blank.system.service.ISysLogininforService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,6 +12,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysLogininforServiceImpl implements ISysLogininforService {
 
-    private final SysLogininforRepository baseMapper;
+    private final SysLogininforMapper baseMapper;
 
 }

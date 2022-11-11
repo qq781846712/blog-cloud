@@ -2,7 +2,6 @@ package com.blank.system.service;
 
 import com.blank.system.api.model.dto.RoleDTO;
 import com.blank.system.domain.vo.RoleVo;
-import com.querydsl.core.types.Predicate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
