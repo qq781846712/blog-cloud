@@ -5,9 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.blank.common.core.annotation.Sensitive;
 import com.blank.common.core.constant.UserConstants;
+import com.blank.common.core.domain.BaseEntity;
 import com.blank.common.core.enums.SensitiveStrategy;
 import com.blank.common.core.xss.Xss;
-import com.blank.common.core.domain.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -110,6 +110,12 @@ public class SysUser extends BaseEntity {
      */
     @TableField(exist = false)
     private Long[] roleIds;
+
+    /**
+     * 数据权限 当前角色ID
+     */
+    @TableField(exist = false)
+    private Long roleId;
 
     public SysUser(Long userId) {
         this.userId = userId;

@@ -79,4 +79,14 @@ public interface Constants {
      */
     String REPEAT_SUBMIT_KEY = "repeat_submit:";
 
+    /**
+     * 是否删除-N
+     */
+    String IS_DELETED_N = "N";
+
+    /**
+     * 是否删除-Y
+     */
+    String IS_DELETED_Y = "Y";
+
 }

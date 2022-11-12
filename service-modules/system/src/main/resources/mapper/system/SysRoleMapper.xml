@@ -11,9 +11,8 @@
         <result property="roleSort" column="role_sort"/>
         <result property="dataScope" column="data_scope"/>
         <result property="menuCheckStrictly" column="menu_check_strictly"/>
-        <result property="deptCheckStrictly" column="dept_check_strictly"/>
         <result property="status" column="status"/>
-        <result property="delFlag" column="del_flag"/>
+        <result property="isDeleted" column="is_deleted"/>
         <result property="createUser" column="create_user"/>
         <result property="createTime" column="create_time"/>
         <result property="updateUser" column="update_user"/>
@@ -27,16 +26,13 @@
                         r.role_key,
                         r.role_sort,
                         r.data_scope,
-                        r.menu_check_strictly,
-                        r.dept_check_strictly,
                         r.status,
-                        r.del_flag,
+                        r.is_deleted,
                         r.create_time,
                         r.remark
         from sys_role r
                  left join sys_user_role sur on sur.role_id = r.role_id
                  left join sys_user u on u.user_id = sur.user_id
-                 left join sys_dept d on u.dept_id = d.dept_id
     </sql>
 
     <select id="selectPageRoleList" resultMap="SysRoleResult">
@@ -51,7 +47,7 @@
 
     <select id="selectRolePermissionByUserId" parameterType="Long" resultMap="SysRoleResult">
         <include refid="selectRoleVo"/>
-        WHERE r.del_flag = '0' and sur.user_id = #{userId}
+        WHERE r.is_deleted = 'N' and sur.user_id = #{userId}
     </select>
 
 
@@ -65,7 +61,7 @@
 
     <select id="selectRolesByUserName" parameterType="String" resultMap="SysRoleResult">
         <include refid="selectRoleVo"/>
-        WHERE r.del_flag = '0' and u.user_name = #{userName}
+        WHERE r.is_deleted = 'N' and u.user_name = #{userName}
     </select>
 
 </mapper>

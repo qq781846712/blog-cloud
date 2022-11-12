@@ -1,14 +1,23 @@
 package com.blank.system.controller;
 
-import cn.hutool.json.JSONUtil;
+import cn.dev33.satoken.annotation.SaCheckPermission;
+import cn.hutool.core.lang.tree.Tree;
+import com.blank.common.core.constant.UserConstants;
+import com.blank.common.core.domain.R;
+import com.blank.common.core.utils.StringUtils;
 import com.blank.common.core.web.controller.BaseController;
+import com.blank.common.log.annotation.Log;
+import com.blank.common.log.enums.BusinessType;
+import com.blank.common.satoken.utils.LoginHelper;
+import com.blank.system.api.domain.SysMenu;
+import com.blank.system.domain.vo.RouterVo;
 import com.blank.system.service.ISysMenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,48 +31,112 @@ public class SysMenuController extends BaseController {
 
     private final ISysMenuService menuService;
 
-    @GetMapping("getAsyncRoutes")
-    public Map getAsyncRoutes() {
-        return JSONUtil.toBean("{\n" +
-                "  success: true,\n" +
-                "  data: [{\n" +
-                "  path: \"/system\",\n" +
-                "  meta: {\n" +
-                "    icon: \"setting\",\n" +
-                "    title: \"系统管理\",\n" +
-                "    rank: 11\n" +
-                "  },\n" +
-                "  children: [\n" +
-                "    {\n" +
-                "      path: \"/system/user/index\",\n" +
-                "      name: \"User\",\n" +
-                "      meta: {\n" +
-                "        icon: \"flUser\",\n" +
-                "        title: \"用户管理\",\n" +
-                "        roles: [\"admin\"]\n" +
-                "      }\n" +
-                "    },\n" +
-                "    {\n" +
-                "      path: \"/system/role/index\",\n" +
-                "      name: \"Role\",\n" +
-                "      meta: {\n" +
-                "        icon: \"role\",\n" +
-                "        title: \"角色管理\",\n" +
-                "        roles: [\"admin\"]\n" +
-                "      }\n" +
-                "    },\n" +
-                "    {\n" +
-                "      path: \"/system/dict\",\n" +
-                "      component: \"/system/dict/index\",\n" +
-                "      name: \"Dict\",\n" +
-                "      meta: {\n" +
-                "        icon: \"dict\",\n" +
-                "        title: \"字典管理\",\n" +
-                "        keepAlive: true,\n" +
-                "        roles: [\"admin\"]\n" +
-                "      }\n" +
-                "    }\n" +
-                "  ]\n" +
-                "}]}", Map.class);
+    /**
+     * 获取菜单列表
+     */
+    @SaCheckPermission("system:menu:list")
+    @GetMapping("/list")
+    public R<List<SysMenu>> list(SysMenu menu) {
+        Long userId = LoginHelper.getUserId();
+        List<SysMenu> menus = menuService.selectMenuList(menu, userId);
+        return R.ok(menus);
+    }
+
+    /**
+     * 根据菜单编号获取详细信息
+     *
+     * @param menuId 菜单ID
+     */
+    @SaCheckPermission("system:menu:query")
+    @GetMapping(value = "/{menuId}")
+    public R<SysMenu> getInfo(@PathVariable Long menuId) {
+        return R.ok(menuService.selectMenuById(menuId));
+    }
+
+    /**
+     * 获取菜单下拉树列表
+     */
+    @GetMapping("/treeselect")
+    public R<List<Tree<Long>>> treeselect(SysMenu menu) {
+        Long userId = LoginHelper.getUserId();
+        List<SysMenu> menus = menuService.selectMenuList(menu, userId);
+        return R.ok(menuService.buildMenuTreeSelect(menus));
+    }
+
+    /**
+     * 加载对应角色菜单列表树
+     *
+     * @param roleId 角色ID
+     */
+    @GetMapping(value = "/roleMenuTreeselect/{roleId}")
+    public R<Map<String, Object>> roleMenuTreeselect(@PathVariable("roleId") Long roleId) {
+        Long userId = LoginHelper.getUserId();
+        List<SysMenu> menus = menuService.selectMenuList(userId);
+        Map<String, Object> ajax = new HashMap<>();
+        ajax.put("checkedKeys", menuService.selectMenuListByRoleId(roleId));
+        ajax.put("menus", menuService.buildMenuTreeSelect(menus));
+        return R.ok(ajax);
+    }
+
+    /**
+     * 新增菜单
+     */
+    @SaCheckPermission("system:menu:add")
+    @Log(title = "菜单管理", businessType = BusinessType.INSERT)
+    @PostMapping
+    public R<Void> add(@Validated @RequestBody SysMenu menu) {
+        if (UserConstants.NOT_UNIQUE.equals(menuService.checkMenuNameUnique(menu))) {
+            return R.fail("新增菜单'" + menu.getMenuName() + "'失败，菜单名称已存在");
+        } else if (UserConstants.YES_FRAME.equals(menu.getIsFrame()) && !StringUtils.ishttp(menu.getPath())) {
+            return R.fail("新增菜单'" + menu.getMenuName() + "'失败，地址必须以http(s)://开头");
+        }
+        return toAjax(menuService.insertMenu(menu));
+    }
+
+    /**
+     * 修改菜单
+     */
+    @SaCheckPermission("system:menu:edit")
+    @Log(title = "菜单管理", businessType = BusinessType.UPDATE)
+    @PutMapping
+    public R<Void> edit(@Validated @RequestBody SysMenu menu) {
+        if (UserConstants.NOT_UNIQUE.equals(menuService.checkMenuNameUnique(menu))) {
+            return R.fail("修改菜单'" + menu.getMenuName() + "'失败，菜单名称已存在");
+        } else if (UserConstants.YES_FRAME.equals(menu.getIsFrame()) && !StringUtils.ishttp(menu.getPath())) {
+            return R.fail("修改菜单'" + menu.getMenuName() + "'失败，地址必须以http(s)://开头");
+        } else if (menu.getMenuId().equals(menu.getParentId())) {
+            return R.fail("修改菜单'" + menu.getMenuName() + "'失败，上级菜单不能选择自己");
+        }
+        return toAjax(menuService.updateMenu(menu));
+    }
+
+    /**
+     * 删除菜单
+     *
+     * @param menuId 菜单ID
+     */
+    @SaCheckPermission("system:menu:remove")
+    @Log(title = "菜单管理", businessType = BusinessType.DELETE)
+    @DeleteMapping("/{menuId}")
+    public R<Void> remove(@PathVariable("menuId") Long menuId) {
+        if (menuService.hasChildByMenuId(menuId)) {
+            return R.fail("存在子菜单,不允许删除");
+        }
+        if (menuService.checkMenuExistRole(menuId)) {
+            return R.fail("菜单已分配,不允许删除");
+        }
+        return toAjax(menuService.deleteMenuById(menuId));
+    }
+
+    /**
+     * 获取路由信息
+     *
+     * @return 路由信息
+     */
+    @GetMapping("getRouters")
+    public R<List<RouterVo>> getRouters() {
+        Long userId = LoginHelper.getUserId();
+        List<SysMenu> menus = menuService.selectMenuTreeByUserId(userId);
+        return R.ok(menuService.buildMenus(menus));
     }
 }

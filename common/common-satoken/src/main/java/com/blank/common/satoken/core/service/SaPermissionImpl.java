@@ -1,6 +1,9 @@
 package com.blank.common.satoken.core.service;
 
 import cn.dev33.satoken.stp.StpInterface;
+import com.blank.common.core.enums.UserType;
+import com.blank.common.satoken.utils.LoginHelper;
+import com.blank.system.api.model.LoginUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +18,13 @@ public class SaPermissionImpl implements StpInterface {
      */
     @Override
     public List<String> getPermissionList(Object loginId, String loginType) {
-        /*LoginUser loginUser = LoginHelper.getLoginUser();
+        LoginUser loginUser = LoginHelper.getLoginUser();
         UserType userType = UserType.getUserType(loginUser.getUserType());
         if (userType == UserType.SYS_USER) {
             return new ArrayList<>(loginUser.getMenuPermission());
         } else if (userType == UserType.APP_USER) {
             // 其他端 自行根据业务编写
-        }*/
+        }
         return new ArrayList<>();
     }
 
@@ -30,13 +33,13 @@ public class SaPermissionImpl implements StpInterface {
      */
     @Override
     public List<String> getRoleList(Object loginId, String loginType) {
-        /*LoginUser loginUser = LoginHelper.getLoginUser();
+        LoginUser loginUser = LoginHelper.getLoginUser();
         UserType userType = UserType.getUserType(loginUser.getUserType());
         if (userType == UserType.SYS_USER) {
             return new ArrayList<>(loginUser.getRolePermission());
         } else if (userType == UserType.APP_USER) {
             // 其他端 自行根据业务编写
-        }*/
+        }
         return new ArrayList<>();
     }
 }

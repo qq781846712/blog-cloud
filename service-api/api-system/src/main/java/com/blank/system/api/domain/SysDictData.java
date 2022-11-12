@@ -38,7 +38,6 @@ public class SysDictData extends BaseEntity {
     @Size(min = 0, max = 100, message = "字典标签长度不能超过100个字符")
     private String dictLabel;
 
-
     /**
      * 字典键值
      */
@@ -54,6 +53,17 @@ public class SysDictData extends BaseEntity {
     private String dictType;
 
     /**
+     * 样式属性（其他样式扩展）
+     */
+    @Size(min = 0, max = 100, message = "样式属性长度不能超过100个字符")
+    private String cssClass;
+
+    /**
+     * 表格字典样式
+     */
+    private String listClass;
+
+    /**
      * 是否默认（Y是 N否）
      */
     private String isDefault;
@@ -62,6 +72,11 @@ public class SysDictData extends BaseEntity {
      * 状态（0正常 1停用）
      */
     private String status;
+
+    /**
+     * 备注
+     */
+    private String remark;
 
     public boolean getDefault() {
         return UserConstants.YES.equals(this.isDefault);

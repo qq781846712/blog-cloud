@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 /**
  * 角色表 sys_role
@@ -54,6 +55,11 @@ public class SysRole extends BaseEntity {
     private String dataScope;
 
     /**
+     * 菜单树选择项是否关联显示（ 0：父子不互相关联显示 1：父子互相关联显示）
+     */
+    private Boolean menuCheckStrictly;
+
+    /**
      * 角色状态（0正常 1停用）
      */
     private String status;
@@ -63,6 +69,18 @@ public class SysRole extends BaseEntity {
      */
     @TableField(exist = false)
     private boolean flag = false;
+
+    /**
+     * 角色菜单权限
+     */
+    @TableField(exist = false)
+    private Set<String> permissions;
+
+    /**
+     * 菜单组
+     */
+    @TableField(exist = false)
+    private Long[] menuIds;
 
     public SysRole(Long roleId) {
         this.roleId = roleId;

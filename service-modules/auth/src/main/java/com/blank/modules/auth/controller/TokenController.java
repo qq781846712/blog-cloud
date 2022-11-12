@@ -1,6 +1,5 @@
 package com.blank.modules.auth.controller;
 
-import cn.hutool.core.collection.CollUtil;
 import com.blank.common.core.domain.R;
 import com.blank.modules.auth.form.LoginBody;
 import com.blank.modules.auth.service.SysLoginService;
@@ -34,9 +33,7 @@ public class TokenController {
 
         // 接口返回信息
         Map<String, Object> rspMap = new HashMap<String, Object>();
-        rspMap.put("accessToken", accessToken);
-        rspMap.put("username", "admin");
-        rspMap.put("roles", CollUtil.newArrayList("admin"));
+        rspMap.put("access_token", accessToken);
         return R.ok(rspMap);
     }
 
