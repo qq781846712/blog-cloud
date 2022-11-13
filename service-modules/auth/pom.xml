@@ -39,7 +39,7 @@
             <artifactId>common-sentinel</artifactId>
         </dependency>
 
-        <!-- RuoYi Common Security-->
+        <!-- Common Security-->
         <dependency>
             <groupId>com.blank</groupId>
             <artifactId>common-security</artifactId>

@@ -11,6 +11,7 @@
     <modules>
         <module>api-bom</module>
         <module>api-system</module>
+        <module>api-resource</module>
     </modules>
 
     <artifactId>service-api</artifactId>

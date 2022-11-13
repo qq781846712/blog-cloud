@@ -89,7 +89,7 @@
             <artifactId>common-satoken</artifactId>
         </dependency>
 
-        <!-- RuoYi Common Redis-->
+        <!-- Common Redis-->
         <dependency>
             <groupId>com.blank</groupId>
             <artifactId>common-redis</artifactId>

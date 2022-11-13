@@ -15,6 +15,7 @@
         <module>monitor</module>
         <module>auth</module>
         <module>system</module>
+        <module>resource</module>
     </modules>
 
     <artifactId>service-modules</artifactId>

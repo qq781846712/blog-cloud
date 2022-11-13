@@ -23,6 +23,13 @@
                 <version>${project.version}</version>
             </dependency>
 
+            <!-- 资源接口 -->
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>api-resource</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>

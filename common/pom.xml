@@ -25,6 +25,8 @@
         <module>common-dict</module>
         <module>common-sentinel</module>
         <module>common-web</module>
+        <module>common-mail</module>
+        <module>common-oss</module>
     </modules>
 
     <artifactId>common</artifactId>

@@ -46,7 +46,7 @@
             <artifactId>common-sentinel</artifactId>
         </dependency>
 
-        <!-- RuoYi Common Log -->
+        <!-- Common Log -->
         <dependency>
             <groupId>com.blank</groupId>
             <artifactId>common-log</artifactId>
@@ -87,7 +87,7 @@
             <artifactId>common-security</artifactId>
         </dependency>
 
-        <!-- RuoYi Api System -->
+        <!-- Api System -->
         <dependency>
             <groupId>com.blank</groupId>
             <artifactId>api-system</artifactId>

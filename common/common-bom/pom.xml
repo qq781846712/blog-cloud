@@ -115,6 +115,20 @@
                 <artifactId>common-dubbo</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <!--oss-->
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-oss</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!--mail-->
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-mail</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>
