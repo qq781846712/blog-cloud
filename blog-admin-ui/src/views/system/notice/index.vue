@@ -9,9 +9,9 @@
             @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="操作人员" prop="createBy">
+      <el-form-item label="操作人员" prop="createUserName">
         <el-input
-            v-model="queryParams.createBy"
+            v-model="queryParams.createUserName"
             placeholder="请输入操作人员"
             clearable
             @keyup.enter="handleQuery"
@@ -88,7 +88,7 @@
           <dict-tag :options="sys_notice_status" :value="scope.row.status"/>
         </template>
       </el-table-column>
-      <el-table-column label="创建者" align="center" prop="createBy" width="100"/>
+      <el-table-column label="创建者" align="center" prop="createUserName" width="100"/>
       <el-table-column label="创建时间" align="center" prop="createTime" width="100">
         <template #default="scope">
           <span>{{ parseTime(scope.row.createTime, '{y}-{m}-{d}') }}</span>
@@ -178,7 +178,7 @@
 </template>
 
 <script setup name="Notice">
-import {listNotice, getNotice, delNotice, addNotice, updateNotice} from "@/api/system/notice";
+import {addNotice, delNotice, getNotice, listNotice, updateNotice} from "@/api/system/notice";
 
 const {proxy} = getCurrentInstance();
 const {sys_notice_status, sys_notice_type} = proxy.useDict("sys_notice_status", "sys_notice_type");
@@ -199,7 +199,7 @@ const data = reactive({
     pageNum: 1,
     pageSize: 10,
     noticeTitle: undefined,
-    createBy: undefined,
+    createUserName: undefined,
     status: undefined
   },
   rules: {

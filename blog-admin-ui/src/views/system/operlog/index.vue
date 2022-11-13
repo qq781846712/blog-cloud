@@ -87,16 +87,6 @@
         >清空
         </el-button>
       </el-col>
-      <el-col :span="1.5">
-        <el-button
-            type="warning"
-            plain
-            icon="Download"
-            @click="handleExport"
-            v-hasPermi="['system:operlog:export']"
-        >导出
-        </el-button>
-      </el-col>
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
@@ -191,7 +181,7 @@
 </template>
 
 <script setup name="Operlog">
-import {list, delOperlog, cleanOperlog} from "@/api/system/operlog";
+import {cleanOperlog, delOperlog, list} from "@/api/system/operlog";
 
 const {proxy} = getCurrentInstance();
 const {sys_oper_type, sys_common_status} = proxy.useDict("sys_oper_type", "sys_common_status");
@@ -292,13 +282,5 @@ function handleClean() {
   }).catch(() => {
   });
 }
-
-/** 导出按钮操作 */
-function handleExport() {
-  proxy.download("system/operlog/export", {
-    ...queryParams.value,
-  }, `config_${new Date().getTime()}.xlsx`);
-}
-
 getList();
 </script>

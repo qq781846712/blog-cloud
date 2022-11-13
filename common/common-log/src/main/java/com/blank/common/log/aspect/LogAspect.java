@@ -1,7 +1,16 @@
 package com.blank.common.log.aspect;
 
+import cn.hutool.core.lang.Dict;
+import cn.hutool.core.map.MapUtil;
+import cn.hutool.core.util.ObjectUtil;
+import com.blank.common.core.utils.JsonUtils;
+import com.blank.common.core.utils.ServletUtils;
+import com.blank.common.core.utils.StringUtils;
 import com.blank.common.log.annotation.Log;
+import com.blank.common.log.enums.BusinessStatus;
 import com.blank.common.log.service.AsyncLogService;
+import com.blank.common.satoken.utils.LoginHelper;
+import com.blank.system.api.domain.SysOperLog;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -9,6 +18,7 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.http.HttpMethod;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -56,8 +66,8 @@ public class LogAspect {
 
     protected void handleLog(final JoinPoint joinPoint, Log controllerLog, final Exception e, Object jsonResult) {
         try {
-            // TODO *========数据库日志=========*//
-            /*SysOperLog operLog = new SysOperLog();
+            // *========数据库日志=========*//
+            SysOperLog operLog = new SysOperLog();
             operLog.setStatus(BusinessStatus.SUCCESS.ordinal());
             // 请求的地址
             operLog.setOperIp(ServletUtils.getClientIP());
@@ -80,7 +90,7 @@ public class LogAspect {
             // 处理设置注解上的参数
             getControllerMethodDescription(joinPoint, controllerLog, operLog, jsonResult);
             // 保存数据库
-            asyncLogService.saveSysLog(operLog);*/
+            asyncLogService.saveSysLog(operLog);
         } catch (Exception exp) {
             // 记录本地异常日志
             log.error("==前置通知异常==");
@@ -92,13 +102,13 @@ public class LogAspect {
     /**
      * 获取注解中对方法的描述信息 用于Controller层注解
      *
-     * @param log 日志
-     *            // @param operLog 操作日志
+     * @param log     日志
+     * @param operLog 操作日志
      * @throws Exception
      */
-    public void getControllerMethodDescription(JoinPoint joinPoint, Log log/*, SysOperLog operLog, Object jsonResult*/) throws Exception {
+    public void getControllerMethodDescription(JoinPoint joinPoint, Log log, SysOperLog operLog, Object jsonResult) throws Exception {
         // 设置action动作
-        /*operLog.setBusinessType(log.businessType().ordinal());
+        operLog.setBusinessType(log.businessType().ordinal());
         // 设置标题
         operLog.setTitle(log.title());
         // 设置操作人类别
@@ -111,28 +121,27 @@ public class LogAspect {
         // 是否需要保存response，参数和值
         if (log.isSaveResponseData() && ObjectUtil.isNotNull(jsonResult)) {
             operLog.setJsonResult(StringUtils.substring(JsonUtils.toJsonString(jsonResult), 0, 2000));
-        }*/
+        }
     }
 
     /**
      * 获取请求的参数，放到log中
-     * <p>
-     * // @param operLog 操作日志
      *
+     * @param operLog 操作日志
      * @throws Exception 异常
      */
-    private void setRequestValue(JoinPoint joinPoint/*, SysOperLog operLog*/) throws Exception {
-        /*String requestMethod = operLog.getRequestMethod();
+    private void setRequestValue(JoinPoint joinPoint, SysOperLog operLog) throws Exception {
+        String requestMethod = operLog.getRequestMethod();
         if (HttpMethod.PUT.name().equals(requestMethod) || HttpMethod.POST.name().equals(requestMethod)) {
             String params = argsArrayToString(joinPoint.getArgs());
             operLog.setOperParam(StringUtils.substring(params, 0, 2000));
-        }*/
+        }
     }
 
     /**
      * 参数拼装
      */
-    /*private String argsArrayToString(Object[] paramsArray) {
+    private String argsArrayToString(Object[] paramsArray) {
         StringBuilder params = new StringBuilder();
         if (paramsArray != null && paramsArray.length > 0) {
             for (Object o : paramsArray) {
@@ -152,7 +161,7 @@ public class LogAspect {
             }
         }
         return params.toString().trim();
-    }*/
+    }
 
     /**
      * 判断是否需要过滤的对象。

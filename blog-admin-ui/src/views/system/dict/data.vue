@@ -72,16 +72,6 @@
         <el-button
             type="warning"
             plain
-            icon="Download"
-            @click="handleExport"
-            v-hasPermi="['system:dict:export']"
-        >导出
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-            type="warning"
-            plain
             icon="Close"
             @click="handleClose"
         >关闭
@@ -197,8 +187,8 @@
 
 <script setup name="Data">
 import useDictStore from '@/store/modules/dict'
-import {optionselect as getDictOptionselect, getType} from "@/api/system/dict/type";
-import {listData, getData, delData, addData, updateData} from "@/api/system/dict/data";
+import {getType, optionselect as getDictOptionselect} from "@/api/system/dict/type";
+import {addData, delData, getData, listData, updateData} from "@/api/system/dict/data";
 
 const {proxy} = getCurrentInstance();
 const {sys_normal_disable} = proxy.useDict("sys_normal_disable");
@@ -370,14 +360,6 @@ function handleDelete(row) {
   }).catch(() => {
   });
 }
-
-/** 导出按钮操作 */
-function handleExport() {
-  proxy.download("system/dict/data/export", {
-    ...queryParams.value
-  }, `dict_data_${new Date().getTime()}.xlsx`);
-}
-
 getTypes(route.params && route.params.dictId);
 getTypeList();
 </script>

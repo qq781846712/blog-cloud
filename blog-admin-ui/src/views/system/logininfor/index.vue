@@ -83,16 +83,6 @@
         >解锁
         </el-button>
       </el-col>
-      <el-col :span="1.5">
-        <el-button
-            type="warning"
-            plain
-            icon="Download"
-            @click="handleExport"
-            v-hasPermi="['system:logininfor:export']"
-        >导出
-        </el-button>
-      </el-col>
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
@@ -127,7 +117,7 @@
 </template>
 
 <script setup name="Logininfor">
-import {list, delLogininfor, cleanLogininfor, unlockLogininfor} from "@/api/system/logininfor";
+import {cleanLogininfor, delLogininfor, list, unlockLogininfor} from "@/api/system/logininfor";
 
 const {proxy} = getCurrentInstance();
 const {sys_common_status} = proxy.useDict("sys_common_status");
@@ -225,13 +215,6 @@ function handleUnlock() {
     proxy.$modal.msgSuccess("用户" + username + "解锁成功");
   }).catch(() => {
   });
-}
-
-/** 导出按钮操作 */
-function handleExport() {
-  proxy.download("system/logininfor/export", {
-    ...queryParams.value,
-  }, `config_${new Date().getTime()}.xlsx`);
 }
 
 getList();

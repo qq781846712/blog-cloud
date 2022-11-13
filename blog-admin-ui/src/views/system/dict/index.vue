@@ -85,16 +85,6 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
-            type="warning"
-            plain
-            icon="Download"
-            @click="handleExport"
-            v-hasPermi="['system:dict:export']"
-        >导出
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
             type="danger"
             plain
             icon="Refresh"
@@ -191,7 +181,7 @@
 
 <script setup name="Dict">
 import useDictStore from '@/store/modules/dict'
-import {listType, getType, delType, addType, updateType, refreshCache} from "@/api/system/dict/type";
+import {addType, delType, getType, listType, refreshCache, updateType} from "@/api/system/dict/type";
 
 const {proxy} = getCurrentInstance();
 const {sys_normal_disable} = proxy.useDict("sys_normal_disable");
@@ -321,13 +311,6 @@ function handleDelete(row) {
     proxy.$modal.msgSuccess("删除成功");
   }).catch(() => {
   });
-}
-
-/** 导出按钮操作 */
-function handleExport() {
-  proxy.download("system/dict/type/export", {
-    ...queryParams.value
-  }, `dict_${new Date().getTime()}.xlsx`);
 }
 
 /** 刷新缓存按钮操作 */

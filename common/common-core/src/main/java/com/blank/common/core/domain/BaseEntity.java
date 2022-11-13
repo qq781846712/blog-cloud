@@ -49,8 +49,12 @@ public class BaseEntity implements Serializable {
     private Date updateTime;
 
     @TableLogic(value = "'N'", delval = "'Y'")
+    @TableField(fill = FieldFill.INSERT)
     private char isDeleted;
 
+    /**
+     * 备注
+     */
     private String remark;
 
     /**

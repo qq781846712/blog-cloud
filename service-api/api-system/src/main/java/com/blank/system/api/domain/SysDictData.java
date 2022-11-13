@@ -73,11 +73,6 @@ public class SysDictData extends BaseEntity {
      */
     private String status;
 
-    /**
-     * 备注
-     */
-    private String remark;
-
     public boolean getDefault() {
         return UserConstants.YES.equals(this.isDefault);
     }

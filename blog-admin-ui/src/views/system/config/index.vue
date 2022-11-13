@@ -80,16 +80,6 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
-            type="warning"
-            plain
-            icon="Download"
-            @click="handleExport"
-            v-hasPermi="['system:config:export']"
-        >导出
-        </el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
             type="danger"
             plain
             icon="Refresh"
@@ -183,7 +173,7 @@
 </template>
 
 <script setup name="Config">
-import {listConfig, getConfig, delConfig, addConfig, updateConfig, refreshCache} from "@/api/system/config";
+import {addConfig, delConfig, getConfig, listConfig, refreshCache, updateConfig} from "@/api/system/config";
 
 const {proxy} = getCurrentInstance();
 const {sys_yes_no} = proxy.useDict("sys_yes_no");
@@ -315,13 +305,6 @@ function handleDelete(row) {
     proxy.$modal.msgSuccess("删除成功");
   }).catch(() => {
   });
-}
-
-/** 导出按钮操作 */
-function handleExport() {
-  proxy.download("system/config/export", {
-    ...queryParams.value
-  }, `config_${new Date().getTime()}.xlsx`);
 }
 
 /** 刷新缓存按钮操作 */

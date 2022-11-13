@@ -22,11 +22,11 @@ public class RemoteLogServiceImpl implements RemoteLogService {
 
     @Override
     public Boolean saveLog(SysOperLog sysOperLog) {
-        return true;
+        return operLogService.insertOperlog(sysOperLog) > 0;
     }
 
     @Override
     public Boolean saveLogininfor(SysLogininfor sysLogininfor) {
-        return true;
+        return logininforService.insertLogininfor(sysLogininfor) > 0;
     }
 }

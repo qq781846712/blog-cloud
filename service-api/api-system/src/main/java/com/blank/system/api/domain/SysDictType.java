@@ -46,9 +46,4 @@ public class SysDictType extends BaseEntity {
      */
     private String status;
 
-    /**
-     * 备注
-     */
-    private String remark;
-
 }
