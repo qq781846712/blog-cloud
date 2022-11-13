@@ -7,7 +7,7 @@ import java.util.Set;
 /**
  * 权限信息 服务层
  *
- * @author ruoyi
+ *
  */
 public interface ISysPermissionService {
     /**
