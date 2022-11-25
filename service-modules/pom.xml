@@ -16,6 +16,7 @@
         <module>auth</module>
         <module>system</module>
         <module>resource</module>
+        <module>gen</module>
     </modules>
 
     <artifactId>service-modules</artifactId>

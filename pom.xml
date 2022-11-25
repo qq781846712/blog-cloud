@@ -44,6 +44,8 @@
 
         <!-- OSS 配置 -->
         <aws-java-sdk-s3.version>1.12.300</aws-java-sdk-s3.version>
+
+        <velocity.version>2.3</velocity.version>
     </properties>
 
     <!-- 依赖声明 -->
@@ -221,6 +223,13 @@
                 <groupId>com.amazonaws</groupId>
                 <artifactId>aws-java-sdk-s3</artifactId>
                 <version>${aws-java-sdk-s3.version}</version>
+            </dependency>
+
+            <!-- 代码生成使用模板 -->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
