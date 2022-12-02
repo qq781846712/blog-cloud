@@ -8,7 +8,7 @@ import org.springframework.boot.context.metrics.buffering.BufferingApplicationSt
 /**
  * 网关启动程序
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class}, scanBasePackages = "com.blank.modules.gateway")
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class}, scanBasePackages = "com.blank.gateway")
 public class GatewayApplication {
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(GatewayApplication.class);
