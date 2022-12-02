@@ -36,6 +36,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -61,17 +62,17 @@ import static com.alibaba.csp.sentinel.config.SentinelConfig.setConfig;
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnProperty(name = "spring.cloud.sentinel.enabled", matchIfMissing = true)
 @EnableConfigurationProperties({SentinelProperties.class, SentinelCustomProperties.class})
-@RequiredArgsConstructor
 public class SentinelAutoConfiguration {
 
     @Value("${project.name:${spring.application.name:}}")
     private String projectName;
 
-    private final SentinelProperties properties;
-
-    private final SentinelCustomProperties customProperties;
-
-    private final DiscoveryClient discoveryClient;
+    @Autowired
+    private SentinelProperties properties;
+    @Autowired
+    private SentinelCustomProperties customProperties;
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
     @PostConstruct
     private void init() {

@@ -89,7 +89,7 @@ public class SysUserServiceImpl implements ISysUserService {
                 .eq(ObjectUtil.isNotNull(user.getRoleId()), "r.role_id", user.getRoleId())
                 .like(StringUtils.isNotBlank(user.getUserName()), "u.user_name", user.getUserName())
                 .eq(StringUtils.isNotBlank(user.getStatus()), "u.status", user.getStatus());
-        com.baomidou.mybatisplus.extension.plugins.pagination.Page<SysUser> page = baseMapper.selectAllocatedList(pageQuery.build(), wrapper);
+        Page<SysUser> page = baseMapper.selectAllocatedList(pageQuery.build(), wrapper);
         return TableDataInfo.build(page);
     }
 
@@ -166,8 +166,10 @@ public class SysUserServiceImpl implements ISysUserService {
      * @return 结果
      */
     @Override
-    public String checkUserNameUnique(String userName) {
-        boolean exist = baseMapper.exists(new LambdaQueryWrapper<SysUser>().eq(SysUser::getUserName, userName));
+    public String checkUserNameUnique(SysUser user) {
+        boolean exist = baseMapper.exists(new LambdaQueryWrapper<SysUser>()
+                .eq(SysUser::getUserName, user.getUserName())
+                .ne(ObjectUtil.isNotNull(user.getUserId()), SysUser::getUserId, user.getUserId()));
         if (exist) {
             return UserConstants.NOT_UNIQUE;
         }

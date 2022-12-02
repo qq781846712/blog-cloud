@@ -94,7 +94,6 @@ public class ApacheDubboTransactionPropagationFilter implements Filter {
 
     /**
      * get rpc xid
-     *
      * @return
      */
     private String getRpcXid() {

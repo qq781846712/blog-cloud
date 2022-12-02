@@ -35,12 +35,6 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- Mysql Connector -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>com.blank</groupId>
             <artifactId>common-sentinel</artifactId>
@@ -91,6 +85,11 @@
         <dependency>
             <groupId>com.blank</groupId>
             <artifactId>api-system</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.blank</groupId>
+            <artifactId>api-resource</artifactId>
         </dependency>
 
     </dependencies>

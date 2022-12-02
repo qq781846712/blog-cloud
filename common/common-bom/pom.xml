@@ -129,6 +129,23 @@
                 <artifactId>common-mail</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <!--<dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-skylog</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-prometheus</artifactId>
+                <version>${project.version}</version>
+            </dependency>-->
+
+            <dependency>
+                <groupId>com.blank</groupId>
+                <artifactId>common-idempotent</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

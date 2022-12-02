@@ -3,6 +3,7 @@ package com.blank.common.satoken.utils;
 import cn.dev33.satoken.context.SaHolder;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.exceptions.UtilException;
+import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.blank.common.core.constant.UserConstants;
 import com.blank.common.core.enums.DeviceType;
@@ -78,22 +79,15 @@ public class LoginHelper {
         LoginUser loginUser = getLoginUser();
         if (ObjectUtil.isNull(loginUser)) {
             String loginId = StpUtil.getLoginIdAsString();
-            String userId = null;
-            for (UserType value : UserType.values()) {
-                if (StringUtils.contains(loginId, value.getUserType())) {
-                    String[] strs = StringUtils.split(loginId, JOIN_CODE);
-                    // 用户id在总是在最后
-                    userId = strs[strs.length - 1];
-                }
-            }
-            if (StringUtils.isBlank(userId)) {
+            String[] strs = StringUtils.split(loginId, JOIN_CODE);
+            if (!ArrayUtil.containsAny(strs, UserType.values())) {
                 throw new UtilException("登录用户: LoginId异常 => " + loginId);
             }
-            return Long.parseLong(userId);
+            // 用户id在总是在最后
+            return Long.parseLong(strs[strs.length - 1]);
         }
         return loginUser.getUserId();
     }
-
 
     /**
      * 获取用户账户

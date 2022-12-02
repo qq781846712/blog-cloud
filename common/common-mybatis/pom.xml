@@ -32,11 +32,10 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
 
-        <!-- Druid -->
+        <!-- Mysql Connector -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid.version}</version>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
         </dependency>
     </dependencies>
 </project>

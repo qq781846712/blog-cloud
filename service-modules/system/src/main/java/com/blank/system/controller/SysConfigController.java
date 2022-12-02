@@ -34,6 +34,7 @@ public class SysConfigController extends BaseController {
         return configService.selectPageConfigList(config, pageQuery);
     }
 
+
     /**
      * 根据参数编号获取详细信息
      *

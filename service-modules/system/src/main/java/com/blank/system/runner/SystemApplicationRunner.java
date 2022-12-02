@@ -1,5 +1,6 @@
 package com.blank.system.runner;
 
+import com.blank.system.service.ISysConfigService;
 import com.blank.system.service.ISysDictTypeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,13 +16,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class SystemApplicationRunner implements ApplicationRunner {
 
+    private final ISysConfigService configService;
     private final ISysDictTypeService dictTypeService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        // configService.loadingConfigCache();
+        configService.loadingConfigCache();
         log.info("加载参数缓存数据成功");
-        // dictTypeService.loadingDictCache();
+        dictTypeService.loadingDictCache();
         log.info("加载字典缓存数据成功");
     }
 

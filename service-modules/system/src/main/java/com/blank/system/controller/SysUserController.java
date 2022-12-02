@@ -15,6 +15,7 @@ import com.blank.common.mybatis.core.page.TableDataInfo;
 import com.blank.common.satoken.utils.LoginHelper;
 import com.blank.system.api.domain.SysRole;
 import com.blank.system.api.domain.SysUser;
+import com.blank.system.api.model.LoginUser;
 import com.blank.system.service.ISysPermissionService;
 import com.blank.system.service.ISysRoleService;
 import com.blank.system.service.ISysUserService;
@@ -26,7 +27,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * 用户信息
@@ -57,15 +57,12 @@ public class SysUserController extends BaseController {
      */
     @GetMapping("getInfo")
     public R<Map<String, Object>> getInfo() {
-        SysUser user = userService.selectUserById(LoginHelper.getUserId());
-        // 角色集合
-        Set<String> roles = permissionService.getRolePermission(user);
-        // 权限集合
-        Set<String> permissions = permissionService.getMenuPermission(user);
+        LoginUser loginUser = LoginHelper.getLoginUser();
+        SysUser user = userService.selectUserById(loginUser.getUserId());
         Map<String, Object> ajax = new HashMap<>();
         ajax.put("user", user);
-        ajax.put("roles", roles);
-        ajax.put("permissions", permissions);
+        ajax.put("roles", loginUser.getRolePermission());
+        ajax.put("permissions", loginUser.getMenuPermission());
         return R.ok(ajax);
     }
 
@@ -96,7 +93,7 @@ public class SysUserController extends BaseController {
     @Log(title = "用户管理", businessType = BusinessType.INSERT)
     @PostMapping
     public R<Void> add(@Validated @RequestBody SysUser user) {
-        if (UserConstants.NOT_UNIQUE.equals(userService.checkUserNameUnique(user.getUserName()))) {
+        if (UserConstants.NOT_UNIQUE.equals(userService.checkUserNameUnique(user))) {
             return R.fail("新增用户'" + user.getUserName() + "'失败，登录账号已存在");
         } else if (StringUtils.isNotEmpty(user.getEmail())
                 && UserConstants.NOT_UNIQUE.equals(userService.checkEmailUnique(user))) {

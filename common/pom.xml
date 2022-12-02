@@ -27,6 +27,10 @@
         <module>common-web</module>
         <module>common-mail</module>
         <module>common-oss</module>
+        <module>common-idempotent</module>
+        <module>common-logstash</module>
+        <module>common-prometheus</module>
+        <module>common-skylog</module>
     </modules>
 
     <artifactId>common</artifactId>

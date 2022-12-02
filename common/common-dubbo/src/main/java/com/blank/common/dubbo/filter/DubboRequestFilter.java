@@ -14,7 +14,7 @@ import org.apache.dubbo.rpc.service.GenericService;
  * dubbo日志过滤器
  */
 @Slf4j
-@Activate(group = {CommonConstants.PROVIDER, CommonConstants.CONSUMER})
+@Activate(group = {CommonConstants.PROVIDER, CommonConstants.CONSUMER}, order = Integer.MAX_VALUE)
 public class DubboRequestFilter implements Filter {
 
     @Override

@@ -2,11 +2,12 @@ package com.blank.resource.service;
 
 import com.blank.common.mybatis.core.page.PageQuery;
 import com.blank.common.mybatis.core.page.TableDataInfo;
-import com.blank.resource.domain.SysOss;
 import com.blank.resource.domain.bo.SysOssBo;
 import com.blank.resource.domain.vo.SysOssVo;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,7 +22,9 @@ public interface ISysOssService {
 
     SysOssVo getById(Long ossId);
 
-    SysOss upload(MultipartFile file);
+    SysOssVo upload(MultipartFile file);
+
+    void download(Long ossId, HttpServletResponse response) throws IOException;
 
     Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
 

@@ -1,10 +1,13 @@
 package com.blank.system.dubbo;
 
 import com.blank.system.api.RemoteDictService;
+import com.blank.system.api.domain.SysDictData;
 import com.blank.system.service.ISysDictTypeService;
 import lombok.RequiredArgsConstructor;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 操作日志记录
@@ -18,12 +21,8 @@ public class RemoteDictServiceImpl implements RemoteDictService {
 
 
     @Override
-    public String getDictLabel(String dictType, String dictValue, String separator) {
-        return "";
+    public List<SysDictData> selectDictDataByType(String dictType) {
+        return sysDictTypeService.selectDictDataByType(dictType);
     }
 
-    @Override
-    public String getDictValue(String dictType, String dictLabel, String separator) {
-        return "";
-    }
 }

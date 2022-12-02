@@ -77,7 +77,7 @@ public class SysOssController extends BaseController {
         if (ObjectUtil.isNull(file)) {
             throw new ServiceException("上传文件不能为空");
         }
-        SysOss oss = iSysOssService.upload(file);
+        SysOssVo oss = iSysOssService.upload(file);
         Map<String, String> map = new HashMap<>(2);
         map.put("url", oss.getUrl());
         map.put("fileName", oss.getOriginalName());
@@ -93,23 +93,7 @@ public class SysOssController extends BaseController {
     @SaCheckPermission("system:oss:download")
     @GetMapping("/download/{ossId}")
     public void download(@PathVariable Long ossId, HttpServletResponse response) throws IOException {
-        SysOssVo sysOss = iSysOssService.getById(ossId);
-        if (ObjectUtil.isNull(sysOss)) {
-            throw new ServiceException("文件数据不存在!");
-        }
-        FileUtils.setAttachmentResponseHeader(response, sysOss.getOriginalName());
-        response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE + "; charset=UTF-8");
-        long data;
-        try {
-            data = HttpUtil.download(sysOss.getUrl(), response.getOutputStream(), false);
-        } catch (HttpException e) {
-            if (e.getMessage().contains("403")) {
-                throw new ServiceException("无读取权限, 请在对应的OSS开启'公有读'权限!");
-            } else {
-                throw new ServiceException(e.getMessage());
-            }
-        }
-        response.setContentLength(Convert.toInt(data));
+        iSysOssService.download(ossId, response);
     }
 
     /**
@@ -121,7 +105,7 @@ public class SysOssController extends BaseController {
     @Log(title = "OSS对象存储", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ossIds}")
     public R<Void> remove(@NotEmpty(message = "主键不能为空") @PathVariable Long[] ossIds) {
-        return toAjax(iSysOssService.deleteWithValidByIds(Arrays.asList(ossIds), true) ? 1 : 0);
+        return toAjax(iSysOssService.deleteWithValidByIds(Arrays.asList(ossIds), true));
     }
 
 }

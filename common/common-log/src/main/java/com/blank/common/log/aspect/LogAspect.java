@@ -17,6 +17,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.http.HttpMethod;
 import org.springframework.validation.BindingResult;
@@ -33,7 +34,6 @@ import java.util.Map;
 @Slf4j
 @Aspect
 @AutoConfiguration
-@RequiredArgsConstructor
 public class LogAspect {
 
     /**
@@ -41,7 +41,8 @@ public class LogAspect {
      */
     public static final String[] EXCLUDE_PROPERTIES = {"password", "oldPassword", "newPassword", "confirmPassword"};
 
-    private final AsyncLogService asyncLogService;
+    @Autowired
+    private AsyncLogService asyncLogService;
 
     /**
      * 处理完请求后执行
@@ -93,7 +94,6 @@ public class LogAspect {
             asyncLogService.saveSysLog(operLog);
         } catch (Exception exp) {
             // 记录本地异常日志
-            log.error("==前置通知异常==");
             log.error("异常信息:{}", exp.getMessage());
             exp.printStackTrace();
         }
@@ -135,6 +135,10 @@ public class LogAspect {
         if (HttpMethod.PUT.name().equals(requestMethod) || HttpMethod.POST.name().equals(requestMethod)) {
             String params = argsArrayToString(joinPoint.getArgs());
             operLog.setOperParam(StringUtils.substring(params, 0, 2000));
+        } else {
+            Map<String, String> paramsMap = ServletUtils.getParamMap(ServletUtils.getRequest());
+            MapUtil.removeAny(paramsMap, EXCLUDE_PROPERTIES);
+            operLog.setOperParam(StringUtils.substring(JsonUtils.toJsonString(paramsMap), 0, 2000));
         }
     }
 

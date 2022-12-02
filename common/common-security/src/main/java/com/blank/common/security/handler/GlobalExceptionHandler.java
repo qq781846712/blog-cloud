@@ -1,14 +1,13 @@
 package com.blank.common.security.handler;
 
-import cn.dev33.satoken.exception.IdTokenInvalidException;
 import cn.dev33.satoken.exception.NotLoginException;
 import cn.dev33.satoken.exception.NotPermissionException;
 import cn.dev33.satoken.exception.NotRoleException;
+import cn.dev33.satoken.exception.SameTokenInvalidException;
 import cn.hutool.core.util.ObjectUtil;
 import com.blank.common.core.constant.HttpStatus;
 import com.blank.common.core.domain.R;
 import com.blank.common.core.exception.ServiceException;
-import com.blank.common.core.exception.base.BaseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -24,16 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
-    /**
-     * 权限码异常
-     */
-    @ExceptionHandler(BaseException.class)
-    public R<Void> handleNotPermissionException(BaseException e, HttpServletRequest request) {
-        String requestURI = request.getRequestURI();
-        log.error("请求地址'{}',发生自定义异常'{}'", requestURI, e.getMessage());
-        return R.fail(e.getMessage());
-    }
 
     /**
      * 权限码异常
@@ -68,8 +57,8 @@ public class GlobalExceptionHandler {
     /**
      * 无效认证
      */
-    @ExceptionHandler(IdTokenInvalidException.class)
-    public R<Void> handleIdTokenInvalidException(IdTokenInvalidException e, HttpServletRequest request) {
+    @ExceptionHandler(SameTokenInvalidException.class)
+    public R<Void> handleSameTokenInvalidException(SameTokenInvalidException e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',内网认证失败'{}',无法访问系统资源", requestURI, e.getMessage());
         return R.fail(HttpStatus.UNAUTHORIZED, "认证失败，无法访问系统资源");
@@ -93,7 +82,7 @@ public class GlobalExceptionHandler {
     public R<Void> handleServiceException(ServiceException e, HttpServletRequest request) {
         log.error(e.getMessage(), e);
         Integer code = e.getCode();
-        return ObjectUtil.isNotNull(code) ? R.fail(code.intValue(), e.getMessage()) : R.fail(e.getMessage());
+        return ObjectUtil.isNotNull(code) ? R.fail(code, e.getMessage()) : R.fail(e.getMessage());
     }
 
     /**

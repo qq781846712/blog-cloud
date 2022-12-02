@@ -1,13 +1,17 @@
 package com.blank.common.mybatis.core.page;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.blank.common.core.exception.ServiceException;
 import com.blank.common.core.utils.StringUtils;
 import com.blank.common.core.utils.sql.SqlUtil;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 分页查询实体类
@@ -26,7 +30,7 @@ public class PageQuery implements Serializable {
     /**
      * 当前页数
      */
-    private Integer currentPage;
+    private Integer pageNum;
 
     /**
      * 排序列
@@ -49,36 +53,58 @@ public class PageQuery implements Serializable {
     public static final int DEFAULT_PAGE_SIZE = Integer.MAX_VALUE;
 
     public <T> Page<T> build() {
-        Integer pageNum = ObjectUtil.defaultIfNull(getCurrentPage(), DEFAULT_PAGE_NUM);
+        Integer pageNum = ObjectUtil.defaultIfNull(getPageNum(), DEFAULT_PAGE_NUM);
         Integer pageSize = ObjectUtil.defaultIfNull(getPageSize(), DEFAULT_PAGE_SIZE);
         if (pageNum <= 0) {
             pageNum = DEFAULT_PAGE_NUM;
         }
         Page<T> page = new Page<>(pageNum, pageSize);
-        OrderItem orderItem = buildOrderItem();
-        if (ObjectUtil.isNotNull(orderItem)) {
-            page.addOrder(orderItem);
+        List<OrderItem> orderItems = buildOrderItem();
+        if (CollUtil.isNotEmpty(orderItems)) {
+            page.addOrder(orderItems);
         }
         return page;
     }
 
-    private OrderItem buildOrderItem() {
-        // 兼容前端排序类型
-        if ("ascending".equals(isAsc)) {
-            isAsc = "asc";
-        } else if ("descending".equals(isAsc)) {
-            isAsc = "desc";
+    /**
+     * 构建排序
+     * <p>
+     * 支持的用法如下:
+     * {isAsc:"asc",orderByColumn:"id"} order by id asc
+     * {isAsc:"asc",orderByColumn:"id,createTime"} order by id asc,create_time asc
+     * {isAsc:"desc",orderByColumn:"id,createTime"} order by id desc,create_time desc
+     * {isAsc:"asc,desc",orderByColumn:"id,createTime"} order by id asc,create_time desc
+     */
+    private List<OrderItem> buildOrderItem() {
+        if (StringUtils.isBlank(orderByColumn) || StringUtils.isBlank(isAsc)) {
+            return null;
         }
-        if (StringUtils.isNotBlank(orderByColumn)) {
-            String orderBy = SqlUtil.escapeOrderBySql(orderByColumn);
-            orderBy = StringUtils.toUnderScoreCase(orderBy);
-            if ("asc".equals(isAsc)) {
-                return OrderItem.asc(orderBy);
-            } else if ("desc".equals(isAsc)) {
-                return OrderItem.desc(orderBy);
+        String orderBy = SqlUtil.escapeOrderBySql(orderByColumn);
+        orderBy = StringUtils.toUnderScoreCase(orderBy);
+
+        // 兼容前端排序类型
+        isAsc = StringUtils.replaceEach(isAsc, new String[]{"ascending", "descending"}, new String[]{"asc", "desc"});
+
+        String[] orderByArr = orderBy.split(",");
+        String[] isAscArr = isAsc.split(",");
+        if (isAscArr.length != 1 && isAscArr.length != orderByArr.length) {
+            throw new ServiceException("排序参数有误");
+        }
+
+        List<OrderItem> list = new ArrayList<>();
+        // 每个字段各自排序
+        for (int i = 0; i < orderByArr.length; i++) {
+            String orderByStr = orderByArr[i];
+            String isAscStr = isAscArr.length == 1 ? isAscArr[0] : isAscArr[i];
+            if ("asc".equals(isAscStr)) {
+                list.add(OrderItem.asc(orderByStr));
+            } else if ("desc".equals(isAscStr)) {
+                list.add(OrderItem.desc(orderByStr));
+            } else {
+                throw new ServiceException("排序参数有误");
             }
         }
-        return null;
+        return list;
     }
 
 }

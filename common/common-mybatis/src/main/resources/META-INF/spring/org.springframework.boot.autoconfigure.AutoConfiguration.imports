@@ -1,1 +1,2 @@
 com.blank.common.mybatis.config.MybatisPlusConfiguration
+com.blank.common.mybatis.service.SysDataScopeService

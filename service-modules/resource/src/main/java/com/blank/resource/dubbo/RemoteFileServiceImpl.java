@@ -45,6 +45,7 @@ public class RemoteFileServiceImpl implements RemoteFileService {
             oss.setService(storage.getConfigKey());
             sysOssMapper.insert(oss);
             SysFile sysFile = new SysFile();
+            sysFile.setOssId(oss.getOssId());
             sysFile.setName(uploadResult.getFilename());
             sysFile.setUrl(uploadResult.getUrl());
             return sysFile;

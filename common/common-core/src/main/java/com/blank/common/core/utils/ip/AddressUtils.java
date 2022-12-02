@@ -4,8 +4,8 @@ import cn.hutool.core.lang.Dict;
 import cn.hutool.core.net.NetUtil;
 import cn.hutool.http.HtmlUtil;
 import cn.hutool.http.HttpUtil;
-import cn.hutool.json.JSONUtil;
 import com.blank.common.core.constant.Constants;
+import com.blank.common.core.utils.JsonUtils;
 import com.blank.common.core.utils.StringUtils;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -46,7 +46,7 @@ public class AddressUtils {
                 log.error("获取地理位置异常 {}", ip);
                 return UNKNOWN;
             }
-            Dict obj = JSONUtil.toBean(rspStr, Dict.class);
+            Dict obj = JsonUtils.parseMap(rspStr);
             String region = obj.getStr("pro");
             String city = obj.getStr("city");
             return String.format("%s %s", region, city);
