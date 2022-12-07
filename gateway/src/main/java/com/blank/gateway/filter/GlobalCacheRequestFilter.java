@@ -22,7 +22,7 @@ public class GlobalCacheRequestFilter implements GlobalFilter, Ordered {
         if (!WebFluxUtils.isJsonRequest(exchange)) {
             return chain.filter(exchange);
         }
-        return ServerWebExchangeUtils.cacheRequestBodyAndRequest(exchange, (serverHttpRequest) -> {
+        return ServerWebExchangeUtils.cacheRequestBody(exchange, (serverHttpRequest) -> {
             if (serverHttpRequest == exchange.getRequest()) {
                 return chain.filter(exchange);
             }

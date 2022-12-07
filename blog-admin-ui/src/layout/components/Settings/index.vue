@@ -150,12 +150,10 @@ function themeChange(val) {
   theme.value = val;
   handleThemeStyle(val);
 }
-
 function handleTheme(val) {
   settingsStore.changeSetting({key: 'sideTheme', value: val})
   sideTheme.value = val;
 }
-
 function saveSetting() {
   proxy.$modal.loading("正在保存到本地，请稍候...");
   let layoutSetting = {
@@ -170,13 +168,11 @@ function saveSetting() {
   localStorage.setItem("layout-setting", JSON.stringify(layoutSetting));
   setTimeout(proxy.$modal.closeLoading(), 1000)
 }
-
 function resetSetting() {
   proxy.$modal.loading("正在清除设置缓存并刷新，请稍候...");
   localStorage.removeItem("layout-setting")
   setTimeout("window.location.reload()", 1000)
 }
-
 function openSetting() {
   showSettings.value = true;
 }
@@ -192,12 +188,10 @@ defineExpose({
   color: rgba(0, 0, 0, 0.85);
   line-height: 22px;
   font-weight: bold;
-
   .drawer-title {
     font-size: 14px;
   }
 }
-
 .setting-drawer-block-checbox {
   display: flex;
   justify-content: flex-start;

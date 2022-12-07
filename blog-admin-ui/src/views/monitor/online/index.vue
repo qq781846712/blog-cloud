@@ -1,11 +1,12 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryRef" :inline="true" label-width="68px">
+    <el-form :model="queryParams" ref="queryRef" :inline="true">
       <el-form-item label="登录地址" prop="ipaddr">
         <el-input
             v-model="queryParams.ipaddr"
             placeholder="请输入登录地址"
             clearable
+            style="width: 200px"
             @keyup.enter="handleQuery"
         />
       </el-form-item>
@@ -14,6 +15,7 @@
             v-model="queryParams.userName"
             placeholder="请输入用户名称"
             clearable
+            style="width: 200px"
             @keyup.enter="handleQuery"
         />
       </el-form-item>
@@ -42,12 +44,8 @@
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
-          <el-button
-              type="text"
-              icon="Delete"
-              @click="handleForceLogout(scope.row)"
-              v-hasPermi="['monitor:online:forceLogout']"
-          >强退
+          <el-button link type="primary" icon="Delete" @click="handleForceLogout(scope.row)"
+                     v-hasPermi="['monitor:online:forceLogout']">强退
           </el-button>
         </template>
       </el-table-column>
@@ -82,19 +80,16 @@ function getList() {
     loading.value = false;
   });
 }
-
 /** 搜索按钮操作 */
 function handleQuery() {
   pageNum.value = 1;
   getList();
 }
-
 /** 重置按钮操作 */
 function resetQuery() {
   proxy.resetForm("queryRef");
   handleQuery();
 }
-
 /** 强退按钮操作 */
 function handleForceLogout(row) {
   proxy.$modal.confirm('是否确认强退名称为"' + row.userName + '"的用户?').then(function () {

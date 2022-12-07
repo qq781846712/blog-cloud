@@ -26,7 +26,6 @@ function getBreadcrumb() {
 
   levelList.value = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
 }
-
 function isDashboard(route) {
   const name = route && route.name
   if (!name) {
@@ -34,7 +33,6 @@ function isDashboard(route) {
   }
   return name.trim() === 'Index'
 }
-
 function handleLink(item) {
   const {redirect, path} = item
   if (redirect) {

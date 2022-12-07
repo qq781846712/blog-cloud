@@ -29,7 +29,6 @@ function handleScroll(e) {
   const $scrollWrapper = scrollWrapper.value;
   $scrollWrapper.scrollLeft = $scrollWrapper.scrollLeft + eventDelta / 4
 }
-
 const emits = defineEmits()
 const emitScroll = () => {
   emits('scroll')
@@ -96,11 +95,9 @@ defineExpose({
   position: relative;
   overflow: hidden;
   width: 100%;
-
   :deep(.el-scrollbar__bar) {
     bottom: 0px;
   }
-
   :deep(.el-scrollbar__wrap) {
     height: 49px;
   }

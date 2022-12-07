@@ -96,7 +96,7 @@ public class ValidateCodeServiceImpl implements ValidateCodeService {
         RedisUtils.deleteObject(verifyKey);
 
         if (!code.equalsIgnoreCase(captcha)) {
-            throw new CaptchaException();
+            throw new CaptchaException("请输入验证码！");
         }
     }
 }

@@ -6,6 +6,7 @@
             v-model="queryParams.configKey"
             placeholder="配置key"
             clearable
+            style="width: 200px"
             @keyup.enter="handleQuery"
         />
       </el-form-item>
@@ -14,11 +15,12 @@
             v-model="queryParams.bucketName"
             placeholder="请输入桶名称"
             clearable
+            style="width: 200px"
             @keyup.enter="handleQuery"
         />
       </el-form-item>
       <el-form-item label="状态" prop="status">
-        <el-select v-model="queryParams.status" placeholder="请选择状态" clearable>
+        <el-select v-model="queryParams.status" placeholder="请选择状态" clearable style="width: 200px">
           <el-option
               v-for="dict in sys_normal_disable"
               :key="dict.value"

@@ -50,14 +50,11 @@ let message = computed(() => {
     float: left;
     width: 600px;
     overflow: hidden;
-
     &__parent {
       width: 100%;
     }
-
     &__child {
       position: absolute;
-
       &.left {
         width: 80px;
         top: 17px;
@@ -69,7 +66,6 @@ let message = computed(() => {
         animation-fill-mode: forwards;
         animation-delay: 1s;
       }
-
       &.mid {
         width: 46px;
         top: 10px;
@@ -81,7 +77,6 @@ let message = computed(() => {
         animation-fill-mode: forwards;
         animation-delay: 1.2s;
       }
-
       &.right {
         width: 62px;
         top: 100px;
@@ -93,7 +88,6 @@ let message = computed(() => {
         animation-fill-mode: forwards;
         animation-delay: 1s;
       }
-
       @keyframes cloudLeft {
         0% {
           top: 17px;
@@ -162,14 +156,12 @@ let message = computed(() => {
       }
     }
   }
-
   .bullshit {
     position: relative;
     float: left;
     width: 300px;
     padding: 30px 0;
     overflow: hidden;
-
     &__oops {
       font-size: 32px;
       font-weight: bold;
@@ -181,7 +173,6 @@ let message = computed(() => {
       animation-duration: 0.5s;
       animation-fill-mode: forwards;
     }
-
     &__headline {
       font-size: 20px;
       line-height: 24px;
@@ -194,7 +185,6 @@ let message = computed(() => {
       animation-delay: 0.1s;
       animation-fill-mode: forwards;
     }
-
     &__info {
       font-size: 13px;
       line-height: 21px;
@@ -206,7 +196,6 @@ let message = computed(() => {
       animation-delay: 0.2s;
       animation-fill-mode: forwards;
     }
-
     &__return-home {
       display: block;
       float: left;
@@ -225,7 +214,6 @@ let message = computed(() => {
       animation-delay: 0.3s;
       animation-fill-mode: forwards;
     }
-
     @keyframes slideUp {
       0% {
         transform: translateY(60px);

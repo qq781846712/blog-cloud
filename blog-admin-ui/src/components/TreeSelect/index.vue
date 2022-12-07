@@ -94,7 +94,6 @@ function initHandle() {
     }
   })
 }
-
 function handleNodeClick(node) {
   valueTitle.value = node[props.objMap.label]
   valueId.value = node[props.objMap.value];
@@ -102,23 +101,19 @@ function handleNodeClick(node) {
   proxy.$refs.treeSelect.blur()
   selectFilterData('')
 }
-
 function selectFilterData(val) {
   proxy.$refs.selectTree.filter(val)
 }
-
 function filterNode(value, data) {
   if (!value) return true
   return data[props.objMap['label']].indexOf(value) !== -1
 }
-
 function clearHandle() {
   valueTitle.value = ''
   valueId.value = ''
   defaultExpandedKey.value = [];
   clearSelected()
 }
-
 function clearSelected() {
   const allNode = document.querySelectorAll('#tree-option .el-tree-node')
   allNode.forEach((element) => element.classList.remove('is-current'))
@@ -135,7 +130,6 @@ watch(valueId, () => {
 
 <style lang='scss' scoped>
 @import "@/assets/styles/variables.module.scss";
-
 .el-scrollbar .el-scrollbar__view .el-select-dropdown__item {
   padding: 0;
   background-color: #fff;

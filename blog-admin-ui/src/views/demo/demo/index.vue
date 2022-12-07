@@ -1,11 +1,12 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch" label-width="68px">
+    <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch">
       <el-form-item label="key键" prop="testKey">
         <el-input
             v-model="queryParams.testKey"
             placeholder="请输入key键"
             clearable
+            style="width: 200px"
             @keyup.enter="handleQuery"
         />
       </el-form-item>
@@ -14,6 +15,7 @@
             v-model="queryParams.value"
             placeholder="请输入值"
             clearable
+            style="width: 200px"
             @keyup.enter="handleQuery"
         />
       </el-form-item>
@@ -112,19 +114,11 @@
       <el-table-column label="更新人" align="center" prop="updateBy" v-if="columns[9].visible"/>
       <el-table-column label="操作" align="center" width="150" class-name="small-padding fixed-width">
         <template #default="scope">
-          <el-button
-              type="text"
-              icon="Edit"
-              @click="handleUpdate(scope.row)"
-              v-hasPermi="['demo:demo:edit']"
-          >修改
+          <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)" v-hasPermi="['demo:demo:edit']">
+            修改
           </el-button>
-          <el-button
-              type="text"
-              icon="Delete"
-              @click="handleDelete(scope.row)"
-              v-hasPermi="['demo:demo:remove']"
-          >删除
+          <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)"
+                     v-hasPermi="['demo:demo:remove']">删除
           </el-button>
         </template>
       </el-table-column>
@@ -273,7 +267,6 @@ function getList() {
     loading.value = false;
   });
 }
-
 /** 自定义分页查询 */
 function getPage() {
   loading.value = true;
@@ -283,13 +276,11 @@ function getPage() {
     loading.value = false;
   });
 }
-
 /** 取消按钮 */
 function cancel() {
   open.value = false;
   reset();
 }
-
 /** 表单重置 */
 function reset() {
   form.value = {
@@ -308,40 +299,34 @@ function reset() {
   };
   proxy.resetForm("demoRef");
 }
-
 /** 搜索按钮操作 */
 function handleQuery() {
   queryParams.value.pageNum = 1;
   getList();
 }
-
 /** 搜索按钮操作 */
 function handlePage() {
   queryParams.value.pageNum = 1;
   getList();
 }
-
 /** 重置按钮操作 */
 function resetQuery() {
   daterangeCreateTime.value = [];
   proxy.resetForm("queryRef");
   handleQuery();
 }
-
 /** 选择条数  */
 function handleSelectionChange(selection) {
   ids.value = selection.map(item => item.id);
   single.value = selection.length != 1;
   multiple.value = !selection.length;
 }
-
 /** 新增按钮操作 */
 function handleAdd() {
   reset();
   open.value = true;
   title.value = "添加测试单表";
 }
-
 /** 修改按钮操作 */
 function handleUpdate(row) {
   loading.value = true;
@@ -354,7 +339,6 @@ function handleUpdate(row) {
     title.value = "修改测试单表";
   });
 }
-
 /** 提交按钮 */
 function submitForm() {
   proxy.$refs["demoRef"].validate(valid => {
@@ -380,7 +364,6 @@ function submitForm() {
     }
   });
 }
-
 /** 删除按钮操作 */
 function handleDelete(row) {
   const ids = row.id || ids.value;
@@ -395,20 +378,17 @@ function handleDelete(row) {
     loading.value = false;
   });
 }
-
 /** 导入按钮操作 */
 function handleImport() {
   upload.title = "测试导入";
   upload.open = true;
 }
-
 /** 导出按钮操作 */
 function handleExport() {
   proxy.download("demo/demo/export", {
     ...queryParams.value,
   }, `demo_${new Date().getTime()}.xlsx`);
 }
-
 /**文件上传中处理 */
 const handleFileUploadProgress = (event, file, fileList) => {
   upload.isUploading = true;
@@ -421,7 +401,6 @@ const handleFileSuccess = (response, file, fileList) => {
   proxy.$alert(response.msg, "导入结果", {dangerouslyUseHTMLString: true});
   getList();
 }
-
 /** 提交上传文件 */
 function submitFileForm() {
   proxy.$refs["uploadRef"].submit();

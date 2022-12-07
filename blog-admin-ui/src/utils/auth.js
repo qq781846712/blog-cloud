@@ -5,7 +5,7 @@ const TokenKey = 'Admin-Token'
 const ExpiresInKey = 'Admin-Expires-In'
 
 export function getToken() {
-    return Cookies.get(TokenKey)
+  return Cookies.get(TokenKey)
 }
 
 export function setToken(token) {

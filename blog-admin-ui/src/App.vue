@@ -8,7 +8,6 @@ import {handleThemeStyle} from '@/utils/theme'
 
 onMounted(() => {
   nextTick(() => {
-    // ��ʼ��������ʽ
     handleThemeStyle(useSettingsStore().theme)
   })
 })

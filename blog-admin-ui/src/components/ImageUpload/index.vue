@@ -49,7 +49,7 @@
 
 <script setup>
 import {getToken} from "@/utils/auth";
-import {delOss, listByIds} from "@/api/system/oss";
+import {listByIds, delOss} from "@/api/system/oss";
 
 const props = defineProps({
   modelValue: [String, Object, Array],

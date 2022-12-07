@@ -195,6 +195,12 @@
                 <version>${satoken.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-boot-starter</artifactId>
+                <version>${satoken.version}</version>
+            </dependency>
+
             <!-- 统一 guava 版本 解决隐式漏洞问题 -->
             <dependency>
                 <groupId>com.google.guava</groupId>
@@ -273,6 +279,11 @@
     </profiles>
 
     <packaging>pom</packaging>
+
+    <dependencies>
+
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -302,12 +313,28 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+            <!-- 单元测试使用 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                    <!-- 根据打包环境执行对应的@Tag测试方法 -->
+                    <groups>${profiles.active}</groups>
+                    <!-- 排除标签 -->
+                    <excludedGroups>exclude</excludedGroups>
+                </configuration>
+            </plugin>
         </plugins>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <!-- 关闭过滤 -->
                 <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/webapp/</directory>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
@@ -322,6 +349,7 @@
             </resource>
         </resources>
     </build>
+
     <repositories>
         <repository>
             <id>public</id>

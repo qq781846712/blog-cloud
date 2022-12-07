@@ -96,7 +96,6 @@ for (let item in props.columns) {
   display: block;
   margin-left: 0px;
 }
-
 :deep(.el-transfer__button:first-child) {
   margin-bottom: 10px;
 }

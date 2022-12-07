@@ -26,6 +26,11 @@
             <artifactId>spring-cloud-starter-loadbalancer</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
+
         <!-- SpringCloud Alibaba Nacos -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -105,6 +110,17 @@
         <!--        <dependency>-->
         <!--            <groupId>com.blank</groupId>-->
         <!--            <artifactId>ruoyi-common-logstash</artifactId>-->
+        <!--        </dependency>-->
+        <!-- skywalking 日志收集 -->
+        <!--        <dependency>-->
+        <!--            <groupId>com.ruoyi</groupId>-->
+        <!--            <artifactId>ruoyi-common-skylog</artifactId>-->
+        <!--        </dependency>-->
+
+        <!-- prometheus 监控 -->
+        <!--        <dependency>-->
+        <!--            <groupId>com.ruoyi</groupId>-->
+        <!--            <artifactId>ruoyi-common-prometheus</artifactId>-->
         <!--        </dependency>-->
     </dependencies>
 

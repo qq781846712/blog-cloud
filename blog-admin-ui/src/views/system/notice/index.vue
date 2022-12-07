@@ -6,6 +6,7 @@
             v-model="queryParams.noticeTitle"
             placeholder="请输入公告标题"
             clearable
+            style="width: 200px"
             @keyup.enter="handleQuery"
         />
       </el-form-item>
@@ -14,11 +15,12 @@
             v-model="queryParams.createUserName"
             placeholder="请输入操作人员"
             clearable
+            style="width: 200px"
             @keyup.enter="handleQuery"
         />
       </el-form-item>
       <el-form-item label="类型" prop="noticeType">
-        <el-select v-model="queryParams.noticeType" placeholder="公告类型" clearable>
+        <el-select v-model="queryParams.noticeType" placeholder="公告类型" clearable style="width: 200px">
           <el-option
               v-for="dict in sys_notice_type"
               :key="dict.value"

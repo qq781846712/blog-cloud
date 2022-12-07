@@ -57,7 +57,6 @@ function submit() {
     }
   });
 };
-
 /** 关闭按钮 */
 function close() {
   proxy.$tab.closePage();

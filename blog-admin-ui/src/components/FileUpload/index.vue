@@ -40,7 +40,7 @@
 
 <script setup>
 import {getToken} from "@/utils/auth";
-import {delOss, listByIds} from "@/api/system/oss";
+import {listByIds, delOss} from "@/api/system/oss";
 
 const props = defineProps({
   modelValue: [String, Object, Array],
@@ -71,7 +71,7 @@ const emit = defineEmits();
 const number = ref(0);
 const uploadList = ref([]);
 const baseUrl = import.meta.env.VITE_APP_BASE_API;
-const uploadFileUrl = ref(baseUrl + "/resource/oss/upload"); // 上传的图片服务器地址
+const uploadFileUrl = ref(baseUrl + "/resource/oss/upload"); // 上传文件服务器地址
 const headers = ref({Authorization: "Bearer " + getToken()});
 const fileList = ref([]);
 const showTip = computed(
@@ -109,15 +109,9 @@ watch(() => props.modelValue, async val => {
 function handleBeforeUpload(file) {
   // 校检文件类型
   if (props.fileType.length) {
-    let fileExtension = "";
-    if (file.name.lastIndexOf(".") > -1) {
-      fileExtension = file.name.slice(file.name.lastIndexOf(".") + 1);
-    }
-    const isTypeOk = props.fileType.some((type) => {
-      if (file.type.indexOf(type) > -1) return true;
-      if (fileExtension && fileExtension.indexOf(type) > -1) return true;
-      return false;
-    });
+    const fileName = file.name.split('.');
+    const fileExt = fileName[fileName.length - 1];
+    const isTypeOk = props.fileType.indexOf(fileExt) >= 0;
     if (!isTypeOk) {
       proxy.$modal.msgError(`文件格式不正确, 请上传${props.fileType.join("/")}格式文件!`);
       return false;
@@ -206,21 +200,18 @@ function listToString(list, separator) {
 .upload-file-uploader {
   margin-bottom: 5px;
 }
-
 .upload-file-list .el-upload-list__item {
   border: 1px solid #e4e7ed;
   line-height: 2;
   margin-bottom: 10px;
   position: relative;
 }
-
 .upload-file-list .ele-upload-list__item-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: inherit;
 }
-
 .ele-upload-list__item-content-action .el-link {
   margin-right: 10px;
 }

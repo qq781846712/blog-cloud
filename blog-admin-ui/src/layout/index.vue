@@ -57,7 +57,6 @@ function handleClickOutside() {
 }
 
 const settingRef = ref(null);
-
 function setLayout() {
   settingRef.value.openSetting();
 }

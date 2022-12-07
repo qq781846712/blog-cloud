@@ -99,7 +99,6 @@ function logout() {
 }
 
 const emits = defineEmits(['setLayout'])
-
 function setLayout() {
   emits('setLayout');
 }

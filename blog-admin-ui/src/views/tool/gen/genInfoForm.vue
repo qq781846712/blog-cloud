@@ -250,7 +250,7 @@
 import {listMenu} from "@/api/system/menu";
 
 const subColumns = ref([]);
-const menuOptions = ref({});
+const menuOptions = ref([]);
 const {proxy} = getCurrentInstance();
 
 const props = defineProps({

@@ -1,11 +1,12 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch" label-width="68px">
+    <el-form :model="queryParams" ref="queryRef" :inline="true" v-show="showSearch">
       <el-form-item label="树节点名" prop="treeName">
         <el-input
             v-model="queryParams.treeName"
             placeholder="请输入树节点名"
             clearable
+            style="width: 200px"
             @keyup.enter="handleQuery"
         />
       </el-form-item>
@@ -67,26 +68,13 @@
       </el-table-column>
       <el-table-column label="操作" align="center" width="150" class-name="small-padding fixed-width">
         <template #default="scope">
-          <el-button
-              type="text"
-              icon="Edit"
-              @click="handleUpdate(scope.row)"
-              v-hasPermi="['demo:tree:edit']"
-          >修改
+          <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)" v-hasPermi="['demo:tree:edit']">
+            修改
           </el-button>
-          <el-button
-              type="text"
-              icon="Plus"
-              @click="handleAdd(scope.row)"
-              v-hasPermi="['demo:tree:add']"
-          >新增
+          <el-button link type="primary" icon="Plus" @click="handleAdd(scope.row)" v-hasPermi="['demo:tree:add']">新增
           </el-button>
-          <el-button
-              type="text"
-              icon="Delete"
-              @click="handleDelete(scope.row)"
-              v-hasPermi="['demo:tree:remove']"
-          >删除
+          <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)"
+                     v-hasPermi="['demo:tree:remove']">删除
           </el-button>
         </template>
       </el-table-column>
@@ -178,7 +166,6 @@ function getList() {
     loading.value = false;
   });
 }
-
 /** 查询部门下拉树结构 */
 async function getTreeselect() {
   await listTree().then(response => {
@@ -188,13 +175,11 @@ async function getTreeselect() {
     treeOptions.value.push(data);
   });
 }
-
 /** 取消按钮 */
 function cancel() {
   open.value = false;
   reset();
 }
-
 /** 表单重置 */
 function reset() {
   form.value = {
@@ -212,19 +197,16 @@ function reset() {
   };
   proxy.resetForm("treeRef");
 }
-
 /** 搜索按钮操作 */
 function handleQuery() {
   getList();
 }
-
 /** 重置按钮操作 */
 function resetQuery() {
   daterangeCreateTime.value = [];
   proxy.resetForm("queryRef");
   handleQuery();
 }
-
 /** 新增按钮操作 */
 async function handleAdd(row) {
   reset();
@@ -262,7 +244,6 @@ async function handleUpdate(row) {
     title.value = "修改测试树表";
   });
 }
-
 /** 提交按钮 */
 function submitForm() {
   proxy.$refs["treeRef"].validate(valid => {
@@ -288,7 +269,6 @@ function submitForm() {
     }
   });
 }
-
 /** 删除按钮操作 */
 function handleDelete(row) {
   proxy.$modal.confirm('是否确认删除测试单表编号为"' + row.id + '"的数据项?').then(() => {

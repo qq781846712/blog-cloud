@@ -1,16 +1,16 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryRef" v-show="showSearch" :inline="true">
-      <el-form-item label="角色名称" prop="roleName">
-        <el-input
-            v-model="queryParams.roleName"
-            placeholder="请输入角色名称"
-            clearable
-            style="width: 240px"
-            @keyup.enter="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="权限字符" prop="roleKey">
+      <el-form :model="queryParams" ref="queryRef" v-show="showSearch" :inline="true" label-width="68px">
+        <el-form-item label="角色名称" prop="roleName">
+          <el-input
+              v-model="queryParams.roleName"
+              placeholder="请输入角色名称"
+              clearable
+              style="width: 240px"
+              @keyup.enter="handleQuery"
+          />
+        </el-form-item>
+        <el-form-item label="权限字符" prop="roleKey">
         <el-input
             v-model="queryParams.roleKey"
             placeholder="请输入权限字符"

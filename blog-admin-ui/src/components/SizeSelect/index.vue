@@ -25,13 +25,13 @@ const route = useRoute();
 const router = useRouter();
 const {proxy} = getCurrentInstance();
 const sizeOptions = ref([
-  {label: "�ϴ�", value: "large"},
-  {label: "Ĭ��", value: "default"},
-  {label: "��С", value: "small"},
+  {label: "较大", value: "large"},
+  {label: "默认", value: "default"},
+  {label: "稍小", value: "small"},
 ]);
 
 function handleSetSize(size) {
-  proxy.$modal.loading("�������ò��ִ�С�����Ժ�...");
+  proxy.$modal.loading("正在设置布局大小，请稍候...");
   appStore.setSize(size);
   setTimeout("window.location.reload()", 1000);
 }

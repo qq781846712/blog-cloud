@@ -1,4 +1,4 @@
-import {parseTime} from '@/ruoyi'
+import {parseTime} from './ruoyi'
 
 /**
  * 表格时间格式化
@@ -330,7 +330,7 @@ export function makeMap(str, expectsLowerCase) {
         ? val => map[val.toLowerCase()]
         : val => map[val]
 }
-
+ 
 export const exportDefault = 'export default '
 
 export const beautifierConf = {

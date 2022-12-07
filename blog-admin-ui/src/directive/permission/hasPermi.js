@@ -1,9 +1,9 @@
-/**
+ /**
  * v-hasPermi 操作权限处理
  * Copyright (c) 2019 ruoyi
  */
 
-import useUserStore from '@/store/modules/user'
+ import useUserStore from '@/store/modules/user'
 
 export default {
     mounted(el, binding, vnode) {

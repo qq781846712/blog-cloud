@@ -39,13 +39,11 @@ function click() {
     headerSearchSelectRef.value && headerSearchSelectRef.value.focus()
   }
 };
-
 function close() {
   headerSearchSelectRef.value && headerSearchSelectRef.value.blur()
   options.value = []
   show.value = false
 }
-
 function change(val) {
   const path = val.path;
   if (isHttp(path)) {
@@ -62,7 +60,6 @@ function change(val) {
     show.value = false
   })
 }
-
 function initFuse(list) {
   fuse.value = new Fuse(list, {
     shouldSort: true,
@@ -80,7 +77,6 @@ function initFuse(list) {
     }]
   })
 }
-
 // Filter out the routes that can be displayed in the sidebar
 // And generate the internationalized title
 function generateRoutes(routes, basePath = '', prefixTitle = []) {
@@ -117,7 +113,6 @@ function generateRoutes(routes, basePath = '', prefixTitle = []) {
   }
   return res
 }
-
 function querySearch(query) {
   if (query !== '') {
     options.value = fuse.value.search(query)

@@ -88,7 +88,6 @@ onMounted(() => {
 function isActive(r) {
   return r.path === route.path
 }
-
 function activeStyle(tag) {
   if (!isActive(tag)) return {};
   return {
@@ -96,11 +95,9 @@ function activeStyle(tag) {
     "border-color": theme.value
   };
 }
-
 function isAffix(tag) {
   return tag.meta && tag.meta.affix
 }
-
 function isFirstView() {
   try {
     return selectedTag.value.fullPath === visitedViews.value[1].fullPath || selectedTag.value.fullPath === '/index'
@@ -108,7 +105,6 @@ function isFirstView() {
     return false
   }
 }
-
 function isLastView() {
   try {
     return selectedTag.value.fullPath === visitedViews.value[visitedViews.value.length - 1].fullPath
@@ -116,7 +112,6 @@ function isLastView() {
     return false
   }
 }
-
 function filterAffixTags(routes, basePath = '') {
   let tags = []
   routes.forEach(route => {
@@ -138,7 +133,6 @@ function filterAffixTags(routes, basePath = '') {
   })
   return tags
 }
-
 function initTags() {
   const res = filterAffixTags(routes.value);
   affixTags.value = res;
@@ -149,7 +143,6 @@ function initTags() {
     }
   }
 }
-
 function addTags() {
   const {name} = route
   if (name) {
@@ -160,7 +153,6 @@ function addTags() {
   }
   return false
 }
-
 function moveToCurrentTag() {
   nextTick(() => {
     for (const r of visitedViews.value) {
@@ -174,14 +166,12 @@ function moveToCurrentTag() {
     }
   })
 }
-
 function refreshSelectedTag(view) {
   proxy.$tab.refreshPage(view);
   if (route.meta.link) {
     useTagsViewStore().delIframeView(route);
   }
 }
-
 function closeSelectedTag(view) {
   proxy.$tab.closePage(view).then(({visitedViews}) => {
     if (isActive(view)) {
@@ -189,7 +179,6 @@ function closeSelectedTag(view) {
     }
   })
 }
-
 function closeRightTags() {
   proxy.$tab.closeRightPage(selectedTag.value).then(visitedViews => {
     if (!visitedViews.find(i => i.fullPath === route.fullPath)) {
@@ -197,7 +186,6 @@ function closeRightTags() {
     }
   })
 }
-
 function closeLeftTags() {
   proxy.$tab.closeLeftPage(selectedTag.value).then(visitedViews => {
     if (!visitedViews.find(i => i.fullPath === route.fullPath)) {
@@ -205,7 +193,6 @@ function closeLeftTags() {
     }
   })
 }
-
 function closeOthersTags() {
   router.push(selectedTag.value).catch(() => {
   });
@@ -213,7 +200,6 @@ function closeOthersTags() {
     moveToCurrentTag()
   })
 }
-
 function closeAllTags(view) {
   proxy.$tab.closeAllPage().then(({visitedViews}) => {
     if (affixTags.value.some(tag => tag.path === route.path)) {
@@ -222,7 +208,6 @@ function closeAllTags(view) {
     toLastView(visitedViews, view)
   })
 }
-
 function toLastView(visitedViews, view) {
   const latestView = visitedViews.slice(-1)[0]
   if (latestView) {
@@ -238,7 +223,6 @@ function toLastView(visitedViews, view) {
     }
   }
 }
-
 function openMenu(tag, e) {
   const menuMinWidth = 105
   const offsetLeft = proxy.$el.getBoundingClientRect().left // container margin left
@@ -256,11 +240,9 @@ function openMenu(tag, e) {
   visible.value = true
   selectedTag.value = tag
 }
-
 function closeMenu() {
   visible.value = false
 }
-
 function handleScroll() {
   closeMenu()
 }
@@ -273,7 +255,6 @@ function handleScroll() {
   background: #fff;
   border-bottom: 1px solid #d8dce5;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
-
   .tags-view-wrapper {
     .tags-view-item {
       display: inline-block;
@@ -288,20 +269,16 @@ function handleScroll() {
       font-size: 12px;
       margin-left: 5px;
       margin-top: 4px;
-
       &:first-of-type {
         margin-left: 15px;
       }
-
       &:last-of-type {
         margin-right: 15px;
       }
-
       &.active {
         background-color: #42b983;
         color: #fff;
         border-color: #42b983;
-
         &::before {
           content: "";
           background: #fff;
@@ -315,7 +292,6 @@ function handleScroll() {
       }
     }
   }
-
   .contextmenu {
     margin: 0;
     background: #fff;
@@ -328,12 +304,10 @@ function handleScroll() {
     font-weight: 400;
     color: #333;
     box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);
-
     li {
       margin: 0;
       padding: 7px 16px;
       cursor: pointer;
-
       &:hover {
         background: #eee;
       }
@@ -354,13 +328,11 @@ function handleScroll() {
       text-align: center;
       transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
       transform-origin: 100% 50%;
-
       &:before {
         transform: scale(0.6);
         display: inline-block;
         vertical-align: -3px;
       }
-
       &:hover {
         background-color: #b4bccc;
         color: #fff;
