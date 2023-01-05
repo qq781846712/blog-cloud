@@ -1,11 +1,10 @@
 FROM anapsix/alpine-java:8_server-jre_unlimited
 
-MAINTAINER Lion Li
+MAINTAINER Blank
 
-RUN mkdir -p /blank/gen
-RUN mkdir -p /blank/gen/logs
+RUN mkdir -p /opt/gen/logs
 
-WORKDIR /blank/gen
+WORKDIR /opt/gen
 
 ENV SERVER_PORT=9202
 
