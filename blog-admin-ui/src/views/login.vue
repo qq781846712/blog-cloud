@@ -81,12 +81,17 @@ const router = useRouter();
 const {proxy} = getCurrentInstance();
 
 const loginForm = ref({
-  username: "admin",
-  password: "admin123",
+  username: "",
+  password: "",
   rememberMe: false,
   code: "",
   uuid: ""
 });
+
+if (process.env.NODE_ENV == 'development') {
+  loginForm.value.username = 'admin';
+  loginForm.value.password = '123456';
+}
 
 const loginRules = {
   username: [{required: true, trigger: "blur", message: "请输入您的账号"}],

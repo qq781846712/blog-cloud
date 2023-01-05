@@ -1,0 +1,130 @@
+version: '3'
+
+services:
+  seata-server:
+    image: blank/seata-server:1.4.0
+    container_name: seata-server
+    ports:
+      - "7091:7091"
+      - "8091:8091"
+    environment:
+      TZ: Asia/Shanghai
+      # 注意 此处ip如果是外网使用 要改为外网ip
+      # SEATA_IP: 127.0.0.1
+      SEATA_PORT: 8091
+    volumes:
+      - D:/opt/springcloud/seata-server/logs/:/opt/seata-server/logs
+      # skywalking 探针
+      - D:/opt/springcloud/docker/skywalking/agent/:/opt/skywalking/agent
+    privileged: true
+    network_mode: "host"
+
+  sentinel:
+    image: blank/sentinel-dashboard:1.4.0
+    container_name: sentinel
+    environment:
+      TZ: Asia/Shanghai
+    ports:
+      - "8718:8718"
+    volumes:
+      # 配置文件
+      - D:/opt/springcloud/sentinel-dashboard/logs/:/opt/sentinel-dashboard/logs
+      # skywalking 探针
+      - D:/opt/springcloud/docker/skywalking/agent/:/opt/skywalking/agent
+    restart: always
+    network_mode: "host"
+
+  ruoyi-monitor:
+    image: blank/monitor:1.4.0
+    container_name: monitor
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
+    ports:
+      - "9100:9100"
+    volumes:
+      # 配置文件
+      - D:/opt/springcloud/monitor/logs/:/opt/monitor/logs
+      # skywalking 探针
+      - D:/opt/springcloud/docker/skywalking/agent/:/opt/skywalking/agent
+    privileged: true
+    network_mode: "host"
+
+  gateway:
+    image: blank/gateway:1.4.0
+    container_name: gateway
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
+    ports:
+      - "8080:8080"
+    volumes:
+      # 配置文件
+      - D:/opt/springcloud/gateway/logs/:/opt/gateway/logs
+      # skywalking 探针
+      - D:/opt/springcloud/docker/skywalking/agent/:/opt/skywalking/agent
+    privileged: true
+    network_mode: "host"
+
+  ruoyi-auth:
+    image: blank/auth:1.4.0
+    container_name: auth
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
+    ports:
+      - "9210:9210"
+    volumes:
+      # 配置文件
+      - D:/opt/springcloud/auth/logs/:/opt/auth/logs
+      # skywalking 探针
+      - D:/opt/springcloud/docker/skywalking/agent/:/opt/skywalking/agent
+    privileged: true
+    network_mode: "host"
+
+  system:
+    image: blank/system:1.4.0
+    container_name: system
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
+    ports:
+      - "9201:9201"
+    volumes:
+      # 配置文件
+      - D:/opt/springcloud/system/logs/:/opt/system/logs
+      # skywalking 探针
+      - D:/opt/springcloud/docker/skywalking/agent/:/opt/skywalking/agent
+    privileged: true
+    network_mode: "host"
+
+  gen:
+    image: blank/gen:1.4.0
+    container_name: gen
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
+    ports:
+      - "9202:9202"
+    volumes:
+      # 配置文件
+      - D:/opt/springcloud/gen/logs/:/opt/gen/logs
+      # skywalking 探针
+      - D:/opt/springcloud/docker/skywalking/agent/:/opt/skywalking/agent
+    privileged: true
+    network_mode: "host"
+
+  portainer:
+    image: portainer/portainer-ce:2.16.2
+    container_name: portainer
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
+    ports:
+      - "8000:8000"
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/springcloud/portainer/data:/data
+      - /var/lib/docker/volumes:/var/lib/docker/volumes
+    restart: always
