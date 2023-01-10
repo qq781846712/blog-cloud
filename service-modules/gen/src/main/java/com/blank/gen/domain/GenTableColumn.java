@@ -121,7 +121,7 @@ public class GenTableColumn extends BaseEntity {
     private Integer sort;
 
     @TableField(exist = false)
-    private char isDeleted;
+    private String isDeleted;
 
     public String getCapJavaField() {
         return StringUtils.capitalize(javaField);

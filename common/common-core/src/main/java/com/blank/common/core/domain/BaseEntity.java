@@ -48,9 +48,8 @@ public class BaseEntity implements Serializable {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 
-    @TableLogic(value = "'N'", delval = "'Y'")
-    @TableField(fill = FieldFill.INSERT)
-    private char isDeleted;
+    @TableLogic
+    private String isDeleted;
 
     /**
      * 备注

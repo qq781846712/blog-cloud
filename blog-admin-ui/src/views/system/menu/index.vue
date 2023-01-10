@@ -115,6 +115,7 @@
                   :props="{ value: 'menuId', label: 'menuName', children: 'children' }"
                   value-key="menuId"
                   placeholder="选择上级菜单"
+                  :render-after-expand="false"
                   check-strictly
               />
             </el-form-item>

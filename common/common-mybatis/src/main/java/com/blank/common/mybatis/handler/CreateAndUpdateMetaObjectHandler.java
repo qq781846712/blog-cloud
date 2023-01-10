@@ -1,8 +1,10 @@
 package com.blank.common.mybatis.handler;
 
 import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpStatus;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import com.blank.common.core.constant.CommonConstants;
 import com.blank.common.core.domain.BaseEntity;
 import com.blank.common.core.exception.ServiceException;
 import com.blank.common.satoken.utils.LoginHelper;
@@ -33,6 +35,12 @@ public class CreateAndUpdateMetaObjectHandler implements MetaObjectHandler {
                 baseEntity.setCreateUser(userId);
                 // 当前已登录 且 更新人为空 则填充
                 baseEntity.setUpdateUser(userId);
+
+                // 自动设置isDeleted
+                String isDeleted = baseEntity.getIsDeleted();
+                if (StrUtil.isBlank(isDeleted)) {
+                    baseEntity.setIsDeleted(CommonConstants.NO_DELETED);
+                }
             }
         } catch (Exception e) {
             throw new ServiceException("自动注入异常 => " + e.getMessage(), HttpStatus.HTTP_UNAUTHORIZED);

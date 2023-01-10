@@ -170,7 +170,7 @@ public class GenTable extends BaseEntity {
     private String parentMenuName;
 
     @TableField(exist = false)
-    private char isDeleted;
+    private String isDeleted;
 
     public boolean isSub() {
         return isSub(this.tplCategory);
